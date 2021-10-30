@@ -1,0 +1,13 @@
+
+body {
+    background-color: #2f3234;
+    color: #eeeeee;
+    font-family: 'Lucida Console', monospace;
+    font-size: 12pt;
+}
+
+section {
+    margin: 1%;
+    background-color: #ffffff15;
+    padding: 1%;
+}
