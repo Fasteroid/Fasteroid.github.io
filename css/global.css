@@ -3,11 +3,28 @@ body {
     background-color: #2f3234;
     color: #eeeeee;
     font-family: 'Lucida Console', monospace;
-    font-size: 12pt;
+    font-size: 11pt;
+    line-height: 1.25;
 }
 
 section {
-    margin: 1%;
+    margin: 15px 15px;
     background-color: #ffffff15;
-    padding: 1%;
+    padding: 15px 15px;
+}
+
+li::marker{
+    font-size: 13pt;
+}
+
+ul {
+    margin: 0px;
+}
+
+a {
+    color: #9292ff;
+}
+
+a:visited {
+    color: #cc71e2;
 }
