@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap');
+
+.nav {
+    background: #000000;
+    font-family: 'Recursive', sans-serif;
+    font-style: italic;
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+}
+
+.nav > .home{
+    padding: 15px;
+    font-size: 16pt;
+    color: #ffffff;
+    animation: neon-home 0.02s ease-in-out alternate infinite;
+}
+
+.nav > .pages{
+    margin-left: auto; 
+    margin-right: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.nav > .pages > a {
+    display: flex;
+    align-items: center;
+    font-size: 14pt;
+    padding-right: 15px;
+    padding-left:  15px;
+    height: 100%;
+    color: #9292ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav > .pages > a.cwd {
+    display: flex;
+    align-items: center;
+    font-size: 14pt;
+    padding-right: 15px;
+    padding-left:  15px;
+    height: 100%;
+    color: #ffffff;
+    text-decoration: none;
+    animation: neon-home 0.02s ease-in-out alternate infinite;
+}
+
+.nav > .pages > a:hover {
+    color: #ffffff;
+}
+
+
+/* Hopefully I've struck a balance between cool and distracting */
+@keyframes neon-home {
+    from {
+        text-shadow: 
+        0 0 5pt #ffffff,
+        0 0 10pt #66ffff,
+        0 1px 15pt #0099ff,
+        0 1px 25pt #0000ff,
+        0 1px 25pt #0000ff,
+        0 1px 25pt #0000ff,
+        0 1px 40pt #0000ff
+    }
+    to {
+        text-shadow: 
+        0 0 2pt #ffffff,
+        0 0 15pt #66ffff,
+        0 1px 35pt #0099ff,
+        0 1px 25pt #0000ff,
+        0 1px 25pt #0000ff,
+        0 1px 25pt #0000ff,
+        0 1px 40pt #0000ff
+    }
+}
+
