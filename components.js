@@ -10,23 +10,23 @@ let postprocessors = {
      */
     navbar: function(self){
         let pages = self.querySelector("#pages")
-        let url = window.location.href.match(/[^\/]*$/)[0]; // I'd be a fool to recompute this
+        let url = window.location.href.match(/[^\/]*$/)[0]; // I'd be a fool to recompute this repeatedly in the for loop
         for(let page of pages.children){
             if( page.getAttribute("href").match(/[^\/]*$/)[0] == url ){
-                page.className = "cwd"; // "current working directory"
+                page.className = "cwd";
+                break; // there can only be one
             }
         }
     }
 }
 
 
-    let includes = document.querySelectorAll("component")
-    $.each(includes, function () {
-
-        let name = this.getAttribute("class");
-        let file = `components/${name}.html`
-        let self = this; // horrible
-        $(this).load(file, 
-            function(){ postprocessors[name](self) }    
-        )
-    })
+let includes = document.querySelectorAll("component")
+$.each(includes, function () {
+    let name = this.getAttribute("class");
+    let file = `components/${name}.html`
+    let self = this; // horrible
+    $(this).load(file, 
+        function(){ postprocessors[name](self) }    
+    )
+})

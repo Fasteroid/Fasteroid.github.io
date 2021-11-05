@@ -12,7 +12,7 @@
     padding: 15px;
     font-size: 16pt;
     color: #ffffff;
-    animation: neon-home 0.02s ease-in-out alternate infinite;
+    animation: neon-home 1s ease-in-out alternate infinite;
 }
 
 .nav > .pages{
@@ -29,49 +29,50 @@
     padding-right: 15px;
     padding-left:  15px;
     height: 100%;
-    color: #9292ff;
+    color: #ffffff;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .nav > .pages > a.cwd {
-    display: flex;
-    align-items: center;
-    font-size: 14pt;
-    padding-right: 15px;
-    padding-left:  15px;
-    height: 100%;
-    color: #ffffff;
-    text-decoration: none;
-    animation: neon-home 0.02s ease-in-out alternate infinite;
+    background: #ffffff22;
 }
 
 .nav > .pages > a:hover {
-    color: #ffffff;
-}
-
-
-/* Hopefully I've struck a balance between cool and distracting */
-@keyframes neon-home {
-    from {
-        text-shadow: 
+    text-shadow: /*might change this later*/
         0 0 5pt #ffffff,
-        0 0 10pt #66ffff,
-        0 1px 15pt #0099ff,
-        0 1px 25pt #0000ff,
-        0 1px 25pt #0000ff,
-        0 1px 25pt #0000ff,
-        0 1px 40pt #0000ff
-    }
-    to {
-        text-shadow: 
-        0 0 2pt #ffffff,
         0 0 15pt #66ffff,
         0 1px 35pt #0099ff,
         0 1px 25pt #0000ff,
         0 1px 25pt #0000ff,
         0 1px 25pt #0000ff,
-        0 1px 40pt #0000ff
+        0 1px 40pt #0000ff;
+    --text-decoration: underline;
+}
+
+
+/* Hopefully I've struck a balance between cool and distracting */
+@keyframes neon-home {
+    0%, 60%, 62%, 98%, 100% {
+        text-shadow: 
+            0 0 5pt #ffffff,
+            0 0 15pt #66ffff,
+            0 1px 35pt #0099ff,
+            0 1px 25pt #0000ff,
+            0 1px 25pt #0000ff,
+            0 1px 25pt #0000ff,
+            0 1px 40pt #0000ff
+    }
+    61%, 99% {
+        text-shadow: 
+            0 0 2pt #ffffff,
+            0 0 10pt #66ffff,
+            0 1px 15pt #0099ff,
+            0 1px 25pt #0000ff,
+            0 1px 25pt #0000ff,
+            0 1px 25pt #0000ff,
+            0 1px 50pt #0000ff
     }
 }
+
 

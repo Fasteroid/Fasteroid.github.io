@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
 body, html {
     margin: 0;
     padding: 0;
@@ -7,19 +9,37 @@ body, html {
 body {
     background-color: #2f3234;
     color: #eeeeee;
-    font-family: 'Lucida Console', monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 11pt;
     line-height: 1.25;
+    word-spacing: -0.75px; 
 }
 
 section {
-    margin: 15px 15px;
+    background-color: #ffffff15;
+    padding: 15px;
+    text-align: justify;
+}
+
+.widthlimiter {
+    margin: auto;
+    max-width: 18in;
+    padding: 10px;
+}
+
+.space {
+    margin-left: 5px;
+    display: inline;
+}
+
+img {
     background-color: #ffffff15;
     padding: 15px 15px;
+    margin: 0px 15px 7.5px;
 }
 
 li::marker{
-    font-size: 13pt;
+    font-size: 12pt;
 }
 
 ul {
@@ -27,10 +47,10 @@ ul {
 }
 
 a {
-    color: #9292ff;
+    color: #b1b1ff;
 }
 
 a:visited {
-    color: #cc71e2;
+    color: #eca1ff;
 }
 
