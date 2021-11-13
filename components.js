@@ -12,7 +12,7 @@ let postprocessors = {
         let pages = self.querySelector("#pages")
         let url = window.location.href.match(/[^\/]*$/)[0]; // I'd be a fool to recompute this repeatedly in the for loop
         for(let page of pages.children){
-            if( page.getAttribute("href").match(/[^\/]*$/)[0] == url ){
+            if( page.getAttribute("href")?.match(/[^\/]*$/)[0] == url ){ // null safety
                 page.className = "cwd";
                 break; // there can only be one
             }

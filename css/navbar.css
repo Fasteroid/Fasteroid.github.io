@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap');
+@import "effects.css";
 
 .nav {
     background: #000000;
@@ -8,21 +9,62 @@
     grid-template-columns: 0.4fr 0.6fr;
 }
 
-.nav > .home{
+.nav > .home {
     padding: 15px;
     font-size: 16pt;
     color: #ffffff;
-    animation: neon-home 1s ease-in-out alternate infinite;
+    animation: neon-flicker 1s ease-in-out alternate infinite;
 }
 
-.nav > .pages{
+.nav > .pages {
     margin-left: auto; 
     margin-right: 0px;
     display: flex;
     align-items: center;
 }
 
-.nav > .pages > a {
+.dropdown {
+    /* horrifying layering hacks */
+    /* thx stackoverflow: https://stackoverflow.com/questions/54897916/why-cant-an-element-with-a-z-index-value-cover-its-child */
+    transform-style: preserve-3d;
+    position: relative;
+    cursor: pointer;
+    background: #000000
+}
+
+/* because of [horrifying layering hacks], these will be positioned UNDER the main navbar */
+.dropdown-content {
+    display: block;
+    position: absolute;
+    min-width: 100%;
+    left: 0;
+    top: 90%;
+    transition: 0.3s;
+    transform: translate(0,-100%) translateZ(-1px);
+    box-shadow: 0px 0px 0px black;
+}
+
+.dropdown-content a {
+    background: #000000;
+    color: #ffffff;
+    padding: 15px;
+    display: block;
+    text-align: left;
+    filter: none;
+    mix-blend-mode: screen; /* Needed so the glows from the icons merge additively */
+}
+
+.dropdown-content a span {
+    filter: none;
+}
+
+.dropdown-content .icon {
+    mix-blend-mode: screen; /* Needed so the glows from the icons merge additively */
+}
+
+.nav > .pages > a, 
+.nav .dropdown,
+.dropdown-content a {
     display: flex;
     align-items: center;
     font-size: 14pt;
@@ -31,48 +73,39 @@
     height: 100%;
     color: #ffffff;
     text-decoration: none;
-    transition: 0.3s;
 }
 
 .nav > .pages > a.cwd {
     background: #ffffff22;
 }
 
-.nav > .pages > a:hover {
-    text-shadow: /*might change this later*/
-        0 0 5pt #ffffff,
-        0 0 15pt #66ffff,
-        0 1px 35pt #0099ff,
-        0 1px 25pt #0000ff,
-        0 1px 25pt #0000ff,
-        0 1px 25pt #0000ff,
-        0 1px 40pt #0000ff;
-    --text-decoration: underline;
+.nav .icon {
+    background-color: #0000;
+    padding: 0;
+    margin: 0px 10px 0px 0px;
+    display: inline;
+    max-height: 20px;
 }
 
-
-/* Hopefully I've struck a balance between cool and distracting */
-@keyframes neon-home {
-    0%, 60%, 62%, 98%, 100% {
-        text-shadow: 
-            0 0 5pt #ffffff,
-            0 0 15pt #66ffff,
-            0 1px 35pt #0099ff,
-            0 1px 25pt #0000ff,
-            0 1px 25pt #0000ff,
-            0 1px 25pt #0000ff,
-            0 1px 40pt #0000ff
-    }
-    61%, 99% {
-        text-shadow: 
-            0 0 2pt #ffffff,
-            0 0 10pt #66ffff,
-            0 1px 15pt #0099ff,
-            0 1px 25pt #0000ff,
-            0 1px 25pt #0000ff,
-            0 1px 25pt #0000ff,
-            0 1px 50pt #0000ff
-    }
+.dropdown:hover .dropdown-content {
+    transform: translate(0,0) translateZ(0px);
+    box-shadow: 0px 0px 5px black;
 }
 
+/* Glow animation stuff */
+.nav a:hover span, 
+.dropdown:hover > span
+{
+    filter: var(--neon)
+}
 
+.dropdown a:hover * { /* these looked obnoxious with the full glow */
+    filter: var(--neon-dim)
+}
+
+.nav a span,
+.dropdown > span, 
+.dropdown a * {
+    mix-blend-mode: screen;
+    transition: 0.2s ease-out;
+}

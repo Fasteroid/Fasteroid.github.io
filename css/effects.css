@@ -1,0 +1,25 @@
+:root {
+    --neon: 
+    drop-shadow(0 0 1pt #fffa)
+    drop-shadow(0 0 3pt #6ffa)
+    drop-shadow(0 1px 7pt #09fa)
+    drop-shadow(0 1px 5pt #00fa)
+    drop-shadow(0 1px 8pt #00fa);
+
+    --neon-dim:
+    drop-shadow(0 0 1pt #fff8)
+    drop-shadow(0 0 3pt #6ff8)
+    drop-shadow(0 1px 7pt #09f8)
+    drop-shadow(0 1px 5pt #00f8)
+    drop-shadow(0 1px 8pt #00f8);
+}
+
+/* Hopefully I've struck a balance between cool and distracting */
+@keyframes neon-flicker {
+    0%, 60%, 62%, 98%, 100% {
+        filter: var(--neon);
+    }
+    61%, 99% {
+        filter: var(--neon-dim)
+    }
+}
