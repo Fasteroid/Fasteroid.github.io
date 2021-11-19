@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/rendergallery.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:bold|Montserrat:regular">
+</head>
+
+<html>
+
+<component class="navbar"></component>
+
+<body>
+    <div class="widthlimiter">
+        <section>
+            <section class="titleimage" style="width: 100%; height: 100%">
+                <div class="image" style="background-image: url('assets/20211118173209_1.jpg');"">
+                <section class="title">
+                    <b>Expression 2 Raytracer</b>
+                </section></div>
+            </section>
+            <br>
+            <section style="margin: 0 15px; line-height: 150%;">
+                &emsp;&emsp;I'll cut the philosophy and cut to the <i>trace</i>—this thing was an absolutely terrible idea 
+                in retrospect.  Who would be such an idiot as to write a rendering engine that runs SERVERSIDE, in a  
+                language that's effectively interpreted TWICE?  Yup, it was me.  That said, I've learned a lot over the two years I've 
+                been developing this tracer over—mostly how O(n) in practice feels a lot longer than you expect, and how anything that 
+                takes O(n^2) or longer is a disgrace to computer scientists everywhere.  And yes, I realize that includes my entire tracer 
+                since the screen is n by n.  This thing should never have even been allowed to exist—because now I'm stuck in a situation
+                where I can't add anything else to it without bringing render times to a snail's pace.  It sucks.<br>
+                <br>
+                Despite its problematic status today, however, I still love my raytracer.  The lifelike images it generates give me a
+                feeling of satisfaction I have yet to observe anywhere else.<br>
+                <br>
+                Special thanks to my old friend <a href=https://discord.com/users/331192747933302837>@Speedeo</a> (bitmaps), and more
+                recently <a href=https://discord.com/users/331192747933302837>@Vurv</a> (pnglib) for helping me encode my traces into
+                these mostly-to-spec images. <br>
+                <br>
+                Please enjoy the render gallery.<br>
+                (Click the left or right sides of the image carousels to browse them.)
+            </section>
+            <br>
+            <section style="margin: 0 15px; padding-bottom: 0px; padding-top: 30px;">
+                <div class="shelf">
+                    <div id="Carousel256_0"></div>
+                    <div id="Carousel256_1"></div>
+                    <div id="Carousel256_2"></div>
+                    <div id="Carousel256_3"></div>
+                </div>
+                <div class="shelf">
+                    <div id="Carousel512_0"></div>
+                    <div id="Carousel512_1"></div>
+                </div>
+                <div class="shelf">
+                    <div id="Carousel256_4"></div>
+                    <div id="Carousel256_5"></div>
+                    <div id="Carousel256_6"></div>
+                    <div id="Carousel256_7"></div>
+                </div>
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="doublespacing.js"></script>
+<script src="components.js"></script>
+<script src="ImageCarousel.js"></script>
+<script src="rendergallery.js"></script>

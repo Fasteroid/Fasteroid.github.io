@@ -1,0 +1,120 @@
+/********** SLIDER **********/
+.slider {
+    margin: 0px auto 5px auto;
+}
+
+.holder {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.front {
+    width: 100%;
+    height: 100%;        
+    position: absolute;
+    z-index: 1;   
+}
+
+.frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* This wasn't possible last year! */
+    border-style: solid;
+    border-width: 15px;
+    border-color: #ffffff15;;
+    box-sizing: border-box;
+}
+
+.fade-text {
+    width: 100%;
+    height: 100%;
+}
+
+.front .button{
+    background: transparent;
+    width: 50%;
+    height: 100%;
+    border: none;
+    outline:none;
+    float: left;
+    cursor:pointer;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+}
+
+.fade-text {
+    position: absolute;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: #ffffff;
+    filter: drop-shadow(0 0 1px #fff4)
+}
+
+.minihead {
+    position: relative;
+    color: #ffffff;
+    font-family: 'Trebuchet MS';
+    font-style: oblique;
+    font-size: 20px;
+    font-weight: light;
+}
+
+.sub {
+    color: #ffffff;
+    position: relative;
+    font-family: 'Montserrat', serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: lighter;
+    line-height: 1.2em;
+}
+
+.slide:first-child {
+    display: block;
+}
+
+.quarter {
+    width: 25%;
+    float: left;
+    vertical-align: center;
+    margin-bottom: 100pt
+}  
+
+.half {
+    width: 50%;
+    float: left;
+    vertical-align: center;
+    margin-bottom: 100pt
+} 
+
+.slide > img {
+    box-shadow: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shelf {
+    display: flex;
+    padding-bottom: 120px;
+}
+.shelf > * {
+    flex-grow: 1;
+    flex-shrink: 1;
+    position: relative;
+}
+.slide > img {
+    width: 100%;
+    background: none;
+}
+
+.frame {
+    width: 100%
+}

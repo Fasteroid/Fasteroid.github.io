@@ -1,0 +1,30 @@
+
+
+section.titleimage {
+    background-color: #ffffff15;
+    padding: 15px 15px;
+    margin: 15px 15px;
+    max-width: calc(100% - 60px);
+}
+.titleimage .title {
+    background: #84888a88;
+    display: block;
+    position: relative;
+    font-size: 24px; 
+    text-align: center; 
+    margin-bottom: 15px;
+    width: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: calc(100% + 30px);
+    filter: drop-shadow(0 0 4px #000000);
+}
+.titleimage .image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 200px;
+    max-height: 3in;
+    height: 20vw;
+}

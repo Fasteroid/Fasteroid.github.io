@@ -6,17 +6,46 @@
     font-family: 'Recursive', sans-serif;
     font-style: italic;
     display: grid;
-    grid-template-columns: 0.4fr 0.6fr;
+    grid-template-columns: 4fr 6fr;
 }
 
-.nav > .home {
+/* 
+    Experimental Responsive Design
+    Breaks dropdowns near the bottom because of extra 3d requirements
+    To be continued later
+    @media only screen and (max-width: 750px) {
+        .nav {
+            grid-template-rows: 3fr 3fr;
+            grid-template-columns: none;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .pages {
+            margin-left: 0px; 
+            margin-right: 0px;
+        }
+        .home {
+            padding: 0px;
+            margin-left: 0px; 
+            margin-right: 0px;
+            text-align: center;
+        }
+    }
+*/
+
+.home {
+    z-index: 1;
     padding: 15px;
     font-size: 16pt;
     color: #ffffff;
+    background: #000000;
+}
+
+.home > span {
     animation: neon-flicker 1s ease-in-out alternate infinite;
 }
 
-.nav > .pages {
+.pages {
     margin-left: auto; 
     margin-right: 0px;
     display: flex;
@@ -40,16 +69,13 @@
     left: 0;
     top: 90%;
     transition: 0.3s;
-    transform: translate(0,-100%) translateZ(-1px);
+    transform: translate(0,-110%) translateZ(-1px);
     box-shadow: 0px 0px 0px black;
 }
 
 .dropdown-content a {
     background: #000000;
-    color: #ffffff;
     padding: 15px;
-    display: block;
-    text-align: left;
     filter: none;
     mix-blend-mode: screen; /* Needed so the glows from the icons merge additively */
 }
@@ -62,8 +88,8 @@
     mix-blend-mode: screen; /* Needed so the glows from the icons merge additively */
 }
 
-.nav > .pages > a, 
-.nav .dropdown,
+.pages > a, 
+.dropdown,
 .dropdown-content a {
     display: flex;
     align-items: center;
@@ -75,8 +101,8 @@
     text-decoration: none;
 }
 
-.nav > .pages > a.cwd {
-    background: #ffffff22;
+.cwd {
+    background: rgb(34,34,34) !important;
 }
 
 .nav .icon {
@@ -84,17 +110,21 @@
     padding: 0;
     margin: 0px 10px 0px 0px;
     display: inline;
-    max-height: 20px;
+    max-height: 24px;
+}
+
+.dropdown > a {
+    text-decoration: none;
 }
 
 .dropdown:hover .dropdown-content {
-    transform: translate(0,0) translateZ(0px);
+    transform: translate(0,0) translateZ(-1px);
     box-shadow: 0px 0px 5px black;
 }
 
 /* Glow animation stuff */
 .nav a:hover span, 
-.dropdown:hover > span
+.dropdown:hover > a > span
 {
     filter: var(--neon)
 }
@@ -108,4 +138,5 @@
 .dropdown a * {
     mix-blend-mode: screen;
     transition: 0.2s ease-out;
+    color: #ffffff;
 }
