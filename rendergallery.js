@@ -1,8 +1,9 @@
 let processed, toDo = 0;
 let CAROUSELS_256 = [];
 let CAROUSELS_512 = [];
+let CAROUSEL_1024;
 
-let IMAGES_256 = [
+const IMAGES_256 = [
     {
         url: "https://media.discordapp.net/attachments/672248280222138391/682434041890472100/curvybase256.png",
         name: "The Amazing Curvy Base",
@@ -205,9 +206,30 @@ let IMAGES_256 = [
         name: "Blue Chair Trefoil Knot",
         capt: "Point Light Improvements"
     }
+    ,{
+        url: "https://cdn.discordapp.com/attachments/672248280222138391/914041137436704788/go-outside-already.png",
+        name: "Wiremod Base Interior",
+        capt: "Circular Soft Shadows"
+    }
+
 ];
 
-let IMAGES_512 = [
+// Prime 256x Carousels - 8 of them
+for (let i = 0; i < 8; i++) {
+    CAROUSELS_256[i] = new ImageCarousel('#Carousel256_'+i,3000,256,300,18);
+    CAROUSELS_256[i].autoScroll(i*3000/8);
+}
+
+// Dump in the images
+processed = 0;        
+toDo = IMAGES_256.length
+while( processed < toDo ){
+    let image = IMAGES_256[processed];
+    CAROUSELS_256[ processed % 8 ].addImage(image.url,image.name,image.capt,image.size);
+    processed++;
+}  
+
+const IMAGES_512 = [
     {
         url: "https://cdn.discordapp.com/attachments/672248280222138391/880939791917670510/latenightvibes.png",
         name: "Late Night Vibes",
@@ -351,21 +373,6 @@ let IMAGES_512 = [
     }
 ];
 
-// Prime 256x Carousels - 8 of them
-for (let i = 0; i < 8; i++) {
-    CAROUSELS_256[i] = new ImageCarousel('#Carousel256_'+i,3000,256,300,18);
-    CAROUSELS_256[i].autoScroll(i*3000/8);
-}
-
-// Dump in the images
-processed = 0;        
-toDo = IMAGES_256.length
-while( processed < toDo ){
-    let image = IMAGES_256[processed];
-    CAROUSELS_256[ processed % 8 ].addImage(image.url,image.name,image.capt,image.size);
-    processed++;
-}  
-
 // Prime 512x Carousels - 2 of them
 for (let i = 0; i < 2; i++) {
     CAROUSELS_512[i] = new ImageCarousel('#Carousel512_'+i,5000,512,700,18);
@@ -380,5 +387,57 @@ while( processed < toDo ){
     CAROUSELS_512[ processed % 2 ].addImage(image.url,image.name,image.capt);
     processed++;
 }  
+
+const IMAGES_1024 = [
+    {
+        url: "https://media.discordapp.net/attachments/672248280222138391/673480836863098890/skybase_big.png",
+        name: "Orange Skybase v8",
+        capt: "Winds and Clouds Update Rv.1"
+    },
+    {
+        url: "https://media.discordapp.net/attachments/672248280222138391/673486860466651136/debugbase.png",
+        name: "Destructive E2 Testing Base",
+        capt: "Refractive Rework Update"
+    },
+    {
+        url: "https://media.discordapp.net/attachments/672248280222138391/673480866852241408/bluehallway.png",
+        name: "Hi-Poly Glass Sphere",
+        capt: "Refractive Rework Update"
+    },
+    {
+        url: "https://cdn.discordapp.com/attachments/672248280222138391/914043247372926976/tracertag.png",
+        name: "Tracer Tag",
+        capt: "Refractive Rework Update Rv.4"
+    },
+    {
+        url: "https://cdn.discordapp.com/attachments/672248280222138391/914045169228185640/ttt_poolparty.png",
+        name: "ttt_poolparty",
+        capt: "Starlit Skies Update"
+    },
+    {
+        url: "https://cdn.discordapp.com/attachments/672248280222138391/683543175352418304/aerobase.png",
+        name: "The Aerobase - Night",
+        capt: "Submaterials Update Rv.3"
+    },
+    {
+        url: "https://cdn.discordapp.com/attachments/672248280222138391/687582179915595794/aerobase2.png",
+        name: "The Aerobase - Day",
+        capt: "Submaterials Update Rv.3"
+    },
+]
+
+
+// Prime 1024x Carousel - 1 of them
+CAROUSEL_1024 = new ImageCarousel('#Carousel1024_0',7000,1024,700,18);
+
+// Dump in the images
+processed = 0;        
+toDo = IMAGES_1024.length
+while( processed < toDo ){
+    let image = IMAGES_1024[processed];
+    CAROUSEL_1024.addImage(image.url,image.name,image.capt);
+    processed++;
+}  
+
 
 console.log("Fast's Image Carousels: population routine completed");
