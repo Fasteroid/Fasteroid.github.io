@@ -203,7 +203,7 @@ const IMAGES_256 = [
         capt: "Point Light Improvements"
     }
     ,{
-        url: "https://assets/raytracer/already.png",
+        url: "assets/raytracer/go-outside-already.png",
         name: "Wiremod Base Interior",
         capt: "Circular Soft Shadows"
     }
