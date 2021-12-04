@@ -82,7 +82,7 @@ const IMAGES_256 = [
         name: "Angled Cube Rings",
         capt: "Quaternion Texture Rotation"
     },{
-        url: "assets/raytracer/streetlamps.png",
+        url: "assets/raytracer/streetlights.png",
         name: "Street Lamps",
         capt: "Spectacular Update Rv.2"
     },{
