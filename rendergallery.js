@@ -5,112 +5,112 @@ let CAROUSEL_1024;
 
 const IMAGES_256 = [
     {
-        url: "https://media.discordapp.net/attachments/672248280222138391/682434041890472100/curvybase256.png",
+        url: "assets/raytracer/curvybase256.png",
         name: "The Amazing Curvy Base",
         capt: "Speedeo's Bitmap Module"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/682434120906965026/shippingcontainersdemo.png",
+        url: "assets/raytracer/shippingcontainersdemo.png",
         name: "Shipping Containers",
         capt: "Colored Shadows Dev Test"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683503317309063189/tracecluster.png",
+        url: "assets/raytracer/tracecluster.png",
         name: "Transparency Test",
         capt: "Colored Shadows Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682434193975672862/mellonsphere.png",
+        url: "assets/raytracer/mellonsphere.png",
         name: "Mellon Sphere",
         capt: "Simple AO Update"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/682435823668690980/ballbin.png",
+        url: "assets/raytracer/ballbin.png",
         name: "AO Ballpit",
         capt: "Colored AO Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690487677576937472/unknown.png",
+        url: "assets/raytracer/pgengrass1.png",
         name: "Grass Test 1",
         capt: "Working on P-Gen Grass"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690486880105529354/unknown.png",
+        url: "assets/raytracer/pgengrass2.png",
         name: "Grass Test 2",
         capt: "Working on P-Gen Grass"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690485623018094602/pgengrass.png",
+        url: "assets/raytracer/pgengrass.png",
         name: "Procedurally Generated Grass",
         capt: "Submaterials Update Rv.4"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/741403101982097528/unknown.png",
+        url: "assets/raytracer/urmomgay.png",
         name: "no u",
         capt: "Spectacular Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/749835707438334103/unknown.png",
+        url: "assets/raytracer/glowyspheresrain.png",
         name: "Lights & Rain",
         capt: "Eye of the Storm: First Render"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/790286772969275423/terrain.png",
+        url: "assets/raytracer/terrain.png",
         name: "Custom Terrain",
         capt: "Eye of the Storm Rv.4"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682434374574014497/italianhouse.png",
+        url: "assets/raytracer/italianhouse.png",
         name: "Modern House",
         capt: "Colored AO Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682434521265733664/illuminatis.png",
+        url: "assets/raytracer/illuminatis.png",
         name: "Tetra Lattice",
         capt: "Soft-Shadow Point Lights"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683514966342631434/unknown.png",
+        url: "assets/raytracer/bricks.png",
         name: "Normal Mapped Bricks",
         capt: "Modular Shaders Update",
         size: 172
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682434264385585158/refraction_demo.png",
+        url: "assets/raytracer/refraction_demo.png",
         name: "Refractive Wheel of Doom",
         capt: "First Attempt at Refraction"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435502132953142/car.png",
+        url: "assets/raytracer/car.png",
         name: "Unusual Hotrod",
         capt: "Simple Refraction Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683503148559630463/globgogabgolab_shiny.png",
+        url: "assets/raytracer/globgogabgolab_shiny.png",
         name: "Shiny Starfall Prop",
         capt: "Discovery of Starfall Custom Props"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690488340117717022/unknown.png",
+        url: "assets/raytracer/pgengrass3.png",
         name: "Princess Peach",
         capt: "Submaterials Update Rv.4"
     },{
-        url: "https://media.discordapp.net/attachments/590337814898671636/697091485945954304/unknown.png",
+        url: "assets/raytracer/quatcubes.png",
         name: "Angled Cube Rings",
         capt: "Quaternion Texture Rotation"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/741402790047252540/unknown.png",
+        url: "assets/raytracer/streetlamps.png",
         name: "Street Lamps",
         capt: "Spectacular Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/749835541880635412/unknown.png",
+        url: "assets/raytracer/wet.png",
         name: "Wet",
         capt: "Creating the &quot;rain on the lens&quot; effect"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435652708466718/iconicbridge2.png",
+        url: "assets/raytracer/iconicbridge2.png",
         name: "The Overpass",
         capt: "Winds and Clouds Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682434982438109203/coloredlighttest.png",
+        url: "assets/raytracer/coloredlighttest.png",
         name: "Fence Shader vs. Point Lights",
         capt: "Winds and Clouds Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435535871934464/fenceshadows2.png",
+        url: "assets/raytracer/fenceshadows2.png",
         name: "Fence Shader vs. Sunlight",
         capt: "Winds and Clouds Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435463125925888/cubemapballs.png",
+        url: "assets/raytracer/cubemapballs.png",
         name: "Cubemap Spheres",
         capt: "Winds and Clouds Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435040038092816/spookyemissives.png",
+        url: "assets/raytracer/spookyemissives.png",
         name: "Cursed Emissive Textures",
         capt: "Discovery of a Useful Bug"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435140747788384/glowball.png",
+        url: "assets/raytracer/glowball.png",
         name: "Glowball",
         capt: "Emissive Textures Update"
     },{
@@ -118,96 +118,92 @@ const IMAGES_256 = [
         name: "Garry's Splash Screen Robot",
         capt: "Emissive Textures Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/687585764506337320/unknown.png",
+        url: "assets/raytracer/shadowtest.png",
         name: "Fence Shader Test 3",
         capt: "Submaterials Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/697090777989513267/unknown.png",
+        url: "assets/raytracer/coolairship.png",
         name: "Cool Airship Dupe",
         capt: "Feathered Spotlight Test"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/790286780187934731/fantasticvismeshprops.png",
+        url: "assets/raytracer/fantasticvismeshprops.png",
         name: "Fantastic Vismesh Props!",
         capt: "Custom Props: The Final Frontier"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435564716556342/sunreflection.png",
+        url: "assets/raytracer/sunreflection.png",
         name: "Cheeky Breeki Peeki Sun",
         capt: "Only A Partly Cloudy Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435114994630658/finallysomegoodfuckingrefraction.png",
+        url: "assets/raytracer/finallysomegoodfuckingrefraction.png",
         name: "Sphere of True Refraction",
         capt: "Refraction Rework Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683538136021860352/unknown.png",
-        name: "Submaterial Transparency I",
-        capt: "Submaterial Update"
-    },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435420298149960/spacebuild.png",
+        url: "assets/raytracer/spacebuild.png",
         name: "Submaterial Transparency II",
         capt: "Submaterials Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435470784725188/cursed_shiny.png",
+        url: "assets/raytracer/cursed_shiny.png",
         name: "Recursion Torture Test",
         capt: "Submaterial Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/682435431165460514/rhnb.png",
+        url: "assets/raytracer/rhnb.png",
         name: "Red Hot Nickel Balls",
         capt: "Submaterial Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683536367195914257/refraction_reactor.png",
+        url: "assets/raytracer/refraction_reactor.png",
         name: "Fusion Refractor",
         capt: "Submaterial Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/697090873002819604/unknown.png",
+        url: "assets/raytracer/spectest.png",
         name: "Specular Highlights Test I",
         capt: "A Spectacular Update!"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/697091385857409054/cubespam.png",
+        url: "assets/raytracer/cubespam.png",
         name: "Specular Highlights Test II",
         capt: "Spectacular Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/720347480029528254/lightingtest2.png",
+        url: "assets/raytracer/lightingtest2.png",
         name: "Sideways Windows Test",
         capt: "Spectacular Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/790286771430096913/littleplanet.png",
+        url: "assets/raytracer/littleplanet.png",
         name: "A Small World",
         capt: "Eye of the Storm Rv. 4"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/805513280957317150/indooooors.png",
+        url: "assets/raytracer/indooooors.png",
         name: "TV Time",
         capt: "Eye of the Storm Rv. 4"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/801372968407138304/causticsmain.png",
+        url: "assets/raytracer/causticsmain.png",
         name: "Caustics Testing",
         capt: "Specular Caustics Testing"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/807366334245240862/funnycans.png",
+        url: "assets/raytracer/funnycans.png",
         name: "Glowy Cans",
         capt: "Caustics Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/807366343685832704/cursedcubes.png",
+        url: "assets/raytracer/cursedcubes.png",
         name: "Dense Transparent Cubes",
         capt: "Influence-Based Limits"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/831164104281817108/shards.png",
+        url: "assets/raytracer/shards.png",
         name: "Glass Shards",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/831163934530732042/horribleconstructbuilding.png",
+        url: "assets/raytracer/horribleconstructbuilding.png",
         name: "Construct Tower A",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/831164001869496330/tinfoil_and_barrels.png",
+        url: "assets/raytracer/tinfoil_and_barrels.png",
         name: "Shiny Surface + Barrels",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/880941110871072839/cursedchairs.png",
+        url: "assets/raytracer/cursedchairs.png",
         name: "Blue Chair Trefoil Knot",
         capt: "Point Light Improvements"
     }
     ,{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/914041137436704788/go-outside-already.png",
+        url: "https://assets/raytracer/already.png",
         name: "Wiremod Base Interior",
         capt: "Circular Soft Shadows"
     }
@@ -231,143 +227,143 @@ while( processed < toDo ){
 
 const IMAGES_512 = [
     {
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/880939791917670510/latenightvibes.png",
+        url: "assets/raytracer/latenightvibes.png",
         name: "Late Night Vibes",
         capt: "Point Light Improvements"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/880939794581041172/stairs.png",
+        url: "assets/raytracer/stairs.png",
         name: "Central Stair Unit",
         capt: "Point Light Improvements"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/854851748920295424/wirefacility.png",
+        url: "assets/raytracer/wirefacility.png",
         name: "Wire Facility",
         capt: "Point Light Improvements"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/842653803836735498/secretgarden.png",
+        url: "assets/raytracer/secretgarden.png",
         name: "Secret Garden",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/831162859068719104/office.png",
+        url: "assets/raytracer/office.png",
         name: "Mirror's Edge Style Office",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/831164226613542963/cabin.png",
+        url: "assets/raytracer/cabin.png",
         name: "Destructable Cabin",
         capt: "Caustics Update Rv.3"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/807366320252256326/roboengineer.png",
+        url: "assets/raytracer/roboengineer.png",
         name: "Robo-Engineer Vismesh w/ Caustics",
         capt: "Caustics Update Rv.2"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/805513368248123472/reflections.png",
+        url: "assets/raytracer/reflections.png",
         name: "Reflections: Visualized",
         capt: "Caustics Update Rv.2"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/790286777305923614/rainybase.png",
+        url: "assets/raytracer/rainybase.png",
         name: "Wiremod Base",
         capt: "Eye of the Storm Update Rv.4"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/763646344933933066/zippubombu.png",
+        url: "assets/raytracer/zippubombu.png",
         name: "Zip Bomb Dupe",
         capt: "Eye of the Storm Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/749835107812114452/unknown.png",
+        url: "assets/raytracer/stormarrives.png",
         name: "Ready for Anything",
         capt: "Eye of the Storm Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/720347531770331136/bigspecular.png",
+        url: "assets/raytracer/bigspecular.png",
         name: "On the Edge",
         capt: "Spectacular Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/697114297003933767/pow.png",
+        url: "assets/raytracer/pow.png",
         name: "💥⌁POW⌁💥",
         capt: "A Spectacular Update!"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690489176151556096/unknown.png",
+        url: "assets/raytracer/mobiusloop.png",
         name: "Möbius Thicc",
         capt: "Submaterials Update Rv.4"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/687582360710938708/glasshouse.png",
+        url: "assets/raytracer/glasshouse.png",
         name: "Glass House",
         capt: "Submaterials Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683544113106386992/submaterials.png",
+        url: "assets/raytracer/submaterials.png",
         name: "Multi-Material Masterpiece",
         capt: "Submaterials Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/671537834817093683/unknown.png",
+        url: "assets/raytracer/barrelinvasion.png",
         name: "Barrel Invasion",
         capt: "Material System Expansions"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/666088994903293962/greyhoundbuilding.png",
+        url: "assets/raytracer/greyhoundbuilding.png",
         name: "Greyhound Building",
         capt: "Starlit Skies Update Rv.1"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/661566280578498560/starlight.png",
+        url: "assets/raytracer/starlight.png",
         name: "Sleep Is For The Weak",
         capt: "Starlit Skies Update"
     },{
-        url: "https://media.discordapp.net/attachments/590337814898671636/660927064320507935/garry_christmas.png",
+        url: "assets/raytracer/garry_christmas.png",
         name: "Garry Christmas",
         capt: "Refractive Rework Update Rv.4"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/673480806181765130/icecubes512.png",
+        url: "assets/raytracer/icecubes512.png",
         name: "Ice Cubes",
         capt: "Material System Expansions"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/790296269724581938/dreary.png",
+        url: "assets/raytracer/dreary.png",
         name: "Dreary Interior",
         capt: "Eye of the Storm Rv. 4"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/763647553967095828/picnic.png",
+        url: "assets/raytracer/picnic.png",
         name: "Picnic Party",
         capt: "Testing the &quot;Leaves&quot; Shader"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/752841447958511636/prop_penumbras.png",
+        url: "assets/raytracer/prop_penumbras.png",
         name: "Prop Penumbras",
         capt: "PNG Exporting w/ Vurv's pnglib"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/749835041848164472/unknown.png",
+        url: "assets/raytracer/lightning.png",
         name: "Barrel Annihilation",
         capt: "Eye of the Storm Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/741411014960087040/unknown.png",
+        url: "assets/raytracer/fibosphere.png",
         name: "Chair Matrix",
         capt: "Spectacular Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/720347460681072690/thefactory.png",
+        url: "assets/raytracer/thefactory.png",
         name: "The Factory",
         capt: "Spectacular Update Rv.2"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/691982097648189480/unknown.png",
+        url: "assets/raytracer/triphousecubes.png",
         name: "gm_tripcity",
         capt: "Submaterials Update Rv.4a"
     },{
-        url: "https://cdn.discordapp.com/attachments/590337814898671636/687711497069396044/absolutelyhorriblehaystack.png",
+        url: "assets/raytracer/absolutelyhorriblehaystack.png",
         name: "Needles In A Haystack",
         capt: "Submaterials Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/690490305937670184/inthehaystack.png",
+        url: "assets/raytracer/inthehaystack.png",
         name: "Needles In A Haystack: Needle POV",
         capt: "Submaterials Update Rv.3"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683544663541547013/unknown.png",
+        url: "assets/raytracer/bluechair.png",
         name: "That Blue Chair Prop Everyone Spams",
         capt: "Submaterials Update"
     },{
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/672251887910912040/wiremod.png",
+        url: "assets/raytracer/wiremod.png",
         name: "Big Wiremod Props",
         capt: "Emissive Textures Update Rv.1"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/672251326645927947/cubeaids.png",
+        url: "assets/raytracer/cubeaids.png",
         name: "gm_triphouse",
         capt: "Winds and Clouds Update Rv.2"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/672251918499971073/toxic_goo.png",
+        url: "assets/raytracer/toxic_goo.png",
         name: "Caution: Radioactive Floor",
         capt: "Emissive Textures Update"
     },{
-        url: "https://media.discordapp.net/attachments/672248280222138391/672253383746256906/glowchess.png",
+        url: "assets/raytracer/glowchess.png",
         name: "Glowy Chess",
         capt: "Refractive Rework Update"
     }
@@ -390,37 +386,37 @@ while( processed < toDo ){
 
 const IMAGES_1024 = [
     {
-        url: "https://media.discordapp.net/attachments/672248280222138391/673480836863098890/skybase_big.png",
+        url: "assets/raytracer/skybase_big.png",
         name: "Orange Skybase v8",
         capt: "Winds and Clouds Update Rv.1"
     },
     {
-        url: "https://media.discordapp.net/attachments/672248280222138391/673486860466651136/debugbase.png",
+        url: "assets/raytracer/debugbase.png",
         name: "Destructive E2 Testing Base",
         capt: "Refractive Rework Update"
     },
     {
-        url: "https://media.discordapp.net/attachments/672248280222138391/673480866852241408/bluehallway.png",
+        url: "assets/raytracer/bluehallway.png",
         name: "Hi-Poly Glass Sphere",
         capt: "Refractive Rework Update"
     },
     {
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/914043247372926976/tracertag.png",
+        url: "assets/raytracer/tracertag.png",
         name: "Tracer Tag",
         capt: "Refractive Rework Update Rv.4"
     },
     {
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/914045169228185640/ttt_poolparty.png",
+        url: "assets/raytracer/ttt_poolparty.png",
         name: "ttt_poolparty",
         capt: "Starlit Skies Update"
     },
     {
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/683543175352418304/aerobase.png",
+        url: "assets/raytracer/aerobase.png",
         name: "The Aerobase - Night",
         capt: "Submaterials Update Rv.3"
     },
     {
-        url: "https://cdn.discordapp.com/attachments/672248280222138391/687582179915595794/aerobase2.png",
+        url: "assets/raytracer/aerobase2.png",
         name: "The Aerobase - Day",
         capt: "Submaterials Update Rv.3"
     },
