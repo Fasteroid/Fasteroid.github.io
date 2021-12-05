@@ -25,11 +25,18 @@ let postprocessors = {
 
             // check dropdowns
             if( type!=null ){
-                let subpages = page.querySelector(".dropdown-content");
-                for(let subpage of subpages.children){
+                let subpages = page.querySelector(".dropdown-content").children;
+                let header = page.querySelector(".dropdown-head");
+                let headerhref = header.querySelector("a")
+                if( headerhref != null && headerhref.getAttribute("href")?.match(extractURL)[0] == url ){
+                    header.classList.add("cwd");
+                    return;
+                }
+
+                for(let subpage of subpages){
                     if( subpage.getAttribute("href")?.match(extractURL)[0] == url ){
                         subpage.classList.add("cwd");
-                        page.querySelector(".dropdown-head").classList.add("cwd");
+                        header.classList.add("cwd");
                         return; // there can only be one
                     }
                 }

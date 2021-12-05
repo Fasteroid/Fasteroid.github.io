@@ -1,0 +1,32 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+  
+.grid > * {
+    position: relative;
+    filter: drop-shadow(0 0 4px #000000);
+    box-sizing: border-box;
+}
+  
+.grid > *::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+  
+.grid > * > * {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    font-size: calc( min(1vw, 12pt) );
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;               /* added for centered text */
+    justify-content: center;     /* added for centered text */
+    align-items: center;         /* added for centered text */
+    overflow: hidden;
+}

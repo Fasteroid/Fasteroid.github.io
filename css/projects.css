@@ -1,7 +1,7 @@
 
 
 section.titleimage {
-    background-color: #ffffff15;
+    background-color: var(--transparent-gray);
     padding: 15px 15px;
     margin: 15px 15px;
     max-width: calc(100% - 60px);
