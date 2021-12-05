@@ -13,7 +13,6 @@ let postprocessors = {
 
         let pages = self.querySelector("#pages");
         
-        // check simple links first
         let url = window.location.href.match(extractURL)[0]; // I'd be a fool to recompute this repeatedly in the for loop
         for(let page of pages.children){
 
@@ -28,10 +27,9 @@ let postprocessors = {
             if( type!=null ){
                 let subpages = page.querySelector(".dropdown-content");
                 for(let subpage of subpages.children){
-                    console.log()
                     if( subpage.getAttribute("href")?.match(extractURL)[0] == url ){
                         subpage.classList.add("cwd");
-                        page.classList.add("cwd");
+                        page.querySelector(".dropdown-head").classList.add("cwd");
                         return; // there can only be one
                     }
                 }
