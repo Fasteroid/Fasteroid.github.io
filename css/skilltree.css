@@ -38,7 +38,7 @@
     position: relative;
     filter: drop-shadow(0 0 4px #00000041);
     box-sizing: border-box;
-    font-size: calc( 1.15 * min(100vw,14in) / 100 );
+    font-size: calc( 1.2 * min(100vw,14in) / 100 );
 }
 
 /* Front and back shadred properties */
@@ -151,7 +151,14 @@
     background-image: url('/assets/skilltree/photoshop.svg');
 }
 .photoshop > div {
-    background-color: #233a5c;
+    background-color: #203657;
+}
+
+.aftereffects > .front {
+    background-image: url('/assets/skilltree/aftereffects.svg');
+}
+.aftereffects > div {
+    background-color: #3d2757;
 }
 
 
