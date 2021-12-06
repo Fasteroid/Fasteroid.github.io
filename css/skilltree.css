@@ -1,32 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:bold|Roboto:400|Roboto:300');
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
+    font-weight: 32pt;
+    font-family: 'Roboto';
+    font-weight: 400;
 }
   
-.grid > * {
-    position: relative;
-    filter: drop-shadow(0 0 4px #000000);
-    box-sizing: border-box;
-}
   
-.grid > *::before {
+.cell::before, .staticcell::before {
     content: '';
     display: block;
     padding-top: 100%;
 }
   
-.grid > * > * {
+.cell > *, .staticcell > * {
     position: absolute;
     top: 0; left: 0;
     height: 100%;
     width: 100%;
-    padding: 10px;
-    font-size: calc( min(1vw, 12pt) );
+    padding: 0 5px 0 5px;
     box-sizing: border-box;
-    text-align: center;
+
     display: flex;               /* added for centered text */
-    justify-content: center;     /* added for centered text */
-    align-items: center;         /* added for centered text */
-    overflow: hidden;
+    text-align: center;
+    justify-content: center;   
+    align-items: center;         
+    
+    perspective-origin: center;
 }
+
+.cell, .staticcell {
+    perspective: 20rem;
+    perspective-origin: 50% 50%;
+    position: relative;
+    filter: drop-shadow(0 0 4px #00000041);
+    box-sizing: border-box;
+    font-size: calc( 1.15 * min(100vw,14in) / 100 );
+}
+
+/* Front and back shadred properties */
+.cell > div, .staticcell > div {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.4s;
+    font-size: calc( 1.3 * min(100vw,14in) / 100 );
+    background-size: 80%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: rgb(104, 104, 104);
+}
+
+.cell {
+    transition: 0.5s
+}
+
+/* Specific properties */
+.cell > .front {
+    transform: translateZ(-0.2px);
+}
+
+.cell:hover > .front {
+    transform: rotateY(179.99deg) translateZ(-1px);
+}
+
+.cell > .back {
+    transform: rotateY(-179.99deg) translateZ(-1px);
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
+.cell:hover > .back {
+    transform: rotateY(0deg) translateZ(-1px);
+}
+  
+
+
+
+.mindstorms > .front {
+    background-image: url('/assets/skilltree/mindstorms.svg');
+}
+
+.expression2 > .front {
+    background-image: url('/assets/skilltree/expression2.svg');
+}
+.expression2 > div {
+    background-color: #633c3c;
+}
+
+.lua > .front {
+    background-image: url('/assets/skilltree/lua.svg');
+}
+.lua > div {
+    background-color: #3c4063;
+}
+
+.code > .front {
+    background-image: url('/assets/skilltree/codeorg.svg');
+}
+.code > div {
+    background-color: #3a6566;
+}
+
+.js > .front {
+    background-color: #8b7a35;
+}
+.js > .back {
+    background-color: #74673b;
+}
+
+.nodejs > .front {
+    background-image: url('/assets/skilltree/nodejs.svg');
+}
+.nodejs > div {
+    background-color: #3f6145;
+}
+
+.html > .front {
+    background-image: url('/assets/skilltree/html.svg');
+}
+.html > div {
+    background-color: #643c30;
+}
+
+.css > .front {
+    background-image: url('/assets/skilltree/css.svg');
+}
+.css > div {
+    background-color: #344061;
+}
+
+.electron > .front {
+    background-image: url('/assets/skilltree/electron.svg');
+}
+.electron > div {
+    background-color: #353d4b;
+}
+
+
+.illustrator > .front {
+    background-image: url('/assets/skilltree/illustrator.svg');
+}
+.illustrator > div {
+    background-color: #493529;
+}
+
+.photoshop > .front {
+    background-image: url('/assets/skilltree/photoshop.svg');
+}
+.photoshop > div {
+    background-color: #233a5c;
+}
+
+
+
