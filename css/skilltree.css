@@ -33,47 +33,63 @@
 }
 
 .cell, .staticcell {
+
     perspective: 20rem;
+    -webkit-perspective: 20rem;
     perspective-origin: 50% 50%;
+    -webkit-perspective-origin: 50% 50%;
+
     position: relative;
     filter: drop-shadow(0 0 4px #00000041);
     box-sizing: border-box;
     font-size: calc( 1.2 * min(100vw,14in) / 100 );
+
 }
 
 /* Front and back shadred properties */
 .cell > div, .staticcell > div {
+
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     transition: transform 0.4s;
+    -webkit-transition: transform 0.4s;
+
     font-size: calc( 1.3 * min(100vw,14in) / 100 );
     background-size: 80%;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-color: rgb(104, 104, 104);
+    
 }
 
 .cell {
-    transition: 0.5s
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
 }
 
 /* Specific properties */
 .cell > .front {
-    transform: translateZ(-0.2px);
+    transform: rotateY(0) translateZ(-1px);
+    -webkit-transform: rotateY(0) translateZ(-1px);
 }
 
 .cell:hover > .front {
-    transform: rotateY(179.99deg) translateZ(-1px);
+    transform: rotateY(180deg) translateZ(-1px);
+    -webkit-transform: rotateY(180deg) translateZ(-1px);
 }
 
 .cell > .back {
-    transform: rotateY(-179.99deg) translateZ(-1px);
+    transform: rotateY(180deg) translateZ(-1px);
+    -webkit-transform: rotateY(180deg) translateZ(-1px);
     font-size: 0.8em;
     font-weight: 300;
 }
 
 .cell:hover > .back {
     transform: rotateY(0deg) translateZ(-1px);
+    -webkit-transform: rotateY(0deg) translateZ(-1px);
 }
   
 
