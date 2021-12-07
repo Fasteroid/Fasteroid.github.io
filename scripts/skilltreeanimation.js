@@ -1,3 +1,5 @@
+// *aside from this really brief animation where they all appear.
+
 const container = document.querySelector(".grid")
 container.querySelectorAll(".grid > div").forEach( (child,n) => {
 
@@ -5,7 +7,7 @@ container.querySelectorAll(".grid > div").forEach( (child,n) => {
 
     if(n > 0){
         child.style.opacity = 0;
-        setTimeout(()=>{child.style.opacity = 1}, n*200)
+        setTimeout(()=>{child.style.opacity = 1}, n*10)
     }
     
 } )

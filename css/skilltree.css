@@ -64,6 +64,11 @@
     
 }
 
+.staticcell:hover > div {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+}
+
 .cell {
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -81,8 +86,8 @@
 }
 
 .cell > .back {
-    transform: rotateY(180deg) translateZ(-1px);
-    -webkit-transform: rotateY(180deg) translateZ(-1px);
+    transform: rotateY(-180deg) translateZ(-1px);
+    -webkit-transform: rotateY(-180deg) translateZ(-1px);
     font-size: 0.8em;
     font-weight: 300;
 }
@@ -121,10 +126,10 @@
 }
 
 .js > .front {
-    background-color: #8b7a35;
+    background-color: #756b3d;
 }
 .js > .back {
-    background-color: #74673b;
+    background-color: #756b3d;
 }
 
 .nodejs > .front {
@@ -155,6 +160,20 @@
     background-color: #353d4b;
 }
 
+.java > .front {
+    background-image: url('/assets/skilltree/java.svg');
+}
+.java > div {
+    background-color: #553739;
+}
+
+.c > .front {
+    background-image: url('/assets/skilltree/c.svg');
+}
+.c > div {
+    background-color: #374358;
+}
+
 
 .illustrator > .front {
     background-image: url('/assets/skilltree/illustrator.svg');
@@ -167,15 +186,31 @@
     background-image: url('/assets/skilltree/photoshop.svg');
 }
 .photoshop > div {
-    background-color: #203657;
+    background-color: #293b55;
 }
 
 .aftereffects > .front {
     background-image: url('/assets/skilltree/aftereffects.svg');
 }
 .aftereffects > div {
-    background-color: #3d2757;
+    background-color: #45335a;
 }
+
+.premiere > .front {
+    background-image: url('/assets/skilltree/premiere.svg');
+}
+.premiere > div {
+    background-color: #533461;
+}
+
+.audacity > .front {
+    background-image: url('/assets/skilltree/audacity.svg');
+}
+.audacity > div {
+    background-color: #5a562f;
+}
+
+
 
 
 
