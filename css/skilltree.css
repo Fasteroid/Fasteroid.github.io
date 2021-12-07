@@ -210,6 +210,12 @@
     background-color: #5a562f;
 }
 
+.drums > .front {
+    background-image: url('/assets/skilltree/sticks.svg');
+}
+.drums > div {
+    background-color: #5a562f;
+}
 
 
 
