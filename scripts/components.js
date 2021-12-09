@@ -14,6 +14,9 @@ let postprocessors = {
         let pages = self.querySelector("#pages");
         
         let url = window.location.href.match(extractURL)[0]; // I'd be a fool to recompute this repeatedly in the for loop
+
+        url == "" ? url = "index.html" : 0; // fix bug that's been here for ages
+
         for(let page of pages.children){
 
             // check normal links
