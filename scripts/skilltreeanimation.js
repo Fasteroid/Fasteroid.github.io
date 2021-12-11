@@ -11,7 +11,7 @@ container.querySelectorAll(".grid > div").forEach( (child,n) => {
         child.style.webkitTransform = "scale(0)";
         child.style.transition = "0.5s transform";
         setTimeout(()=>{
-            child.style.webkitTransform = "scale(100%)";
+            child.style.transform = "scale(100%)";
             child.style.webkitTransform  = "scale(100%)"
         }, 200 + n*50)
         setTimeout(()=>{

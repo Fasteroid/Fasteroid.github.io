@@ -35,7 +35,7 @@ section {
 
 .widthlimiter {
     margin: auto;
-    max-width: 18in;
+    max-width: calc( min(130vh, 1920px) );
     padding: 10px;
 }
 
