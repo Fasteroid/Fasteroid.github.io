@@ -2,8 +2,6 @@ function applyHoverTap(){}
 
 {
 
-    let tapCounter = 0;
-
     /**
      * Intercepts and stops clicks if they're for the first time on an element
      * @param {HTMLElement} element
