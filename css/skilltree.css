@@ -102,7 +102,12 @@
 }
   
 
-
+.redstone > .front {
+    background-image: url('/assets/skilltree/redstone.svg');
+}
+.redstone > div {
+    background-color: #613838;
+}
 
 .mindstorms > .front {
     background-image: url('/assets/skilltree/mindstorms.svg');
@@ -115,14 +120,14 @@
     background-image: url('/assets/skilltree/expression2.svg');
 }
 .expression2 > div {
-    background-color: #633c3c;
+    background-color: #2e2e2e;
 }
 
 .lua > .front {
     background-image: url('/assets/skilltree/lua.svg');
 }
 .lua > div {
-    background-color: #3c4063;
+    background-color: #363a57;
 }
 
 .code > .front {
@@ -133,17 +138,17 @@
 }
 
 .js > .front {
-    background-color: #756b3d;
+    background-color: #776b37;
 }
 .js > .back {
-    background-color: #756b3d;
+    background-color: #776b37;
 }
 
 .nodejs > .front {
     background-image: url('/assets/skilltree/nodejs.svg');
 }
 .nodejs > div {
-    background-color: #3f6145;
+    background-color: #3a5840;
 }
 
 .html > .front {
@@ -171,14 +176,21 @@
     background-image: url('/assets/skilltree/java.svg');
 }
 .java > div {
-    background-color: #553739;
+    background-color: #583335;
 }
 
 .c > .front {
     background-image: url('/assets/skilltree/c.svg');
 }
 .c > div {
-    background-color: #374358;
+    background-color: #303c52;
+}
+
+.arduino > .front {
+    background-image: url('/assets/skilltree/arduino.svg');
+}
+.arduino > div {
+    background-color: #3c6a6d;
 }
 
 
@@ -186,14 +198,21 @@
     background-image: url('/assets/skilltree/illustrator.svg');
 }
 .illustrator > div {
-    background-color: #493529;
+    background-color: #584132;
 }
 
 .photoshop > .front {
     background-image: url('/assets/skilltree/photoshop.svg');
 }
 .photoshop > div {
-    background-color: #293b55;
+    background-color: #294266;
+}
+
+.gimp > .front {
+    background-image: url('/assets/skilltree/gimp.svg');
+}
+.gimp > div {
+    background-color: #546575;
 }
 
 .aftereffects > .front {
@@ -214,7 +233,7 @@
     background-image: url('/assets/skilltree/audacity.svg');
 }
 .audacity > div {
-    background-color: #645f39;
+    background-color: #74704e;
 }
 
 .drums > .front {
@@ -229,7 +248,7 @@
     background-image: url('/assets/skilltree/technic.svg');
 }
 .lego > div {
-    background-color: #6d4b30;
+    background-color: #774f37;
 }
 
 .autodesk > .front {
@@ -264,7 +283,7 @@
     background-image: url('/assets/skilltree/blender.svg');
 }
 .blender > div {
-    background-color: #63473a;
+    background-color: #6d5647;
 }
 
 .sketchup > .front {
