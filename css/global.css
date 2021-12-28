@@ -51,6 +51,11 @@ section {
     transform: scale(1.7, 1);
 }
 
+.description {
+    padding: 0 15px 15px 15px;
+    line-height: 140%;
+}
+
 img {
     background-color: var(--transparent-gray);
     padding: 15px 15px;
