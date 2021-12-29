@@ -6,6 +6,7 @@ section.titleimage {
     margin: 15px 15px;
     max-width: calc(100% - 60px);
 }
+
 .titleimage .title {
     background: #84888a88;
     display: block;
@@ -20,11 +21,51 @@ section.titleimage {
     width: calc(100% + 30px);
     filter: drop-shadow(0 0 4px #000000);
 }
+
 .titleimage .image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
+    background-size: cover;
     min-height: 200px;
     max-height: 3in;
     height: 20vw;
 }
+
+.icon {
+    position: relative;
+    width: 100%;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition: 0.4s;
+    transition-timing-function: linear;
+    transition: 0.4s;
+}
+.icontitle {
+    position: absolute;
+    top: 85%;
+    width: 90%;
+    text-align: center;
+    transform: translate(5%, -50%);
+    -webkit-transition-timing-function: linear;
+    -webkit-transition: 0.4s;
+    transition-timing-function: linear;
+    transition: 0.4s;
+}
+
+.row > a {
+    color: var(--text-color);
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    background-color: var(--transparent-gray);
+}
+
+.row > a:hover > .icon {
+    filter: var(--neon-white);
+}
+
+

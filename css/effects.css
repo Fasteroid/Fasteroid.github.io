@@ -12,6 +12,17 @@
     drop-shadow(0 1px 7pt #09f8)
     drop-shadow(0 1px 5pt #00f8)
     drop-shadow(0 1px 8pt #00f8);
+
+    --neon-white:
+    drop-shadow(0 0 8pt #fff5)
+    drop-shadow(0 0 3pt #fffc);
+
+    --neon-red:
+    drop-shadow(0 0 1pt #fff8)
+    drop-shadow(0 0 3pt #f048)
+    drop-shadow(0 1px 7pt #f038)
+    drop-shadow(0 1px 5pt #f008)
+    drop-shadow(0 1px 8pt #f008);
 }
 
 /* Hopefully I've struck a balance between cool and distracting */

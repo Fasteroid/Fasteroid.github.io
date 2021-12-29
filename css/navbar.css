@@ -141,7 +141,7 @@
 }
 
 /* Glow animation stuff */
-.nav a:hover span, 
+.nav a:hover span,
 .dropdown:hover > a > span,
 .dropdown:hover > .dropdown-head > a
 {
@@ -153,10 +153,19 @@
 }
 
 .nav a span,
-.dropdown > span, 
-.dropdown a *,
-.dropdown-head > a {
+.dropdown > a > span,
+.dropdown > .dropdown-head > a,
+.dropdown a * {
     mix-blend-mode: screen;
-    transition: 0.2s ease-out;
+    transition: 0.1s cubic-bezier(0.69, 0.02, 0.95, 0.60);
+    color: #ffffff;
+}
+
+.nav a:hover span,
+.dropdown:hover > a > span,
+.dropdown:hover > .dropdown-head > a,
+.dropdown a:hover * {
+    mix-blend-mode: screen;
+    transition: 0.2s cubic-bezier(.05,.4,.22,1) !important;
     color: #ffffff;
 }
