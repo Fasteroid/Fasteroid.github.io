@@ -141,7 +141,6 @@
 }
 
 /* Glow animation stuff */
-.nav a:hover span,
 .dropdown:hover > a > span,
 .dropdown:hover > .dropdown-head > a
 {

@@ -46,14 +46,11 @@ section.titleimage {
 }
 .icontitle {
     position: absolute;
-    top: 85%;
+    bottom: 5%;
     width: 90%;
     text-align: center;
-    transform: translate(5%, -50%);
-    -webkit-transition-timing-function: linear;
-    -webkit-transition: 0.4s;
-    transition-timing-function: linear;
-    transition: 0.4s;
+    transform: translate(5%, 0);
+    text-shadow: var(--transparent-gray) 0 0 5px
 }
 
 .row > a {
@@ -62,6 +59,8 @@ section.titleimage {
     position: relative;
     width: 20%;
     background-color: var(--transparent-gray);
+    font-size: calc( min(11pt, calc(2vw -60px) ) );
+    line-height: 130%;
 }
 
 .row > a:hover > .icon {
