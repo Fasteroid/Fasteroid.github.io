@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+
+<html>
+
+<component class="navbar"></component>
+
+<body>
+    <div class="widthlimiter">
+        <section>
+            <section class="titleimage" style="width: 100%; height: 100%">
+                <div class="image" style="background-image: url('assets/physgun/20211230183522_1.jpg');"">
+                <section class="title">
+                    <b>F=MA Compliant Physics Gun</b>
+                </section></div>
+            </section>
+            <section class="description" style="min-height: 306pt">
+                <img src="assets/physgun/physgun-1.jpg" style="float:right; max-height: 306pt; margin-right: 0px;">
+                This was just a massive 'what if' project constructed to put to rest
+                some thought experiments involving the behavior of the Physics Gun in real life.<br>
+                <br>
+                The 'what if' was this: <i>What if the physics gun obeyed the laws of physics?  </i>
+                The way it is in unmodded sandbox, it violates Newton's Third Law, as moving objects with
+                it does not produce any reaction forces on its user.  This allows behaviors such as prop
+                surfing, where by standing on a prop and dragging it up you can quickly reach the engine
+                speed limit.<br>
+                <br>
+                So how did I fix Garry's physics warcrimes?  The answer is pretty simple—I just made an E2
+                to calculate and apply the neglected reaction forces caused by moving entities with the 
+                physics gun.<br>
+                <br>
+                The result?  I ended up with a modified physics gun that functions like a grappling
+                hook on an extendable pool noodle.  I'm not kidding.
+            </section>
+            <section class="code-container">
+                <component class="e2-physgun"></component>
+            </section>
+            <div style="margin: 15px">
+                <img src="assets/physgun/physgun-wedging.jpg" style="display: block; margin-bottom: 0; margin-left: auto; margin-right: auto; width: 100%">
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="scripts/hovertap2.js"></script>
+<script src="scripts/doublespacing.js"></script>
+<script src="scripts/components.js"></script>

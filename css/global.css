@@ -4,6 +4,7 @@
 :root {
     --text-color: #eeeeee;
     --transparent-gray: #ffffff15;
+    --gray-t2: rgb(80,82,84);
     font-weight: 400;
 }
 
@@ -60,6 +61,8 @@ img {
     background-color: var(--transparent-gray);
     padding: 15px 15px;
     margin: 0px 15px;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 li::marker{
@@ -78,3 +81,6 @@ a:visited {
     color: #eca1ff;
 }
 
+::selection {
+    background: #70b0ff44;
+}
