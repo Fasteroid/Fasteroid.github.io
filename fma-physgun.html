@@ -25,24 +25,30 @@
                 some thought experiments involving the behavior of the Physics Gun in real life.<br>
                 <br>
                 The 'what if' was this: <i>What if the physics gun obeyed the laws of physics?  </i>
-                The way it is in unmodded sandbox, it violates Newton's Third Law, as moving objects with
-                it does not produce any reaction forces on its user.  This allows behaviors such as prop
-                surfing, where by standing on a prop and dragging it up you can quickly reach the engine
-                speed limit.<br>
+                The way it is in unmodded sandbox, the physics gun violates Newton's Third Law, 
+                as moving objects with it does not produce any reaction forces on the player.  
+                This allows for techniques such as prop surfing, where players can fly at high speed
+                by standing on objects and lifting them.  Some may find this entertaining, but
+                I see it as a physics atrocity.  If this worked in real life, we'd already be visiting
+                other star systems by now.  I had to do something.<br>
                 <br>
-                So how did I fix Garry's physics warcrimes?  The answer is pretty simple—I just made an E2
-                to calculate and apply the neglected reaction forces caused by moving entities with the 
-                physics gun.<br>
+                With a little vector math, calculus, and quaternion magic, I was able to rework
+                the physics gun—adding back neglected reaction forces and coupling held objects
+                to the player.  The results of this were very entertaining—I discovered several
+                new physically accurate tricks and gimmicks that aren't possible with the stock
+                physics gun.  Such features included wedging the player between walls, scaling 
+                buildings with hook-shaped props, and even using the inertia of heavy props to 
+                fling myself around the map.<br>
                 <br>
-                The result?  I ended up with a modified physics gun that functions like a grappling
-                hook on an extendable pool noodle.  I'm not kidding.
+                Truly one of the most entertaining E2 chips I've ever written.<br>
+                It's short too—only around 120 lines of code.<br>
+                <br>
+                Special thanks to <a href=https://discord.com/users/347893446897434624/>@Jacbo</a> for
+                providing me the code in the <i>pointVel</i> function.
             </section>
-            <section class="code-container">
+            <section class="code-container" style="height: 50vh;">
                 <component class="e2-physgun"></component>
             </section>
-            <div style="margin: 15px">
-                <img src="assets/physgun/physgun-wedging.jpg" style="display: block; margin-bottom: 0; margin-left: auto; margin-right: auto; width: 100%">
-            </div>
         </section>
     </div>
 </body>
