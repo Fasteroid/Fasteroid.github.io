@@ -32,7 +32,7 @@ section.titleimage {
     height: 20vw;
 }
 
-.icon {
+.shortcut {
     position: relative;
     width: 100%;
     border: none;
@@ -45,7 +45,7 @@ section.titleimage {
     transition: 0.4s;
 }
 
-.icontitle {
+.shortcut-title {
     position: absolute;
     bottom: 5%;
     width: 90%;
@@ -69,7 +69,7 @@ section.titleimage {
     line-height: 130%;
 }
 
-.row > a:hover > .icon {
+.row > a:hover > .shortcut {
     transform: scale(1.1);
     filter: var(--neon-white);
 }

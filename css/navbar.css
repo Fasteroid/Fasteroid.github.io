@@ -59,26 +59,26 @@
 .dropdown {
     position: relative;
     cursor: pointer;
-    background: #000000
+    background: #000000;
 }
 
 .dropdown-content {
     z-index: 0;
     display: block;
     position: absolute;
-    min-width: 100%;
     left: 0;
     top: 90%;
     transition: 0.3s;
     transform: translate(0,-100%) ;
     box-shadow: 0px 0px 0px black;
+    width: 100%;
 }
 
 .dropdown-head {
     z-index: 1;
     display: flex;
     background: #000000;
-    width: 100%;
+    width: 80pt;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -113,10 +113,19 @@
 .pages > a {
     display: flex;
     align-items: center;
-    font-size: 14pt;
     height: 100%;
     color: #ffffff;
     text-decoration: none;
+}
+
+.dropdown,
+.dropdown-content a,
+.pages > a {
+    font-size: 14pt;
+}
+
+.dropdown-content a {
+    font-size: 12pt;
 }
 
 .cwd {
