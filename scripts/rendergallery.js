@@ -208,6 +208,11 @@
             name: "Wiremod Base Interior",
             capt: "Circular Soft Shadows"
         }
+        ,{
+            url: "assets/raytracer/goldencitypool.png",
+            name: "gm_goldencity",
+            capt: "Global Illumination Edits"
+        }
 
     ];
 
@@ -425,7 +430,7 @@
 
 
     // Prime 1024x Carousel - 1 of them
-    CAROUSEL_1024 = new ImageCarousel('#Carousel1024_0',7000,1024,700,18);
+    CAROUSEL_1024 = new ImageCarousel('#Carousel1024_0',7000,1024,1200,18);
 
     // Dump in the images
     processed = 0;        
