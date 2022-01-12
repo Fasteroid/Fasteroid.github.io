@@ -34,7 +34,7 @@ section.titleimage {
 
 .shortcut {
     position: relative;
-    width: 100%;
+    min-width: 100%;
     border: none;
     background: none;
     box-sizing: border-box;
@@ -58,20 +58,20 @@ section.titleimage {
     -1px 1px 3px var(--gray-t2),
     1px 1px 3px var(--gray-t2);
 }
-
 .row > a {
     color: var(--text-color);
     display: inline-block;
     position: relative;
-    width: 20%;
+    max-width: 20%;
     background-color: var(--transparent-gray);
     font-size: calc( min(11pt, calc(2vw -60px) ) );
     line-height: 130%;
 }
 
 .row > a:hover > .shortcut {
-    transform: scale(1.1);
     filter: var(--neon-white);
+    min-width: calc(100% + min(20px, 10%));
+    margin: calc( max(-10px, -5%) );
 }
 
 img {

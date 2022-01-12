@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+
+<html>
+
+<component class="navbar"></component>
+
+<body>
+    <div class="widthlimiter">
+        <section>
+            <section class="titleimage">
+                <div style="width: 100%; text-align: center; font-size: 16pt; font-weight: bold;">Desmos Galton Board</div>
+                <div style="width: 100%; text-align: center; font-size: 12pt;">Does that curve ring any <i>bells?</i></div>
+            </section>
+            <section class="description">
+                <iframe src="https://www.desmos.com/calculator/q0zasmg9jo" style="width: 100%; height: 50vh" frameborder=0></iframe>
+            </section>
+            <section class="description" style="min-height: 306pt">
+                <iframe 
+                    style="float:right; max-width: 100%; width: 400px; height: 400px; margin: 0px 0px 15px 15px"
+                    src="https://www.youtube.com/embed/Kq7e6cj2nDw" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope">
+                </iframe>
+                Predictability arising from randomness?  What is this, did I somehow reverse-engineer Desmos's RNG, or is this actually real?<br>
+                <br>
+                While reverse-engineering RNG would have been really cool, no, I didn't have to do that for this graph—all I needed was statistics.  
+                Just like the physical variant shown to the right, this digital Galton board (also called a quincunx or bean-machine) demonstrates 
+                two statistical phenomenon: regression to the mean and central limit theorem.<br>
+                <br>
+                First, I'll explain regression to the mean—the balls are less likely to bounce towards the outside since there are literally less
+                paths that take the balls there.  Consider a 4-tiered pegboard like the default configuration for this graph.  To reach the leftmost slot, the 
+                <b>ONLY</b> way to get there is to bounce left four times, which has a <b>1 in 16</b> probability if bouncing left is equally as likely 
+                as bouncing right.  By contrast, there are <b>6 unique ways</b> to reach the middle slot (can you count them all?)—a <b></b>6 in 16</b> probability.  
+                As a result, the balls are biased to be closer to the center.<br>
+                <br>
+                Secondly, central limit theorem—it is well known among staticians that taking many random samples from an unknown distribution will
+                commonly approximate a normal distribution.  Our Galton board with 100 balls is really just 100 random samples from an unknown sampling, so
+                central limit theorem applies in this case.  As a result, both my digital version with perfect binomial distribution AND the physical board with 
+                chaotic physics-based distribution produce similar bell curves, even though the individual balls don't actually have the same behavior.  <b>MAGIC!</b><br>
+                <br>
+                This graph went on to earn me my first and only ever Reddit platinum award on <a href="https://www.reddit.com/r/desmos/comments/hhv5a3/galton_board_w_physics/">r/desmos</a>.<br>
+
+
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="scripts/hovertap2.js"></script>
+<script src="scripts/doublespacing.js"></script>
+<script src="scripts/components.js"></script>
