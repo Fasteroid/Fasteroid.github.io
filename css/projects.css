@@ -1,6 +1,6 @@
 
 
-section.titleimage {
+.titleimage {
     background-color: var(--transparent-gray);
     padding: 15px 15px;
     margin: 15px 15px;
@@ -58,6 +58,7 @@ section.titleimage {
     -1px 1px 3px var(--gray-t2),
     1px 1px 3px var(--gray-t2);
 }
+
 .row > a {
     color: var(--text-color);
     display: inline-block;

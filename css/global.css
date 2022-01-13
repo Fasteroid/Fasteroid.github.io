@@ -55,6 +55,7 @@ section {
 .description {
     margin: 0 15px 15px 15px;
     line-height: 140%;
+    width: auto;
 }
 
 img {

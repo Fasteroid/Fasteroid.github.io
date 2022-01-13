@@ -2,40 +2,16 @@
 @import "effects.css";
 
 .nav {
+    display: grid;
     background: #000000;
     font-family: 'Recursive', sans-serif;
     font-style: italic;
-    display: grid;
     grid-template-columns: 4fr 6fr;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
     z-index: 999; /* thank god this actually works for once */
 }
-
-/* 
-    Experimental Responsive Design
-    Breaks dropdowns near the bottom because of extra 3d requirements
-    To be continued later
-    @media only screen and (max-width: 750px) {
-        .nav {
-            grid-template-rows: 3fr 3fr;
-            grid-template-columns: none;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-        .pages {
-            margin-left: 0px; 
-            margin-right: 0px;
-        }
-        .home {
-            padding: 0px;
-            margin-left: 0px; 
-            margin-right: 0px;
-            text-align: center;
-        }
-    }
-*/
 
 .home {
     z-index: 1;
@@ -49,11 +25,42 @@
     animation: neon-flicker 1s ease-in-out alternate infinite;
 }
 
-.pages {
-    margin-left: auto; 
-    margin-right: 0px;
-    display: flex;
-    align-items: center;
+@media screen and (orientation:portrait) {
+    .nav {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        
+    }
+    .home {
+        text-align: center;
+        width: calc(100% - 30px)   
+    }
+    .pages {
+        margin-left: auto; 
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        width: 100%
+    }    
+    .dropdown-head {
+        width: 100%;
+    }
+    .dropdown {
+        /* note: must be changed if I add more dropdowns! */
+        width: 25%
+    }
+}
+
+@media screen and (orientation:landscape) {
+    .pages {
+        margin-left: auto; 
+        margin-right: 0px;
+        display: flex;
+        align-items: center;
+    }    
+    .dropdown-head {
+        width: 80pt;
+    }
 }
 
 .dropdown {
@@ -78,11 +85,10 @@
     z-index: 1;
     display: flex;
     background: #000000;
-    width: 80pt;
     height: 100%;
     align-items: center;
     justify-content: center;
-    text-align: center;;
+    text-align: center;
     top: 90%;
     padding-right: 15px;
     padding-left:  15px;
@@ -107,6 +113,12 @@
 .dropdown-content .icon {
     mix-blend-mode: screen; /* Needed so the glows from the icons merge additively */
 }
+
+.dropdown,
+.dropdown-content a,
+.pages > a {
+    font-size: 14pt;
+}
  
 .dropdown,
 .dropdown-content a,
@@ -117,12 +129,6 @@
     height: 100%;
     color: #ffffff;
     text-decoration: none;
-}
-
-.dropdown,
-.dropdown-content a,
-.pages > a {
-    font-size: 14pt;
 }
 
 .dropdown-content a {
