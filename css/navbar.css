@@ -25,44 +25,6 @@
     animation: neon-flicker 1s ease-in-out alternate infinite;
 }
 
-@media screen and (orientation:portrait) {
-    .nav {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        
-    }
-    .home {
-        text-align: center;
-        width: calc(100% - 30px)   
-    }
-    .pages {
-        margin-left: auto; 
-        margin-right: auto;
-        display: flex;
-        align-items: center;
-        width: 100%
-    }    
-    .dropdown-head {
-        width: 100%;
-    }
-    .dropdown {
-        /* note: must be changed if I add more dropdowns! */
-        width: 25%
-    }
-}
-
-@media screen and (orientation:landscape) {
-    .pages {
-        margin-left: auto; 
-        margin-right: 0px;
-        display: flex;
-        align-items: center;
-    }    
-    .dropdown-head {
-        width: 80pt;
-    }
-}
-
 .dropdown {
     position: relative;
     cursor: pointer;
@@ -172,7 +134,7 @@
 .dropdown > .dropdown-head > a,
 .dropdown a * {
     mix-blend-mode: screen;
-    transition: 0.1s cubic-bezier(0.69, 0.02, 0.95, 0.60);
+    transition: translate, filter 0.1s cubic-bezier(0.69, 0.02, 0.95, 0.60);
     color: #ffffff;
 }
 
@@ -181,6 +143,54 @@
 .dropdown:hover > .dropdown-head > a,
 .dropdown a:hover * {
     mix-blend-mode: screen;
-    transition: 0.2s cubic-bezier(.05,.4,.22,1) !important;
+    transition: translate, filter 0.2s cubic-bezier(.05,.4,.22,1) !important;
     color: #ffffff;
+}
+
+@media screen and (orientation:portrait) {
+    .nav {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        
+    }
+    .home {
+        text-align: center;
+        width: calc(100% - 30px)   
+    }
+    .pages {
+        margin-left: auto; 
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        width: 100%
+    }    
+    .dropdown-head {
+        width: 100%;
+        /* 
+            in my testing, these looked good when scaled relative to view height on mobile
+            we can't let them grow too much though, or they spill out of their containers!
+        */
+        font-size: calc( min( max(1.3vh, 14pt), 24pt ) );
+    }
+    .dropdown {
+        /* note: must be changed if I add more dropdowns! */
+        width: 25%
+    }
+    .dropdown,
+    .dropdown-content a,
+    .pages > a {
+        font-size: calc( min( max(1.2vh, 12pt), 24pt ) );
+    }
+}
+
+@media screen and (orientation:landscape) {
+    .pages {
+        margin-left: auto; 
+        margin-right: 0px;
+        display: flex;
+        align-items: center;
+    }    
+    .dropdown-head {
+        width: 80pt;
+    }
 }

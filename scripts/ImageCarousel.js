@@ -1,5 +1,5 @@
 class ImageCarousel {
-    constructor(name, interval = 2000, size = 512, time = 500, titleSize = 12) {
+    constructor(name, interval = 2000, size = 512, time = 500) {
 
         const self = this; // utility for eliminating dumb variable scope errors down the line
 
@@ -53,7 +53,7 @@ class ImageCarousel {
         /* Adds an image to this carousel */
         this.addImage = function addImage(url, name = "untitled image", caption = "origins unknown", sizeoverride = size) {
             let len = this.slides.length;
-            let html = `<p><div class="minihead" style="font-size: ${titleSize}px">${name}</div><div class="sub"><br>${sizeoverride}x Render<br>${caption}</div></p>`;
+            let html = `<p><div class="minihead">${name}</div><div class="sub">${sizeoverride}x Render<br>${caption}</div></p>`;
             this.slides[len] = {
                 slide: $(this.holder.append(`<div class="slide"><img src="${url}" alt="${name}"></div>`)[0].lastChild),
                 captionHTML: html
