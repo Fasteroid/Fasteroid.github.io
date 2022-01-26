@@ -59,13 +59,20 @@
     1px 1px 3px var(--gray-t2);
 }
 
+.row {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+}
+
 .row > a {
     color: var(--text-color);
     display: inline-block;
     position: relative;
-    max-width: 20%;
+    max-width: calc(25% - 10px);
     background-color: var(--transparent-gray);
     font-size: calc( min(11pt, calc(2vw -60px) ) );
+    margin: 2.5px;
     line-height: 130%;
 }
 

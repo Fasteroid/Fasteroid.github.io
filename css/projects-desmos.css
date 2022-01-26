@@ -1,0 +1,40 @@
+.row > a {
+    color: var(--text-color);
+    display: inline-block;
+    position: relative;
+    max-width: calc(25% - 10px);
+    background-color: #0000;
+    font-size: calc( min(11pt, calc(2vw -60px) ) );
+    margin: 2.5px;
+    line-height: 130%;
+}
+
+.row > a:hover > .shortcut {
+    filter: var(--neon-white);
+    min-width: calc(100% + min(20px, 10%));
+    margin: calc( max(-10px, -5%) );
+}
+
+img {
+    padding: 5px;
+}
+
+.shortcut-title {
+    position: absolute;
+    bottom: 10%;
+    width: 90%;
+    text-align: center;
+    transform: translate(5%, 0);
+    color: #000;
+    text-shadow:
+   -1px -1px 5px #fff,  
+    1px -1px 5px #fff,
+    -1px 1px 5px #fff,
+    1px 1px 5px #fff,
+    -1px -1px 5px #fff,  
+    1px -1px 5px #fff,
+    -1px 1px 5px #fff,
+    1px 1px 5px #fff,
+    0 0 0.5px #000,
+    0 0 0.5px #000;
+}
