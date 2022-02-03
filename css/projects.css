@@ -63,15 +63,17 @@
     display: flex;
     flex-flow: wrap;
     align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
 .row > a {
     color: var(--text-color);
     display: inline-block;
     position: relative;
-    max-width: calc(25% - 10px);
+    max-width: 20vh;
     background-color: var(--transparent-gray);
-    font-size: calc( min(11pt, calc(2vw -60px) ) );
+    font-size: calc( min(11pt, calc(2vw-60px) ) );
     margin: 2.5px;
     line-height: 130%;
 }

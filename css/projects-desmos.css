@@ -2,13 +2,12 @@
     color: var(--text-color);
     display: inline-block;
     position: relative;
-    max-width: calc(25% - 10px);
+    max-width: 20vh;
     background-color: #0000;
-    font-size: calc( min(11pt, calc(2vw -60px) ) );
+    font-size: calc( min(11pt, calc(2vw-60px) ) );
     margin: 2.5px;
     line-height: 130%;
 }
-
 .row > a:hover > .shortcut {
     filter: var(--neon-white);
     min-width: calc(100% + min(20px, 10%));
