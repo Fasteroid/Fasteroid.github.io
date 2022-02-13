@@ -14,37 +14,28 @@
     <div class="widthlimiter">
         <section>
             <section class="titleimage">
-                <div style="width: 100%; text-align: center; font-size: 16pt; font-weight: bold;">Desmos Galton Board</div>
-                <div style="width: 100%; text-align: center; font-size: 12pt;">Does that curve ring any <i>bells?</i></div>
+                <div style="width: 100%; text-align: center; font-size: 16pt; font-weight: bold;">Desmos Portals</div>
+                <div style="width: 100%; text-align: center; font-size: 12pt;">DESMOS PORTALS?</i></div>
             </section>
             <section class="description">
-                <iframe src="https://www.desmos.com/calculator/q0zasmg9jo" style="width: 100%; height: 50vh" frameborder=0></iframe>
+                <iframe src="https://www.desmos.com/calculator/p5cbnjegnh" style="width: 100%; height: 50vh" frameborder=0></iframe>
             </section>
-            <section class="description" style="min-height: 306pt">
-                <iframe 
-                    style="float:right; max-width: 100%; width: 400px; height: 400px; margin: 0px 0px 15px 15px"
-                    src="https://www.youtube-nocookie.com/embed/Kq7e6cj2nDw" 
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope">
-                </iframe>
-                Predictability arising from randomness?  What is this, did I somehow reverse-engineer Desmos's RNG, or is this actually real?<br>
-                <br>
-                While reverse-engineering RNG would have been really cool, no, I didn't have to do that for this graph—all I needed was statistics.  
-                Just like the physical variant shown to the right, this digital Galton board (also called a quincunx or bean-machine) demonstrates 
-                two statistical phenomenon: regression to the mean and central limit theorem.<br>
-                <br>
-                First, I'll explain regression to the mean—the balls are less likely to bounce towards the outside since there are literally less
-                paths that take the balls there.  Consider a 4-tiered pegboard like the default configuration for this graph.  To reach the leftmost slot, the 
-                <b>ONLY</b> way to get there is to bounce left four times, which has a <b>1 in 16</b> probability if bouncing left is equally as likely 
-                as bouncing right.  By contrast, there are <b>6 unique ways</b> to reach the middle slot (can you count them all?)—a <b></b>6 in 16</b> probability.  
-                As a result, the balls are biased to be closer to the center.<br>
-                <br>
-                Secondly, central limit theorem—it is well known among staticians that taking many random samples from an unknown distribution will
-                commonly approximate a normal distribution.  Our Galton board with 100 balls is really just 100 random samples from an unknown sampling, so
-                central limit theorem applies in this case.  As a result, both my digital version with perfect binomial distribution AND the physical board with 
-                chaotic physics-based distribution produce similar bell curves, even though the individual balls don't actually have the same behavior.  <b>MAGIC!</b><br>
-                <br>
-                This graph went on to earn me my first and only ever Reddit platinum award on <a href="https://www.reddit.com/r/desmos/comments/hhv5a3/galton_board_w_physics/">r/desmos</a>.<br>
+            <section class="description" style="min-height: 106pt">
 
+                This graph is exactly what the title implies.  They're Desmos portals.  They work exactly like one would expect
+                regular portals to behave—the blue one moves anything that enters to the same local position at the orange one.
+                You can type in whatever <i>f(x)</i> you want and it'll mostly work—if not try increasing the resolve resolution
+                and that should fix it.<br>
+                <br>
+                I made this graph at the end of 2019 as yet another coping mechanism for my endless boredom.  It took about three days to
+                get it working well enough for me to be proud of. I had to come up with a way to solve for ALL intersections with the portal
+                boundaries, a way to perform logical operations on those intersections, and a way to selectively hide things based on where
+                the intersections happened.<br>
+                <br>
+                The final result ended up being a hacky mess of horrors that just barely works.  My intersection solver struggles to detect
+                functions that cross the portals with large slopes, and the portals are one-way only for the most part.<br>
+                <br>
+                Despite these shortcomings, this graph managed to earn me my first reddit gold on <a href="https://www.reddit.com/r/desmos/comments/ea89gc/desmos_portals_desmos_portals/">r/desmos</a>.<br>
 
             </section>
         </section>
