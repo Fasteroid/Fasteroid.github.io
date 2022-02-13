@@ -114,7 +114,7 @@
 }
 
 .dropdown:hover .dropdown-content {
-    transform: translate(0,0) translateZ(-1px);
+    transform: translate(0,5px) translateZ(-1px);
     box-shadow: 0px 0px 5px black;
 }
 
