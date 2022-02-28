@@ -10,8 +10,8 @@
 }
 .row > a:hover > .shortcut {
     filter: var(--neon-white);
-    min-width: calc(100% + min(20px, 10%));
-    margin: calc( max(-10px, -5%) );
+    min-width: calc(100% + min(16px, 6%));
+    margin: calc( max(-8px, -3%) );
 }
 
 img {
