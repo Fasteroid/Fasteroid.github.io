@@ -36,16 +36,16 @@ class ImageCarousel {
         this.fadingText = [this.fadeOut, this.fadeIn];
 
         this.buttons = $(this.frame.append('<div class="front"></div>')[0].lastChild);
-        $(this.buttons.append('<button class="button"></button>')[0].lastChild).click(
+        $(this.buttons.append('<button class="button"></button>')[0].lastChild).on('click',
             function () { self.move((self.index + self.slides.length - 1) % self.slides.length, -100); } // dirty numbers hack
         );
-        $(this.buttons.append('<button class="button"></button>')[0].lastChild).click(
+        $(this.buttons.append('<button class="button"></button>')[0].lastChild).on('click',
             function () { self.move((self.index + 1) % self.slides.length); }
         );
-        this.buttons.mouseenter(function () {
+        this.buttons.on('mouseenter', function () {
             self.stopScroll();
         });
-        this.buttons.mouseleave(function () {
+        this.buttons.on('mouseleave', function () {
             self.autoScroll();
         });
 
