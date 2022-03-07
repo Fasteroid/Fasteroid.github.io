@@ -1,0 +1,24 @@
+e2key { 
+    color: #a0f0f0;
+}
+e2var { 
+    color: #a0f0a0;
+}
+e2type { 
+    color: #f0a060;
+}
+e2dir { 
+    color: #f0f0a0;
+}
+e2func { 
+    color: #a0a0f0;
+}
+e2string { 
+    color: #a0a0a0;
+}           
+e2num{
+    color: #f0a0a0;
+}
+e2comment { 
+    color: #6b6b6b;
+}    

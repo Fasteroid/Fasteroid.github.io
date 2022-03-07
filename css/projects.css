@@ -102,6 +102,9 @@ img {
     font-size: 10pt;
     outline: 10px solid black;
     outline-offset: -10px;
+    word-wrap: break-word; 
+    white-space: pre;
+    word-spacing: normal;
 }
 
 .code-container::-webkit-scrollbar {

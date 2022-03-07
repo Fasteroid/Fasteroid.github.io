@@ -11,7 +11,6 @@
          * @param {Element} self - imported navbar
          */
         navbar: function(self){
-
             let pages = self.querySelector("#pages");
             
             let url = window.location.href.match(extractURL)[0]; // I'd be a fool to recompute this repeatedly in the for loop
@@ -50,6 +49,21 @@
                     }
                 }
             }
+        },
+
+        /** 
+         * The postprocessor for any e2 code.
+         * It loads code from github and syntax highlights it.
+         * @param {Element} oldSelf - imported navbar
+         */
+        e2code: function(oldSelf){
+
+            let self = document.createElement('section'); // change it to a section first
+            self.innerHTML = oldSelf.innerHTML;
+            self.classList.add('code-container')
+            oldSelf.replaceWith(self);
+            e2_syntax_highlight(self);
+
         }
 
     };
@@ -58,7 +72,7 @@
     let includes = document.querySelectorAll("component");
     $.each(includes, function () {
         let name = this.getAttribute("class");
-        let file = `components/${name}.html`;
+        let file = this.getAttribute("src");
         let self = this; // horrible
         $(this).load(file, 
             function(){ postprocessors[name](self); }    
