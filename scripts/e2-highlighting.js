@@ -260,7 +260,7 @@
     let highlightKeywords = function (txt) {
         txt = txt.replace(/(?<!\<.*?)foreach(?!\>.*?)/, "___FOREACH"); // for and foreach overlap
         for (const keyword of keywords) {
-            let matcher = new RegExp(`(?<!\<.*?)${keyword}(?!\>.*?)`,"g"); // cursed regex, doesn't match keywords inside other tags
+            let matcher = new RegExp(`(?<!\\<.*?)${keyword}(?!\\>.*?)`,"g"); // cursed regex, doesn't match keywords inside other tags
             txt = txt.replace(matcher, `<e2key>${keyword}</e2key>`);
         }
         txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
