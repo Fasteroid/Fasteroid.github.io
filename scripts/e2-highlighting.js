@@ -71,7 +71,7 @@
         return txt;
     }
 
-    let highlightComments = function(txt) {
+    let highlightComments = function(txt) { // no multiline comments yet!
         txt = txt.replace(/(#.*?)(\n)/gm,"<e2comment>$1</e2comment>$2")
         return txt;
     }
@@ -258,9 +258,10 @@
     ]
 
     let highlightKeywords = function (txt) {
-        txt = txt.replaceAll("foreach", "___FOREACH"); // for and foreach overlap, must do this to avoid weirdness
+        txt = txt.replace(/(?<!\<.*?)foreach(?!\>.*?)/, "___FOREACH"); // for and foreach overlap
         for (const keyword of keywords) {
-            txt = txt.replaceAll(keyword, `<e2key>${keyword}</e2key>`);
+            let matcher = new RegExp(`(?<!\<.*?)${keyword}(?!\>.*?)`,"g"); // cursed regex, doesn't match keywords inside other tags
+            txt = txt.replace(matcher, `<e2key>${keyword}</e2key>`);
         }
         txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
         return txt
