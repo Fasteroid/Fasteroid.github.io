@@ -212,6 +212,18 @@
             url: "assets/raytracer/goldencitypool.png",
             name: "gm_goldencity",
             capt: "Global Illumination Edits"
+        },{
+            url: "assets/raytracer/gi-cube-hell.png",
+            name: "GI Cube Spam",
+            capt: "Global Illumination Edits"
+        },{
+            url: "assets/raytracer/gi-cube-hell.png",
+            name: "GI Cube Spam",
+            capt: "Global Illumination Edits"
+        },{
+            url: "assets/raytracer/gardenbase.png",
+            name: "Not so secret garden",
+            capt: "Global Illumination Edits"
         }
 
     ];
