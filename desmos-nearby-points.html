@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/projects.css">
+</head>
+
+<html>
+
+<component class="navbar" src="navbar.html"></component>
+
+<body>
+    <div class="widthlimiter">
+        <section>
+            <section class="titleimage">
+                <div style="width: 100%; text-align: center; font-size: 16pt; font-weight: bold;">Nearby Points</div>
+                <div style="width: 100%; text-align: center; font-size: 12pt;">Leveraging integration for profit!</i></div>
+            </section>
+            <section class="description">
+                <iframe src="https://www.desmos.com/calculator/olyzbiymc0" style="width: 100%; height: 50vh" frameborder=0></iframe>
+            </section>
+            <section class="description" style="min-height: 106pt">
+                This is a technical graph.  It demonstrates a task that is trivially simple to explain but rather difficult
+                to actually do.  How does one highlight all points less than a given distance <i>R</i> from
+                an arbitrary function <i>f(x)</i>?<br>
+                <br>
+                The naive approach would be to find the nearest point on <i>f(x)</i> to every pixel on the screen,
+                and then check if that distance is less or equal to <i>R</i>.  If so, highlight the 
+                pixel, if not, don't.  The issue with this is that finding the nearest point to another on an arbitrary
+                function isn't particularly easy.  Newton's method is nice, but doesn't always converge.<br>
+                <br>
+                My approach instead involves defining and integrating a special function <i>D(x,y,t)</i>
+                with respect to <i>t</i>.  This function is relatively simple: <i>x</i> and <i>y</i> are the
+                coordinates of any point on the screen, and <i>t</i> defines another point placed at <i>x=t</i>
+                on the arbitrary function <i>f(x)</i> we were given.  It then uses a simple piecewise expression
+                to return 1 if the points are closer than <i>R</i> and 0 if they are not.<br>
+                <br>
+                What's the result of integrating this bad boy?  Since an integral is really an just an infinite sum, which
+                is effectively an infinite for loop, we can use it to evaluate if ANY of the infinite number of points on <i>f(x)</i>
+                come within <i>R</i> units of each pixel.  In a world where Desmos could evaluate the integral perfectly,
+                it would highlight any points for which <i>D(x,y,t)</i> is 1 at some <i>t</i>.<br>
+                <br>
+                But unfortunately, it doesn't, since integration is also a hard problem.<br>
+                It's just a little less hard in this context :&rpar;
+            </section>
+        </section>
+    </div>
+</body>
+
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="scripts/hovertap2.js"></script>
+<script src="scripts/doublespacing.js"></script>
+<script src="scripts/components.js"></script>
