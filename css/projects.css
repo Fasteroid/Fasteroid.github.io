@@ -98,7 +98,7 @@ img {
     overflow: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    max-height: 50vw;
+    max-height: 50vh;
     font-size: 10pt;
     outline: 10px solid black;
     outline-offset: -10px;
