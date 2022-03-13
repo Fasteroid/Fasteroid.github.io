@@ -72,7 +72,12 @@
     }
 
     let highlightComments = function(txt) { // no multiline comments yet!
-        txt = txt.replace(/(#.*?)(\n)/gm,"<e2comment>$1</e2comment>$2")
+        //txt = txt.replaceAll("#include","@include")
+        txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<e2key>#include</e2key>")
+        txt = txt.replaceAll("#[","<e2comment>#[");
+        txt = txt.replaceAll("]#","]#</e2comment>");
+        txt = txt.replace(/(?<!\<.*?)(#.*?)(\n)(?!\>.*?)/g,"<e2comment>$1</e2comment>$2")
+        //txt = txt.replaceAll("@include","#include")
         return txt;
     }
 
@@ -80,6 +85,7 @@
         const explodedtext = txt.split("");
         var len = explodedtext.length;
         var inside = false;
+        var comment = false;
         for (var t = 0; t < len; t++) {
             var entry = explodedtext[t];
             if ( entry == '"' ) {
@@ -253,8 +259,7 @@
         "return",
         "try",
         "throw",
-        "catch",
-        "#include",
+        "catch"
     ]
 
     let highlightKeywords = function (txt) {
@@ -274,14 +279,17 @@
      */
     function e2_syntax_highlight(elem) {
         let txt = elem.innerText; // innerhtml will break some characters
-        txt = highlightStrings(txt);
+        txt = txt.replaceAll("<","\u1000")
+        txt = txt.replaceAll(">","\u1001")
         txt = highlightComments(txt);
+        txt = highlightStrings(txt);
         txt = highlightDirectives(txt);
         txt = highlightTypes(txt);
-        txt = highlightKeywords(txt)
         txt = highlightVariables(txt);
-        console.log(txt)
+        txt = highlightKeywords(txt);
         txt = highlightMulti(txt); // has to be last
+        txt = txt.replaceAll("\u1000","&lt;")
+        txt = txt.replaceAll("\u1001","&gt;")
         elem.innerHTML = txt;
     }
 
