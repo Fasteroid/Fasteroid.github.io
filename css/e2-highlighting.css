@@ -1,32 +1,32 @@
-e2key { 
+.e2key { 
     color: #a0f0f0;
 }
-e2var { 
+.e2var { 
     color: #a0f0a0;
 }
-e2type { 
+.e2type { 
     color: #f0a060;
 }
-e2dir { 
+.e2dir { 
     color: #f0f0a0;
 }
-e2func { 
+.e2func { 
     color: #a0a0f0;
 }
-e2string { 
+.e2string { 
     color: #a0a0a0;
 }           
-e2num {
+.e2num {
     color: #f0a0a0;
 }
 
 /* I'm too lazy to fix my syntax highlighter, so we're doing this for now. */
-e2comment { 
+.e2comment { 
     color: #6b6b6b
 }    
-e2comment > * { 
+.e2comment > * { 
     color: #6b6b6b !important
 }    
-e2comment > * > * { 
+.e2comment > * > * { 
     color: #6b6b6b !important
 }    
