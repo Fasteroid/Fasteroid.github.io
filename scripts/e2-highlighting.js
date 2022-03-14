@@ -1,6 +1,6 @@
 {
 
-    // WARNING: (somewhat) LEGACY CODE
+    // WARNING: LEGACY CODE
     // MAY BE CRINGE
 
     let isLetter = function (txt) {
@@ -38,13 +38,13 @@
     function highlightTypes(txt) {
         for (const type of types) {
             let matcher = new RegExp(`([,:])${type}([\\]\\s\\),])`,"gm");
-            txt = txt.replace(matcher,`$1<span class='e2type'>${type}</span>$2`); // general
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // general
 
             matcher = new RegExp(`(function\\s*?)${type}(\\s)`,"gm");
-            txt = txt.replace(matcher,`$1<span class='e2type'>${type}</span>$2`); // function return type
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function return type
 
             matcher = new RegExp(`(function\\s*?.*?)${type}(:)`,"gm");
-            txt = txt.replace(matcher,`$1<span class='e2type'>${type}</span>$2`); // function type:thisKind()
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function type:thisKind()
         }
         return txt;
     }
@@ -62,10 +62,10 @@
         for (const dir in directives){
             if(directives[dir]){
                 let matcher = new RegExp(`(${dir}.*?)(\n)`,"gm")
-                txt = txt.replace(matcher,"<span class='e2dir'>$1</span>$2")
+                txt = txt.replace(matcher,"<e2dir>$1</e2dir>$2")
             }
             else{
-                txt = txt.replaceAll(dir,`<span class='e2dir'>${dir}</span>`);
+                txt = txt.replaceAll(dir,`<e2dir>${dir}</e2dir>`);
             }
         }
         return txt;
@@ -73,10 +73,10 @@
 
     let highlightComments = function(txt) { // no multiline comments yet!
         //txt = txt.replaceAll("#include","@include")
-        txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<span class='e2key'>#include</span>")
-        txt = txt.replaceAll("#[","<span class='e2comment'>#[");
-        txt = txt.replaceAll("]#","]#</span>");
-        txt = txt.replace(/(?<!\<.*?)(#.*?)(\n)(?!\>.*?)/g,"<span class='e2comment'>$1</span>$2")
+        txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<e2key>#include</e2key>")
+        txt = txt.replaceAll("#[","<e2comment>#[");
+        txt = txt.replaceAll("]#","]#</e2comment>");
+        txt = txt.replace(/(?<!\<.*?)(#.*?)(\n)(?!\>.*?)/g,"<e2comment>$1</e2comment>$2")
         //txt = txt.replaceAll("@include","#include")
         return txt;
     }
@@ -91,10 +91,10 @@
             if ( entry == '"' ) {
                 inside = !inside;
                 if (inside) {
-                    entry = `<span class='e2string'>${entry}`
+                    entry = `<e2string>${entry}`
                 } 
                 else {
-                    entry = `${entry}</span>`
+                    entry = `${entry}</e2string>`
                 } 
                 explodedtext[t] = entry;
             }
@@ -138,19 +138,19 @@
             if (infunction == 0) {
                 if (isLowercase(entry) && stage==0 && ready) { // definitely a function
                     infunction = 1;
-                    entry = "<span class='e2func'>" + entry;
+                    entry = "<e2func>" + entry;
                 }
                 if (isNumber(entry) && stage==0 && ready) { // number
                     infunction = 2;
-                    entry = "<span class='e2num'>" + entry;
+                    entry = "<e2num>" + entry;
                 }
             } 
             else if (!isLetter(entry) && !isNumber(entry)) { // found the end of the thing!
                 if (infunction == 1) {
-                    entry = "</span>" + entry; // close it off and continue
+                    entry = "</e2func>" + entry; // close it off and continue
                 }
                 else if (infunction == 2) {
-                    entry = "</span>" + entry; // close it off and continue
+                    entry = "</e2num>" + entry; // close it off and continue
                 }
                 infunction = 0;
             }
@@ -225,16 +225,16 @@
 
                 if ( (insideVariable != prevInside) ) { 
                     if (!prevInside ) {
-                        entry = "<span class='e2var'>" + entry;
+                        entry = "<e2var>" + entry;
                     }
                     if (prevInside) {
-                        entry = "</span>" + entry;
+                        entry = "</e2var>" + entry;
                     }
                 }
             }
             else if((stage==1 && ready)){ // edge case: end of line
                 if (insideVariable) {
-                    entry = "</span>" + entry;
+                    entry = "</e2var>" + entry;
                 }
                 prevInside = false;
                 insideVariable = false;
@@ -266,9 +266,9 @@
         txt = txt.replace(/(?<!\<.*?)foreach(?!\>.*?)/, "___FOREACH"); // for and foreach overlap
         for (const keyword of keywords) {
             let matcher = new RegExp(`(?<!\\<.*?)${keyword}(?!\\>.*?)`,"g"); // cursed regex, doesn't match keywords inside other tags
-            txt = txt.replace(matcher, `<span class='e2key'>${keyword}</span>`);
+            txt = txt.replace(matcher, `<e2key>${keyword}</e2key>`);
         }
-        txt = txt.replaceAll("___FOREACH", "<span class='e2key'>foreach</span>");
+        txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
         return txt
     }
 
