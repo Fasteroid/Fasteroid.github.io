@@ -1,25 +1,54 @@
-{
 
-    // WARNING: LEGACY CODE
-    // MAY BE CRINGE
 
-    let isLetter = function (txt) {
+// WARNING: LEGACY (ish) CODE
+// MAY BE CRINGE
+
+// WARNING: CURSED REGEX
+
+const ignoreTagsPreproc = /(\<.*?\>.*?\<.*?\>)/.source
+/**
+ * disgusting apple regex workaround function
+ * it will run string.replace without replacing any text inside html entities
+ * @param {String} text
+ * @param {RegExp} innerRegex
+ * @param {Function} replace
+*/
+let replaceIgnoreTags = function replaceIgnoreTags( text, innerRegex, replace ){
+    
+    let matcher = new RegExp(`${ignoreTagsPreproc}|${innerRegex.source}`,"g")
+    return text.replace(matcher, function(){
+        shiftedArguments = [...arguments].slice(2,arguments.length-2); // we'll pass these on to replace
+        if( !arguments[1] ){
+            // console.log("replace",shiftedArguments)
+            return replace.call(this,...shiftedArguments)
+        }
+        else{
+            // console.log("default",arguments[0])
+            return arguments[0]
+        }
+    })
+
+}
+
+const E2SyntaxHighlighter = {
+
+    isLetter(txt) {
         return txt.toUpperCase() != txt.toLowerCase() || txt=="_"
-    }
+    },
 
-    let isUppercase = function (txt) {
+    isUppercase(txt) {
         return txt.toUpperCase() == txt && txt.toLowerCase() != txt
-    }
+    },
 
-    let isLowercase = function (txt) {
+    isLowercase(txt) {
         return txt.toUpperCase() != txt && txt.toLowerCase() == txt
-    }
+    },
 
-    let isNumber = function (txt) {
+    isNumber(txt) {
         return !isNaN(txt) && !(txt.match(/\s/))
-    }
+    },
 
-    const types = [
+    types: [
         "entity",
         "quaternion",
         "angle",
@@ -33,34 +62,49 @@
         "string",
         "vector",
         "matrix",
-    ];
+    ],
 
-    function highlightTypes(txt) {
-        for (const type of types) {
-            let matcher = new RegExp(`([,:])${type}([\\]\\s\\),])`,"gm");
-            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // general
-
-            matcher = new RegExp(`(function\\s*?)${type}(\\s)`,"gm");
-            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function return type
-
-            matcher = new RegExp(`(function\\s*?.*?)${type}(:)`,"gm");
-            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function type:thisKind()
-        }
-        return txt;
-    }
-
-    const directives = {
+    directives: {
         "@name": true,
         "@inputs": false,
         "@outputs": false,
         "@persist": false,
         "@trigger": true,
         "@model": true,
-    };
+    },
 
-   let highlightDirectives = function(txt) {
-        for (const dir in directives){
-            if(directives[dir]){
+    keywords: [
+        "for",
+        "if",
+        "while",
+        "else",
+        "break",
+        "local",
+        "function",
+        "continue",
+        "return",
+        "try",
+        "throw",
+        "catch"
+    ],
+
+    highlightTypes(txt) {
+        for (const type of this.types) {
+            let matcher = new RegExp(`([,:])${type}([\\]\\s\\),])`,"gm");
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // general
+    
+            matcher = new RegExp(`(function\\s*?)${type}(\\s)`,"gm");
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function return type
+    
+            matcher = new RegExp(`(function\\s*?.*?)${type}(:)`,"gm");
+            txt = txt.replace(matcher,`$1<e2type>${type}</e2type>$2`); // function type:thisKind()
+        }
+        return txt;
+    },
+
+    highlightDirectives(txt) {
+        for (const dir in this.directives){
+            if(this.directives[dir]){
                 let matcher = new RegExp(`(${dir}.*?)(\n)`,"gm")
                 txt = txt.replace(matcher,"<e2dir>$1</e2dir>$2")
             }
@@ -69,19 +113,24 @@
             }
         }
         return txt;
-    }
+    },
 
-    let highlightComments = function(txt) { // no multiline comments yet!
-        //txt = txt.replaceAll("#include","@include")
-        txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<e2key>#include</e2key>")
+    highlightComments(txt) {
+
+        // Damn it apple, fix your regex libraries.  I spent 5 hours on this crap!
+        // txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<e2key>#include</e2key>")
+    
         txt = txt.replaceAll("#[","<e2comment>#[");
         txt = txt.replaceAll("]#","]#</e2comment>");
-        txt = txt.replace(/(?<!\<.*?)(#.*?)(\n)(?!\>.*?)/g,"<e2comment>$1</e2comment>$2")
-        //txt = txt.replaceAll("@include","#include")
+    
+        txt = replaceIgnoreTags(txt, /(#include)/, () => "<e2key>#include</e2key>")
+    
+        txt = replaceIgnoreTags(txt, /(#.*?)(\n)/g, (a,b) => `<e2comment>${a}</e2comment>${b}`)
+    
         return txt;
-    }
+    },
 
-    let highlightStrings = function(txt){
+    highlightStrings(txt){
         const explodedtext = txt.split("");
         var len = explodedtext.length;
         var inside = false;
@@ -100,9 +149,9 @@
             }
         }
         return explodedtext.join("")
-    }
+    },
 
-    let highlightMulti = function (txt) {
+    highlightMulti(txt) {
         const explodedtext = txt.split("");
         var len = explodedtext.length;
         var stage = 0;
@@ -112,40 +161,40 @@
         for (var t = 0; t < len; t++) {
             
             var entry = explodedtext[t];
-
+    
             if ((stage == 0) && (entry == "<")) { // html opening tag?
-                logSub(last,t,explodedtext,stage)
+                // logSub(last,t,explodedtext,stage)
                 last=t
                 stage++;
             }
             if ((stage == 1) && (entry == ">")) { // close of above tag?
-                logSub(last,t,explodedtext,stage)
+                // logSub(last,t,explodedtext,stage)
                 last=t
                 stage++;
             }
             if ((stage == 2) && (entry == "<")) { // html opening tag?
-                logSub(last,t,explodedtext,stage)
+                // logSub(last,t,explodedtext,stage)
                 last=t
                 stage++;
             }
             if ((stage == 3) && (entry == ">")) { // close of above tag?
-                logSub(last,t,explodedtext,stage)
+                // logSub(last,t,explodedtext,stage)
                 stage = 0;
                 last=t
                 ready = false;
             }
-
+    
             if (infunction == 0) {
-                if (isLowercase(entry) && stage==0 && ready) { // definitely a function
+                if (this.isLowercase(entry) && stage==0 && ready) { // definitely a function
                     infunction = 1;
                     entry = "<e2func>" + entry;
                 }
-                if (isNumber(entry) && stage==0 && ready) { // number
+                if (this.isNumber(entry) && stage==0 && ready) { // number
                     infunction = 2;
                     entry = "<e2num>" + entry;
                 }
             } 
-            else if (!isLetter(entry) && !isNumber(entry)) { // found the end of the thing!
+            else if (!this.isLetter(entry) && !this.isNumber(entry)) { // found the end of the thing!
                 if (infunction == 1) {
                     entry = "</e2func>" + entry; // close it off and continue
                 }
@@ -154,26 +203,14 @@
                 }
                 infunction = 0;
             }
-
+    
             explodedtext[t] = entry;
             ready = true;
         }
         return explodedtext.join("")
-    }
+    },
 
-    function logSurrounding(pos,arr,level){
-        var asdf = ""
-        for (let index = pos-5; index < pos+6; index++) {
-            asdf = asdf + arr[index]
-        }
-        console.log(level,asdf)
-    }
-
-    function logSub(start,end,arr,level){
-        console.log(level,arr.slice(start,end).join(''))
-    }
-
-    let highlightVariables = function (txt) {
+    highlightVariables(txt) {
 
         var stage = 0;
         var explodedtext = txt.split("");
@@ -186,7 +223,7 @@
         for (var t = 0; t < len; t++) {
             
             var entry = explodedtext[t];
-
+    
             if ((stage == 0) && (entry == "<")) { // html opening tag?
                 ready = true;
                 stage++;
@@ -201,28 +238,28 @@
                 stage = 0;
                 ready = false; // wait 1 iteration to purge the buffer of any tags
             }
-
+    
             if((stage==0) && ready){
                 prevInside = insideVariable;
-
+    
                 if (!insideVariable) {
-                    if (isLowercase(entry)) {
+                    if (this.isLowercase(entry)) {
                         outsideVariable = true;
                     }
-                    if (!isLetter(entry)) {
+                    if (!this.isLetter(entry)) {
                         outsideVariable = false;
                     }
                 }
-
+    
                 if (!outsideVariable) {
-                    if (isUppercase(entry)) {
+                    if (this.isUppercase(entry)) {
                         insideVariable = true;
                     }
-                    if (!isLetter(entry) && isNaN(entry)) {
+                    if (!this.isLetter(entry) && isNaN(entry)) {
                         insideVariable = false;
                     }
                 }
-
+    
                 if ( (insideVariable != prevInside) ) { 
                     if (!prevInside ) {
                         entry = "<e2var>" + entry;
@@ -241,56 +278,41 @@
             }
             explodedtext[t] = entry;
             ready = stage==0;
-
+    
         }
         txt = explodedtext.join("");
         return txt;
-    }
+    },
 
-    const keywords = [
-        "for",
-        "if",
-        "while",
-        "else",
-        "break",
-        "local",
-        "function",
-        "continue",
-        "return",
-        "try",
-        "throw",
-        "catch"
-    ]
-
-    let highlightKeywords = function (txt) {
-        txt = txt.replace(/(?<!\<.*?)foreach(?!\>.*?)/, "___FOREACH"); // for and foreach overlap
-        for (const keyword of keywords) {
-            let matcher = new RegExp(`(?<!\\<.*?)${keyword}(?!\\>.*?)`,"g"); // cursed regex, doesn't match keywords inside other tags
-            txt = txt.replace(matcher, `<e2key>${keyword}</e2key>`);
+    highlightKeywords(txt){
+        txt = replaceIgnoreTags(txt, /foreach/, () => "___FOREACH"); // for and foreach overlap
+        for (const keyword of this.keywords) {
+            txt = replaceIgnoreTags(txt, new RegExp(keyword), () => "___FOREACH"); // for and foreach overlap
         }
         txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
         return txt
     }
 
-    /**
-     * Apply E2 Syntax Highlighting to an element's contents
-     * @param {Element} elem 
-     * @returns 
-     */
-    function e2_syntax_highlight(elem) {
-        let txt = elem.innerText; // innerhtml will break some characters
-        txt = txt.replaceAll("<","\u1000")
-        txt = txt.replaceAll(">","\u1001")
-        txt = highlightComments(txt);
-        txt = highlightStrings(txt);
-        txt = highlightDirectives(txt);
-        txt = highlightTypes(txt);
-        txt = highlightVariables(txt);
-        txt = highlightKeywords(txt);
-        txt = highlightMulti(txt); // has to be last
-        txt = txt.replaceAll("\u1000","&lt;")
-        txt = txt.replaceAll("\u1001","&gt;")
-        elem.innerHTML = txt;
-    }
-
 }
+
+/**
+ * Apply E2 Syntax Highlighting to an element's contents
+ * @param {Element} elem 
+ * @returns 
+ */
+function e2_syntax_highlight(elem) {
+    let txt = elem.innerText; // innerhtml will break some characters
+    txt = txt.replaceAll("<","\u1000") // use weird bullshit sentinels we can replace at the end
+    txt = txt.replaceAll(">","\u1001")
+    txt = E2SyntaxHighlighter.highlightComments(txt);
+    txt = E2SyntaxHighlighter.highlightStrings(txt);
+    txt = E2SyntaxHighlighter.highlightDirectives(txt);
+    txt = E2SyntaxHighlighter.highlightTypes(txt);
+    txt = E2SyntaxHighlighter.highlightVariables(txt);
+    txt = E2SyntaxHighlighter.highlightKeywords(txt);
+    txt = E2SyntaxHighlighter.highlightMulti(txt); // has to be last
+    txt = txt.replaceAll("\u1000","&lt;")
+    txt = txt.replaceAll("\u1001","&gt;")
+    elem.innerHTML = txt;
+}
+
