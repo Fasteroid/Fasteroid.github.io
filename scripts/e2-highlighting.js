@@ -287,7 +287,7 @@ const E2SyntaxHighlighter = {
     highlightKeywords(txt){
         txt = replaceIgnoreTags(txt, /foreach/, () => "___FOREACH"); // for and foreach overlap
         for (const keyword of this.keywords) {
-            txt = replaceIgnoreTags(txt, new RegExp(keyword), () => "___FOREACH"); // for and foreach overlap
+            txt = replaceIgnoreTags(txt, new RegExp(keyword), () => `<e2key>keyword</e2key>`); // for and foreach overlap
         }
         txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
         return txt
