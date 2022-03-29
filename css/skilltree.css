@@ -23,7 +23,6 @@
 }
   
 .node > * {
-
     width: 100%;
     height: 100%;
 
@@ -43,6 +42,8 @@
 }
 
 .node {
+    will-change: top, left;
+
     height: calc( min(1.2in, 12vw) );
     width: calc( min(1.2in, 12vw) );
     font-family: Roboto;
