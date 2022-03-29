@@ -113,8 +113,8 @@ function createNodes(){
     .appendLine("A constant source of frustration.").bias=2
 
     new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
-    .appendLine("The 3D multipurpose program with a brutal learning curve.")
     .appendLine("Used alongside other programs to customize my VRChat avatar.")
+    .appendLine("A constant source of frustration.")
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
@@ -234,9 +234,6 @@ class TreeNode {
         this.active = false;
         this.mass = 1.5;
         this.bias = 0;
-        this.ox = this.x
-        this.oy = this.y
-        this.canMouse = true;
 
         if( !NodeGroups[group] ){
             NodeGroups[group] = [];
@@ -265,18 +262,8 @@ class TreeNode {
             ChildNodes.push(this);
             let self = this;
             this.html.addEventListener("mouseover",() => {
-                if( self.canMouse ){
-                    self.dy = self.dy - 5
-                    self.canMouse = false;
-                    setTimeout(() => {self.canMouse = true}, 100)
-                }
-            });
-            this.html.addEventListener("mouseout",() => {
-                if( self.canMouse ){
-                    self.canMouse = false;
-                    setTimeout(() => {self.canMouse = true}, 100)
-                }
-            });
+                self.dy = self.dy - 2
+            })
         }
         else{
             RootNodes.push(this);
@@ -395,15 +382,8 @@ class TreeNode {
         a.x = a.x + a.dx
         a.y = a.y + a.dy
 
-        if( Math.abs(a.x-a.ox) > 0.5 ){
-            a.style.left = `${a.x}px`
-            a.ox = a.x
-        }
-
-        if( Math.abs(a.y-a.oy) > 0.5 ){
-            a.style.top = `${a.y}px`
-            a.oy = a.y
-        }
+        a.style.left = `${a.x}px`
+        a.style.top = `${a.y}px`
     }
 }
 
