@@ -20,7 +20,7 @@ function createNodes(){
 
     new TreeNode(1,"LEGO Technic","lego",["ENGINEERING"])
     .appendLine("The bricks with holes that put functionality over beauty.")
-    .appendLine("Used and abused hard during childhood.");
+    .appendLine("Used and abused hard during childhood.").mass = 0
 
     new TreeNode(1,"LEGO Mindstorms","mindstorms",["COMPUTER SCIENCE", "LEGO Technic"])
     .appendLine("Simple block-style programming for LEGO robots.")
@@ -36,11 +36,13 @@ function createNodes(){
 
     new TreeNode(1,"Woodworking","woodworking",["ENGINEERING"])
     .appendLine("Officially picked up in 8th grade.")
-    .appendLine("I can use a variety of woodshop tools safely.");
+    .appendLine("I can use a variety of woodshop tools safely.")
+
 
     new TreeNode(2,"Audacity","audacity",["Percussion"])
     .appendLine("Does audio & waveform editing.")
-    .appendLine("I'm capable of making song mashups that aren't actually terrible.");
+    .appendLine("I'm capable of making song mashups that aren't actually terrible.")
+    .bias = 2
 
     new TreeNode(1,"Adobe Photoshop","photoshop",["AUDIO & VISUALS"])
     .appendLine("Edits images in almost any way imaginable.")
@@ -48,7 +50,7 @@ function createNodes(){
 
     new TreeNode(3,"Expression 2","expression2",["Redstone"])
     .appendLine("My first true coding language.")
-    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 1
+    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2
 
     new TreeNode(2,"Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
@@ -80,7 +82,8 @@ function createNodes(){
 
     new TreeNode(5,"Java","java",["Code.org JavaScript","C"])
     .appendLine("Learned during AP Computer Science A.")
-    .appendLine("I used this to extend my Discord relay to a Minecraft server.");
+    .appendLine("I used this to extend my Discord relay to a Minecraft server.")
+    .mass = 1
 
     new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
     .appendLine("A C-style language simplified enough for an amateur to pick up.")
@@ -88,7 +91,7 @@ function createNodes(){
 
     new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
-    .appendLine("Haven't mastered it, but I know the core concepts.").bias=1
+    .appendLine("Haven't mastered it, but I know the core concepts.").mass = 2
 
     new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
@@ -113,8 +116,9 @@ function createNodes(){
     .appendLine("A constant source of frustration.").bias=2
 
     new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
+    .appendLine("The 3D multipurpose program with a brutal learning curve")
     .appendLine("Used alongside other programs to customize my VRChat avatar.")
-    .appendLine("A constant source of frustration.")
+    .mass = 0
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
@@ -132,8 +136,8 @@ const LineContainer = document.querySelector(".line-container")
 const NODE_DISTANCE = 1.2;
 const NODE_PADDING = 1.2;
 
-let computedNodeDistance = 120;
-let computedNodePadding = 120;
+let Distance = 120;
+let Padding = 120;
 
 let Nodes = {};
 let RootNodes = [];
@@ -177,6 +181,7 @@ class TreeLine {
         this.startNode = null;
         this.endNode = null;
         this.waiting = false;
+        this.render = this.renderWaiting
 
         Lines.push(this);
     }
@@ -186,15 +191,18 @@ class TreeLine {
         this.endNode = Nodes[this.end];
     }
 
-    render(){
-
+    renderWaiting(){
         if( this.waiting ){
-            if( distance(this.startNode.x,this.startNode.y,this.endNode.x,this.endNode.y) < computedNodeDistance * 2.5 ){
+            if( distance(this.startNode.x,this.startNode.y,this.endNode.x,this.endNode.y) < Distance * 2.5 ){
                 this.inner.classList.add("treeline");
                 this.waiting = false;
+                this.render = this.renderNormal
             }
         }
+        this.renderNormal()
+    }
 
+    renderNormal(){
         this.inner.setAttribute('x1',this.startNode.x);
         this.inner.setAttribute('y1',this.startNode.y);
         this.inner.setAttribute('x2',this.endNode.x);
@@ -217,27 +225,23 @@ class TreeNode {
      * @param {Array<String>} parents - parent node names
      */
     constructor(group,name,css,parents,x){
-        let self = this; // might need
 
         alternator = -alternator;
 
-        this.parentNames = parents;
-        this.x = NodeContainer.clientWidth/2;
-        this.y = 30 - group * 20;
-        this.dx = 5 * alternator;
-        this.dy = NodeContainer.clientHeight * 0.01 * group;
         this.lines = [];
         this.parents = [];
+
+        this.parentNames = parents;
         this.name = name;
         this.group = group
         this.desc = "";
+
         this.active = false;
         this.mass = 1.5;
         this.bias = 0;
+        this.canMouse = true;
 
-        if( !NodeGroups[group] ){
-            NodeGroups[group] = [];
-        }
+        if( !NodeGroups[group] ) NodeGroups[group] = [];
         NodeGroups[group].push(this)
 
         this.html = TEMPLATE_NODE.cloneNode(true);
@@ -249,9 +253,8 @@ class TreeNode {
         this.html.id = "";
         this.html.classList.add(css)
 
-        if(css == "static"){
-            this.html.querySelector(".back").remove();
-        }
+        if(css == "static") this.html.querySelector(".back").remove();
+
 
         this.style = this.html.style
 
@@ -262,8 +265,22 @@ class TreeNode {
             ChildNodes.push(this);
             let self = this;
             this.html.addEventListener("mouseover",() => {
-                self.dy = self.dy - 2
-            })
+                if( self.canMouse ){
+                    self.dy = self.dy - 6
+                    self.canMouse = false;
+                    setTimeout(() => {self.canMouse = true}, 100)
+                }
+            });
+            this.html.addEventListener("mouseout",() => {
+                if( self.canMouse ){
+                    self.canMouse = false;
+                    setTimeout(() => {self.canMouse = true}, 100)
+                }
+            });
+            this.x = NodeContainer.clientWidth/2;
+            this.y = 10 - group * 100;
+            this.dx = 5 * alternator;
+            this.dy = 10 * group;
         }
         else{
             RootNodes.push(this);
@@ -283,6 +300,7 @@ class TreeNode {
     }
 
     cacheParents(){
+        this.parents = [];
         for( let nodeName of this.parentNames ){
             this.parents.push(Nodes[nodeName]);
         }
@@ -307,83 +325,81 @@ class TreeNode {
             line.activate();
         }
         this.active = true;
-        this.render();
     }
 
-    compute(){
+    doElasticConstraint(that){
+        const dist = distance(this.x,this.y,that.x,that.y) + 0.1;
+        const nx = (that.x-this.x)/dist;
+        const ny = (that.y-this.y)/dist;
+        const fac = clamp((dist - Distance)*0.05,-4,10);
+        this.applyForce(nx*fac,ny*fac);
+        that.applyForce(-nx*fac/this.group,-ny*fac/this.group);
+    }
+
+    doRepulsionConstraint(that){
+        const dist = distance(this.x,this.y,that.x,that.y)+0.1; // todo: don't compute this twice since we may find it in the above func
+        const nx = (that.x-this.x)/dist;
+        const ny = (that.y-this.y)/dist;
+        const fac = clamp((dist - Distance*1.2)*0.05,-2,0);
+        this.applyForce(nx*fac,ny*fac);
+        that.applyForce(-nx*fac,-ny*fac);
+    }
+
+    compute1(){
 
         if(!this.active) return;
 
-        let a = this;
+        this.applyForce(this.bias,this.mass)
 
-        a.applyForce(a.bias,a.mass)
-
-        for( let b of a.parents ){ // elastic constraints
-            if(!b.active) continue;
-            // stolen from legacy project:
-            // https://studio.code.org/projects/applab/ySRJTGoEPT4hfcIIyJLccn2yiPnzrM6ECTVHjl-uCFg/view
-            let dist = distance(a.x,a.y,b.x,b.y) + 0.01;
-            let nx = (b.x-a.x)/dist;
-            let ny = (b.y-a.y)/dist;
-            let fac = clamp((dist - computedNodeDistance)*0.05,-3,10);
-            a.applyForce(nx*fac,ny*fac);
-            b.applyForce(-nx*fac/a.group,-ny*fac/a.group);
+        for( let that of this.parents ){ // elastic constraints
+            if(!that.active) continue;
+            this.doElasticConstraint(that);
         }
 
-        for( let b of AllNodes ){ // repulsive forces
-            if(!b.active) continue;
-            let dist = distance(a.x,a.y,b.x,b.y);
-            if(dist < 1) { // any nodes that get stuck this close probably need help
-                a.applyForce(-1,0);
-                b.applyForce(1,0);
-                continue;
-            }
-            let nx = (b.x-a.x)/dist;
-            let ny = (b.y-a.y)/dist;
-            let fac = clamp((dist - computedNodeDistance*1.2)*0.05,-3,0);
-            a.applyForce(nx*fac,ny*fac);
+        for( let that of AllNodes ){ // repulsive forces
+            if(!that.active) continue;
+            this.doRepulsionConstraint(that);
         }
 
-        if( a.x < computedNodePadding ){
-            a.applyForce( ((computedNodePadding - a.x)**2)*0.0001, 0 )
+        if( this.x < Padding ){
+            this.applyForce( ((Padding - this.x)**2)*0.00005, 0 )
         }
 
-        if( a.x > NodeContainer.clientWidth - computedNodePadding ){
-            a.applyForce( -((NodeContainer.clientWidth - computedNodePadding - a.x)**2)*0.00005, 0 )
+        if( this.x > NodeContainer.clientWidth - Padding ){
+            this.applyForce( -((NodeContainer.clientWidth - Padding - this.x)**2)*0.00005, 0 )
         }
 
-        if( a.y < computedNodePadding ){
-            a.applyForce( 0, ((computedNodePadding - a.y)**2)*0.0001 )
+        if( this.y < Padding ){
+            this.applyForce( 0, ((Padding - this.y)**2)*0.0001 )
         }
 
-        if( a.y > NodeContainer.clientHeight - computedNodePadding ){
-            a.applyForce( 0, -((NodeContainer.clientHeight - computedNodePadding - a.y)**2)*0.00005 )
+        if( this.y > NodeContainer.clientHeight - Padding ){
+            this.applyForce( 0, -((NodeContainer.clientHeight - Padding - this.y)**2)*0.0001 )
         }
 
-        a.x = clamp(a.x,0,NodeContainer.clientWidth)
-        a.y = clamp(a.y,0,NodeContainer.clientHeight)
+        this.x = clamp(this.x,0,NodeContainer.clientWidth)
+        this.y = clamp(this.y,0,NodeContainer.clientHeight)
 
         // NaN protection in case I missed any
-        if( a.x != a.x ) a.x = 0;
-        if( a.y != a.y ) a.y = 0;
-        if( a.dx != a.dx ) a.dx = 0;
-        if( a.dy != a.dy ) a.dy = 0;
+        if( this.x != this.x ) this.x = 0;
+        if( this.y != this.y ) this.y = 0;
+        if( this.dx != this.dx ) this.dx = 0;
+        if( this.dy != this.dy ) this.dy = 0;
 
+    }
+
+    compute2(){
+        if(!this.active) return;
+        this.dx *= 0.9
+        this.dy *= 0.9
+
+        this.x = this.x + this.dx
+        this.y = this.y + this.dy
     }
 
     render(){
-        if(!this.active) return;
-
-        let a = this;
-
-        a.dx *= 0.9
-        a.dy *= 0.9
-
-        a.x = a.x + a.dx
-        a.y = a.y + a.dy
-
-        a.style.left = `${a.x}px`
-        a.style.top = `${a.y}px`
+        this.style.left = `${this.x}px`
+        this.style.top = `${this.y}px`
     }
 }
 
@@ -391,15 +407,22 @@ createNodes();
 prepLines();
 prepNodes();
 
-
-setInterval( () => {
-    for( let node of ChildNodes ){
-        node.compute();
-    }
+function frame(){
     for( let node of ChildNodes ){
         node.render();
     }
     renderLines();
+}
+
+
+setInterval( () => {
+    for( let node of ChildNodes ){
+        node.compute1();
+    }
+    for( let node of ChildNodes ){
+        node.compute2();
+    }
+    requestAnimationFrame(frame);
 } , 16)
 
 let nolag = false;
@@ -407,8 +430,8 @@ function handleResize(){
     if(nolag){ return }
     nolag = true;
     setTimeout(()=>{nolag=false},16)
-    computedNodeDistance = NODE_DISTANCE * RootNodes[0].html.clientWidth
-    computedNodePadding = NODE_PADDING * RootNodes[0].html.clientWidth
+    Distance = NODE_DISTANCE * RootNodes[0].html.clientWidth
+    Padding = NODE_PADDING * RootNodes[0].html.clientWidth
     for( let node of ChildNodes ){
         node.x = (node.x/oldW)*NodeContainer.clientWidth;
         node.y = (node.y/oldH)*NodeContainer.clientHeight;
