@@ -28,8 +28,7 @@ function createNodes(){
 
     new TreeNode(1,"Percussion","drums",["AUDIO & VISUALS"])
     .appendLine("A keeper of time and drummer of drums from 4th to 8th grade.")
-    .appendLine("I can keep precise time up to around 770BPM.")
-
+    .appendLine("I can keep precise time up to around 770BPM.");
     
     new TreeNode(2,"Redstone","redstone",["LEGO Mindstorms"])
     .appendLine("Laid the foundations for my understanding of boolean logic.")
@@ -37,11 +36,11 @@ function createNodes(){
 
     new TreeNode(1,"Woodworking","woodworking",["ENGINEERING"])
     .appendLine("Officially picked up in 8th grade.")
-    .appendLine("I can use a variety of woodshop tools safely.")
+    .appendLine("I can use a variety of woodshop tools safely.");
 
     new TreeNode(2,"Audacity","audacity",["Percussion"])
     .appendLine("Does audio & waveform editing.")
-    .appendLine("I'm capable of making song mashups that aren't actually terrible.")
+    .appendLine("I'm capable of making song mashups that aren't actually terrible.");
 
     new TreeNode(1,"Adobe Photoshop","photoshop",["AUDIO & VISUALS"])
     .appendLine("Edits images in almost any way imaginable.")
@@ -49,22 +48,19 @@ function createNodes(){
 
     new TreeNode(3,"Expression 2","expression2",["Redstone"])
     .appendLine("My first true coding language.")
-    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.")
-
-    new TreeNode(2,"GIMP","gimp",["Adobe Photoshop"])
-    .appendLine("The GNU Image Manipulation Program.")
-    .appendLine("Open-source, free, and 9 times out of 10 better than photoshop.")
-    .bias = -2
+    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 1
 
     new TreeNode(2,"Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
-    .appendLine("Most of these nodes use vector graphics.")
-    .bias = 2;
+    .appendLine("Most of these nodes use vector graphics.").bias = 1;
+
+    new TreeNode(2,"GIMP","gimp",["Adobe Photoshop"])
+    .appendLine("The GNU Image Manipulation Program.")
+    .appendLine("Open-source, free, and 9 times out of 10 better than photoshop.").bias = -1;
 
     new TreeNode(2,"Autodesk<br>123D Design","autodesk",["Woodworking"])
     .appendLine("The deprecated predecessor to<br>Fusion 360.")
-    .appendLine("Immensely powerful, easy to use, and free.")
-    .bias = -2
+    .appendLine("Immensely powerful, easy to use, and free.");
 
     new TreeNode(3,"3D Printing","printing",["Autodesk<br>123D Design"])
     .appendLine("Abused so badly in Odyssey of the Mind that a new policy was implemented to nerf my 3D printing.")
@@ -92,23 +88,21 @@ function createNodes(){
 
     new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
-    .appendLine("Haven't mastered it, but I know the core concepts.").bias = 0.8;
+    .appendLine("Haven't mastered it, but I know the core concepts.").bias=1
 
     new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
-    .appendLine("I designed a Discord relay for my Garry's Mod server with it.")
-    .dx = -100
+    .appendLine("I designed a Discord relay for my Garry's Mod server with it.");
 
-    new TreeNode(5,"Vanilla JavaScript","js",["NodeJS"])
+    new TreeNode(4,"Vanilla JavaScript","js",["NodeJS"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
     .appendLine("I have yet to witness where frameworks would be helpful.")
 
-    let lua = new TreeNode(2,"Lua","lua",["Expression 2"])
+    let lua = new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
     .appendLine("I learned the variant used in Garry's Mod.");
-    lua.bias = -3
-    lua.mass = 1;
-    lua.dx = 0;
+    lua.bias = -3;
+    lua.mass = 3;
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
@@ -118,14 +112,13 @@ function createNodes(){
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
     .appendLine("A constant source of frustration.").bias=2
 
-    new TreeNode(2,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
+    new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve.")
     .appendLine("Used alongside other programs to customize my VRChat avatar.")
-    .bias = 2
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
-    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass = 4;
+    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4
 
     for (let n = 3; n < AllNodes.length; n++) {
         setTimeout(() => AllNodes[n].activate(),n*50)
@@ -163,7 +156,7 @@ function prepNodes(){
 
 function renderLines(){
     for( let line of Lines ){
-        line.render(0)
+        line.render()
     }
 }
 
@@ -232,17 +225,18 @@ class TreeNode {
         this.x = NodeContainer.clientWidth/2;
         this.y = 30 - group * 20;
         this.dx = 5 * alternator;
-        this.dy = NodeContainer.clientHeight * 0.02 * group;
+        this.dy = NodeContainer.clientHeight * 0.01 * group;
         this.lines = [];
         this.parents = [];
         this.name = name;
         this.group = group
         this.desc = "";
         this.active = false;
-        this.mass = 2;
+        this.mass = 1.5;
         this.bias = 0;
+        this.ox = this.x
+        this.oy = this.y
         this.canMouse = true;
-        this.forcemul = 1;
 
         if( !NodeGroups[group] ){
             NodeGroups[group] = [];
@@ -316,8 +310,8 @@ class TreeNode {
 
     applyForce(x,y){
         if( this.xrel ) return;
-        this.dx = this.dx + x * this.forcemul;
-        this.dy = this.dy + y * this.forcemul;
+        this.dx = this.dx + x;
+        this.dy = this.dy + y;
     }
 
     activate(){
@@ -326,41 +320,45 @@ class TreeNode {
             line.activate();
         }
         this.active = true;
+        this.render();
     }
 
-    compute(time){
+    compute(){
 
         if(!this.active) return;
 
-        const a = this;
+        let a = this;
 
-        this.forcemul = time * 0.05;
         a.applyForce(a.bias,a.mass)
 
         for( let b of a.parents ){ // elastic constraints
             if(!b.active) continue;
             // stolen from legacy project:
             // https://studio.code.org/projects/applab/ySRJTGoEPT4hfcIIyJLccn2yiPnzrM6ECTVHjl-uCFg/view
-            const dist = distance(a.x,a.y,b.x,b.y) + 0.1;
-            const nx = (b.x-a.x)/dist;
-            const ny = (b.y-a.y)/dist;
-            let fac = clamp((dist - computedNodeDistance)*0.06,-3,10);
+            let dist = distance(a.x,a.y,b.x,b.y) + 0.01;
+            let nx = (b.x-a.x)/dist;
+            let ny = (b.y-a.y)/dist;
+            let fac = clamp((dist - computedNodeDistance)*0.05,-3,10);
             a.applyForce(nx*fac,ny*fac);
-            b.applyForce(-nx*fac,Math.min(-ny*fac,0));
+            b.applyForce(-nx*fac/a.group,-ny*fac/a.group);
         }
 
         for( let b of AllNodes ){ // repulsive forces
             if(!b.active) continue;
-            const dist = distance(a.x,a.y,b.x,b.y) + 0.1;
-            const nx = (b.x-a.x)/dist;
-            const ny = (b.y-a.y)/dist;
-            const fac = clamp((dist - computedNodeDistance*1.2)*0.03,-2,0);
+            let dist = distance(a.x,a.y,b.x,b.y);
+            if(dist < 1) { // any nodes that get stuck this close probably need help
+                a.applyForce(-1,0);
+                b.applyForce(1,0);
+                continue;
+            }
+            let nx = (b.x-a.x)/dist;
+            let ny = (b.y-a.y)/dist;
+            let fac = clamp((dist - computedNodeDistance*1.2)*0.05,-3,0);
             a.applyForce(nx*fac,ny*fac);
-            b.applyForce(-nx*fac,-ny*fac);
         }
 
         if( a.x < computedNodePadding ){
-            a.applyForce( ((computedNodePadding - a.x)**2)*0.00005, 0 )
+            a.applyForce( ((computedNodePadding - a.x)**2)*0.0001, 0 )
         }
 
         if( a.x > NodeContainer.clientWidth - computedNodePadding ){
@@ -368,7 +366,7 @@ class TreeNode {
         }
 
         if( a.y < computedNodePadding ){
-            a.applyForce( 0, ((computedNodePadding - a.y)**2)*0.00005 )
+            a.applyForce( 0, ((computedNodePadding - a.y)**2)*0.0001 )
         }
 
         if( a.y > NodeContainer.clientHeight - computedNodePadding ){
@@ -379,27 +377,33 @@ class TreeNode {
         a.y = clamp(a.y,0,NodeContainer.clientHeight)
 
         // NaN protection in case I missed any
+        if( a.x != a.x ) a.x = 0;
+        if( a.y != a.y ) a.y = 0;
         if( a.dx != a.dx ) a.dx = 0;
         if( a.dy != a.dy ) a.dy = 0;
 
     }
 
-    render(time){
+    render(){
         if(!this.active) return;
 
-        time*=0.1
+        let a = this;
 
-        const a = this;
-        const dragmul = Math.pow(0.85,time)
+        a.dx *= 0.9
+        a.dy *= 0.9
 
-        a.dx *= dragmul
-        a.dy *= dragmul
+        a.x = a.x + a.dx
+        a.y = a.y + a.dy
 
-        a.x = a.x + a.dx * time
-        a.y = a.y + a.dy * time
+        if( Math.abs(a.x-a.ox) > 0.5 ){
+            a.style.left = `${a.x}px`
+            a.ox = a.x
+        }
 
-        a.style.left = `${a.x}px`
-        a.style.top = `${a.y}px`
+        if( Math.abs(a.y-a.oy) > 0.5 ){
+            a.style.top = `${a.y}px`
+            a.oy = a.y
+        }
     }
 }
 
@@ -407,20 +411,16 @@ createNodes();
 prepLines();
 prepNodes();
 
-let t = 0
-function simulate(time){
-    const timestep = Math.min(time - t,30);
+
+setInterval( () => {
     for( let node of ChildNodes ){
-        node.compute(timestep);
+        node.compute();
     }
     for( let node of ChildNodes ){
-        node.render(timestep);
+        node.render();
     }
-    t = time;
     renderLines();
-    requestAnimationFrame(simulate);
-}
-requestAnimationFrame(simulate)
+} , 16)
 
 let nolag = false;
 function handleResize(){
@@ -432,10 +432,11 @@ function handleResize(){
     for( let node of ChildNodes ){
         node.x = (node.x/oldW)*NodeContainer.clientWidth;
         node.y = (node.y/oldH)*NodeContainer.clientHeight;
+        node.render();
     }  
     for( let node of RootNodes ){
         node.x = node.xrel * NodeContainer.clientWidth
-        node.render(0);
+        node.render();
     }  
     oldW = NodeContainer.clientWidth
     oldH = NodeContainer.clientHeight
