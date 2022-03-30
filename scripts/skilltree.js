@@ -38,11 +38,9 @@ function createNodes(){
     .appendLine("Officially picked up in 8th grade.")
     .appendLine("I can use a variety of woodshop tools safely.")
 
-
     new TreeNode(2,"Audacity","audacity",["Percussion"])
     .appendLine("Does audio & waveform editing.")
     .appendLine("I'm capable of making song mashups that aren't actually terrible.")
-    .bias = 2
 
     new TreeNode(1,"Adobe Photoshop","photoshop",["AUDIO & VISUALS"])
     .appendLine("Edits images in almost any way imaginable.")
