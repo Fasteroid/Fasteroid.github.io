@@ -81,15 +81,12 @@ function createNodes(){
     new TreeNode(5,"Java","java",["Code.org JavaScript","C"])
     .appendLine("Learned during AP Computer Science A.")
     .appendLine("I used this to extend my Discord relay to a Minecraft server.")
-    .mass = 1
-
-    new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
-    .appendLine("A C-style language simplified enough for an amateur to pick up.")
-    .appendLine("Used in Odyssey of the Mind in 2019 and helped us place second at world finals!");
+    .bias = 1
 
     new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
-    .appendLine("Haven't mastered it, but I know the core concepts.").mass = 2
+    .appendLine("Haven't mastered it, but I know the core concepts.")
+    .bias = 1
 
     new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
@@ -102,8 +99,8 @@ function createNodes(){
     let lua = new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
     .appendLine("I learned the variant used in Garry's Mod.");
-    lua.bias = -3;
-    lua.mass = 3;
+    lua.bias = -1;
+    lua.mass = 1;
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
@@ -121,6 +118,10 @@ function createNodes(){
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4
+
+    new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
+    .appendLine("A C-style language simplified enough for an amateur to pick up.")
+    .appendLine("Used in Odyssey of the Mind in 2019 and helped us place second at world finals!");
 
     for (let n = 3; n < AllNodes.length; n++) {
         setTimeout(() => AllNodes[n].activate(),n*50)
@@ -421,13 +422,13 @@ setInterval( () => {
         node.compute2();
     }
     requestAnimationFrame(frame);
+    nolag = false;
 } , 16)
 
 let nolag = false;
 function handleResize(){
     if(nolag){ return }
     nolag = true;
-    setTimeout(()=>{nolag=false},16)
     Distance = NODE_DISTANCE * RootNodes[0].html.clientWidth
     Padding = NODE_PADDING * RootNodes[0].html.clientWidth
     for( let node of ChildNodes ){
