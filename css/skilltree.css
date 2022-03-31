@@ -32,7 +32,7 @@
 
     position: absolute;
     top: 0; left: 0;
-    padding: 0 5px 0 5px;
+    padding: 5px;
     box-sizing: border-box;
 
     display: flex;
@@ -58,7 +58,7 @@
     position: absolute;
     filter: drop-shadow(0 0 6px #00000071);
     box-sizing: border-box;
-    transform: translate(-50%,-50%);
+    transform: translate(calc(-50% - .5px),calc(-50% - .5px));
 
     transition: opacity 0.1s;
 }

@@ -395,8 +395,8 @@ class TreeNode {
     }
 
     render(){
-        this.style.left = `${this.x}px`
-        this.style.top = `${this.y}px`
+        this.style.left = `${Math.round(this.x)}px`
+        this.style.top = `${Math.round(this.y)}px`
     }
 }
 
