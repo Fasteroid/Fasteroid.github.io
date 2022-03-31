@@ -275,7 +275,7 @@ class TreeNode {
                 }
             });
             this.x = NodeContainer.clientWidth/2;
-            this.y = 10 - group * 100;
+            this.y = 30 - group * 100;
             this.dx = 5 * alternator;
             this.dy = 10 * group;
         }
@@ -283,7 +283,7 @@ class TreeNode {
             RootNodes.push(this);
             this.xrel = x;
             this.x = NodeContainer.clientWidth * x;
-            this.y = 0
+            this.y = 20
             this.dx = 0
             this.dy = 0;
         }
