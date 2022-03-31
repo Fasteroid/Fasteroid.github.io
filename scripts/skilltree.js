@@ -46,11 +46,11 @@ function createNodes(){
     .appendLine("Edits images in almost any way imaginable.")
     .appendLine("Can create from scratch too, but illustrator is usually better for that.");
 
-    new TreeNode(3,"Expression 2","expression2",["Redstone"])
+    new TreeNode(2,"Expression 2","expression2",["Redstone"])
     .appendLine("My first true coding language.")
     .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2
 
-    new TreeNode(2,"Adobe Illustrator","illustrator",["Adobe Photoshop"])
+    new TreeNode(3,"Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
     .appendLine("Most of these nodes use vector graphics.").bias = 1;
 
@@ -62,7 +62,7 @@ function createNodes(){
     .appendLine("The deprecated predecessor to<br>Fusion 360.")
     .appendLine("Immensely powerful, easy to use, and free.");
 
-    new TreeNode(3,"3D Printing","printing",["Autodesk<br>123D Design"])
+    new TreeNode(4,"3D Printing","printing",["Autodesk<br>123D Design"])
     .appendLine("Abused so badly in Odyssey of the Mind that a new policy was implemented to nerf my 3D printing.")
     .appendLine("The nerf was a feeble attempt to stop me.");
 
@@ -78,17 +78,19 @@ function createNodes(){
     .appendLine("For compiling audio and video clips.")
     .appendLine("I used this my senior year of high school for editing the school's news show.");
 
-    new TreeNode(5,"Java","java",["Code.org JavaScript","C"])
+    new TreeNode(3,"Java","java",["Code.org JavaScript","C"])
     .appendLine("Learned during AP Computer Science A.")
     .appendLine("I used this to extend my Discord relay to a Minecraft server.")
-    .bias = 1
 
-    new TreeNode(4,"C","c",["Arduino"])
+    new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
+    .appendLine("A C-style language simplified enough for an amateur to pick up.")
+    .appendLine("Used in Odyssey of the Mind in 2019 and helped us place second at world finals!");
+
+    new TreeNode(5,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
     .appendLine("Haven't mastered it, but I know the core concepts.")
-    .bias = 1
 
-    new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript"])
+    new TreeNode(5,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
     .appendLine("I designed a Discord relay for my Garry's Mod server with it.");
 
@@ -96,11 +98,11 @@ function createNodes(){
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
     .appendLine("I have yet to witness where frameworks would be helpful.")
 
-    let lua = new TreeNode(4,"Lua","lua",["Expression 2"])
+    new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
-    .appendLine("I learned the variant used in Garry's Mod.");
-    lua.bias = -1;
-    lua.mass = 1;
+    .appendLine("I learned the variant used in Garry's Mod.")
+    .dx = -70
+
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
@@ -119,10 +121,6 @@ function createNodes(){
     .appendLine("Desktop apps made by web developers!")
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4
 
-    new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
-    .appendLine("A C-style language simplified enough for an amateur to pick up.")
-    .appendLine("Used in Odyssey of the Mind in 2019 and helped us place second at world finals!");
-
     for (let n = 3; n < AllNodes.length; n++) {
         setTimeout(() => AllNodes[n].activate(),n*50)
     }
@@ -133,7 +131,7 @@ const TEMPLATE_NODE = document.querySelector("#template-node")
 const NodeContainer = document.querySelector(".node-container")
 const LineContainer = document.querySelector(".line-container")
 const NODE_DISTANCE = 1.2;
-const NODE_PADDING = 1.2;
+const NODE_PADDING = 1.3;
 
 let Distance = 120;
 let Padding = 120;
@@ -422,13 +420,13 @@ setInterval( () => {
         node.compute2();
     }
     requestAnimationFrame(frame);
-    nolag = false;
 } , 16)
 
 let nolag = false;
 function handleResize(){
     if(nolag){ return }
     nolag = true;
+    setTimeout(()=>{nolag=false},16)
     Distance = NODE_DISTANCE * RootNodes[0].html.clientWidth
     Padding = NODE_PADDING * RootNodes[0].html.clientWidth
     for( let node of ChildNodes ){
