@@ -1,18 +1,6 @@
 // the old skill tree was a mess
 // maybe this one will be better
 
-function distance2(x1,y1,x2,y2){
-    return (x1-x2)**2 + (y1-y2)**2
-}
-
-function distance(x1,y1,x2,y2){
-    return Math.sqrt( (x1-x2)**2 + (y1-y2)**2 )
-}
-
-function clamp(n,min,max){
-    return (n > max ? max : (n < min ? min : n))
-}
-
 function createNodes(){
     new TreeNode(0,"COMPUTER SCIENCE","static",false,0.15).activate();
     new TreeNode(0,"ENGINEERING","static",false,0.5).activate();
@@ -81,18 +69,20 @@ function createNodes(){
     new TreeNode(3,"Java","java",["Code.org JavaScript","C"])
     .appendLine("Learned during AP Computer Science A.")
     .appendLine("I used this to extend my Discord relay to a Minecraft server.")
+    .dx = 60;
 
-    new TreeNode(4,"Arduino","arduino",["Expression 2","3D Printing"])
+    new TreeNode(3,"Arduino","arduino",["Expression 2","3D Printing"])
     .appendLine("A C-style language simplified enough for an amateur to pick up.")
     .appendLine("Used in Odyssey of the Mind in 2019 and helped us place second at world finals!");
 
-    new TreeNode(5,"C","c",["Arduino"])
+    new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
     .appendLine("Haven't mastered it, but I know the core concepts.")
 
     new TreeNode(5,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
-    .appendLine("I designed a Discord relay for my Garry's Mod server with it.");
+    .appendLine("I designed a Discord relay for my Garry's Mod server with it.")
+    .dx = -100;
 
     new TreeNode(4,"Vanilla JavaScript","js",["NodeJS"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
@@ -102,7 +92,6 @@ function createNodes(){
     .appendLine("A common language of game scripting.")
     .appendLine("I learned the variant used in Garry's Mod.")
     .dx = -70
-
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
@@ -115,7 +104,6 @@ function createNodes(){
     new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
     .appendLine("Used alongside other programs to customize my VRChat avatar.")
-    .mass = 0
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
@@ -128,10 +116,13 @@ function createNodes(){
 }
 
 const TEMPLATE_NODE = document.querySelector("#template-node")
+const NODE_DISTANCE = 1.2;
+const NODE_PADDING = 1.4;
+
 const NodeContainer = document.querySelector(".node-container")
 const LineContainer = document.querySelector(".line-container")
-const NODE_DISTANCE = 1.2;
-const NODE_PADDING = 1.3;
+const ParallaxThing = document.querySelector(".grid")
+
 
 let Distance = 120;
 let Padding = 120;
@@ -142,6 +133,14 @@ let ChildNodes = [];
 let Lines = [];
 let NodeGroups = [];
 let AllNodes = [];
+
+function getPos(el) {
+    for (var lx=0, ly=0;
+         el != null;
+         lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
+    return {x: lx,y: ly};
+}
+let ContainerPos = {x:0, y:0}
 
 function prepLines(){
     for( let line of Lines ){
@@ -159,6 +158,18 @@ function renderLines(){
     for( let line of Lines ){
         line.render()
     }
+}
+
+function distance2(x1,y1,x2,y2){
+    return (x1-x2)**2 + (y1-y2)**2
+}
+
+function distance(x1,y1,x2,y2){
+    return Math.sqrt( (x1-x2)**2 + (y1-y2)**2 )
+}
+
+function clamp(n,min,max){
+    return (n > max ? max : (n < min ? min : n))
 }
 
 class TreeLine {
@@ -256,11 +267,14 @@ class TreeNode {
         this.style = this.html.style
 
         if(parents){
+            // make the lines
             for( let nodename of parents ){
                 this.lines.push( new TreeLine(name,nodename) )
             }
             ChildNodes.push(this);
             let self = this;
+            
+            // register events
             this.html.addEventListener("mouseover",() => {
                 if( self.canMouse ){
                     self.dy = self.dy - 6
@@ -274,6 +288,9 @@ class TreeNode {
                     setTimeout(() => {self.canMouse = true}, 100)
                 }
             });
+            this.html.addEventListener("mousedown",() => this.startDrag()) // closure because 'this' is horrible
+            this.html.addEventListener("touchstart",() => this.startDrag())
+            // setup position and starting vel
             this.x = NodeContainer.clientWidth/2;
             this.y = 30 - group * 100;
             this.dx = 5 * alternator;
@@ -296,6 +313,40 @@ class TreeNode {
         AllNodes.push(this)
     }
 
+    startDrag(){
+        this.listener = ((e)=>this.setPos(e))
+        this.html.classList.toggle("grabbed",true)
+        document.addEventListener("mousemove",this.listener) // mousemove on 
+        document.addEventListener("touchmove",this.listener) // mousemove on 
+    }
+
+    stopDrag(){
+        document.removeEventListener("mousemove",this.listener)
+        document.removeEventListener("touchmove",this.listener)
+        this.html.classList.toggle("grabbed",false)
+        this.listener = null;
+    }
+
+    setPos(e){
+        // thanks random blog: https://www.horuskol.net/blog/2020-08-15/drag-and-drop-elements-on-touch-devices/
+        if(e.clientX){
+            this.x = e.clientX - ContainerPos.x;
+            this.y = e.clientY - ContainerPos.y + window.scrollY;
+        }
+        else{ // touch event
+            this.x = e.changedTouches[0].clientX - ContainerPos.x;
+            this.y = e.changedTouches[0].clientY - ContainerPos.y + window.scrollY;
+        }
+        this.dx = 0;
+        this.dy = 0;
+    }
+
+    applyForce(x,y){
+        if( this.xrel ) return;
+        this.dx = this.dx + x;
+        this.dy = this.dy + y;
+    }
+
     cacheParents(){
         this.parents = [];
         for( let nodeName of this.parentNames ){
@@ -308,12 +359,6 @@ class TreeNode {
         this.desc = `${this.desc}${newline}${text}`
         this.html.querySelector(".back").innerHTML = this.desc;
         return this;
-    }
-
-    applyForce(x,y){
-        if( this.xrel ) return;
-        this.dx = this.dx + x;
-        this.dy = this.dy + y;
     }
 
     activate(){
@@ -329,8 +374,10 @@ class TreeNode {
         const nx = (that.x-this.x)/dist;
         const ny = (that.y-this.y)/dist;
         const fac = clamp((dist - Distance)*0.05,-4,10);
+        let fac2 = this.group
+        if(this.listener){fac2 = 1}
         this.applyForce(nx*fac,ny*fac);
-        that.applyForce(-nx*fac/this.group,-ny*fac/this.group);
+        that.applyForce(-nx*fac,-ny*fac/fac2);
     }
 
     doRepulsionConstraint(that){
@@ -367,11 +414,11 @@ class TreeNode {
         }
 
         if( this.y < Padding ){
-            this.applyForce( 0, ((Padding - this.y)**2)*0.0001 )
+            this.applyForce( 0, ((Padding - this.y)**2)*0.00005 )
         }
 
         if( this.y > NodeContainer.clientHeight - Padding ){
-            this.applyForce( 0, -((NodeContainer.clientHeight - Padding - this.y)**2)*0.0001 )
+            this.applyForce( 0, -((NodeContainer.clientHeight - Padding - this.y)**2)*0.00005 )
         }
 
         this.x = clamp(this.x,0,NodeContainer.clientWidth)
@@ -389,7 +436,7 @@ class TreeNode {
         if(!this.active) return;
         this.dx *= 0.9
         this.dy *= 0.9
-
+        if(this.listener) return;
         this.x = this.x + this.dx
         this.y = this.y + this.dy
     }
@@ -424,6 +471,8 @@ setInterval( () => {
 
 let nolag = false;
 function handleResize(){
+    console.log("resize")
+    ContainerPos = getPos(NodeContainer)
     if(nolag){ return }
     nolag = true;
     setTimeout(()=>{nolag=false},16)
@@ -445,7 +494,28 @@ function handleResize(){
 
 let oldW = NodeContainer.clientWidth
 let oldH = NodeContainer.clientHeight
-window.addEventListener('resize', () => {
+
+window.addEventListener("load",() => { // the fact I have to put this in here is really stupid
+    window.addEventListener('resize', () => {
+        handleResize();
+    })
     handleResize();
 })
-handleResize();
+
+
+document.addEventListener("mouseup",()=>{
+    for( let node of ChildNodes ){
+        node.stopDrag();
+    } 
+})
+
+document.addEventListener("touchend",()=>{
+    for( let node of ChildNodes ){
+        node.stopDrag();
+    } 
+})
+
+window.addEventListener("load",()=>{
+
+})
+

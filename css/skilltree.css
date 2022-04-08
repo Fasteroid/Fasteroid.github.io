@@ -12,12 +12,12 @@
 }
   
 .grid {
-    height: 15in;
+    height: calc( var(--node-size) * 12 + 0.7in );
     display: grid;
     place-items: left;
     grid-template-areas: "inner-div";
     padding: 0.7in;
-    background-image: url("/assets/grid.png")
+    background-image: url("/assets/grid.png");
 }
   
 .node::before {
@@ -46,6 +46,10 @@
 }
 
 .node {
+    user-select: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;
+
     height: calc( var(--node-size) );
     width: calc( var(--node-size) );
     font-family: Roboto;
@@ -56,11 +60,20 @@
     -webkit-perspective-origin: 50% 50%;
 
     position: absolute;
-    filter: drop-shadow(0 0 6px #00000071);
+    filter: drop-shadow(0 20px 6px #0000009f);
     box-sizing: border-box;
     transform: translate(calc(-50% - .5px),calc(-50% - .5px));
 
     transition: opacity 0.1s;
+}
+
+.node:not(.static){
+    cursor: grab;
+    touch-action: none;
+}
+
+.node.grabbed {
+    cursor: grabbing;
 }
 
 /* Front and back shading */
