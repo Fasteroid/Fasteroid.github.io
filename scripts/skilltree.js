@@ -8,7 +8,7 @@ function createNodes(){
 
     new TreeNode(1,"LEGO Technic","lego",["ENGINEERING"])
     .appendLine("The bricks with holes that put functionality over beauty.")
-    .appendLine("Used and abused hard during childhood.").mass = 0
+    .appendLine("Used and abused hard during childhood.").mass = 0;
 
     new TreeNode(1,"LEGO Mindstorms","mindstorms",["COMPUTER SCIENCE", "LEGO Technic"])
     .appendLine("Simple block-style programming for LEGO robots.")
@@ -24,11 +24,11 @@ function createNodes(){
 
     new TreeNode(1,"Woodworking","woodworking",["ENGINEERING"])
     .appendLine("Officially picked up in 8th grade.")
-    .appendLine("I can use a variety of woodshop tools safely.")
+    .appendLine("I can use a variety of woodshop tools safely.");
 
     new TreeNode(2,"Audacity","audacity",["Percussion"])
     .appendLine("Does audio & waveform editing.")
-    .appendLine("I'm capable of making song mashups that aren't actually terrible.")
+    .appendLine("I'm capable of making song mashups that aren't actually terrible.");
 
     new TreeNode(1,"Adobe Photoshop","photoshop",["AUDIO & VISUALS"])
     .appendLine("Edits images in almost any way imaginable.")
@@ -36,7 +36,7 @@ function createNodes(){
 
     new TreeNode(2,"Expression 2","expression2",["Redstone"])
     .appendLine("My first true coding language.")
-    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2
+    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2;
 
     new TreeNode(3,"Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
@@ -77,7 +77,7 @@ function createNodes(){
 
     new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
-    .appendLine("Haven't mastered it, but I know the core concepts.")
+    .appendLine("Haven't mastered it, but I know the core concepts.");
 
     new TreeNode(5,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
@@ -86,42 +86,42 @@ function createNodes(){
 
     new TreeNode(4,"Vanilla JavaScript","js",["NodeJS"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
-    .appendLine("I have yet to witness where frameworks would be helpful.")
+    .appendLine("I have yet to witness where frameworks would be helpful.");
 
     new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
     .appendLine("I learned the variant used in Garry's Mod.")
-    .dx = -70
+    .dx = -70;
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm getting better at avoiding div soup.").bias=-2
+    .appendLine("I'm getting better at avoiding div soup.").bias=-2;
 
     new TreeNode(4,"CSS 3","css",["Vanilla JavaScript"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration.").bias=2
+    .appendLine("A constant source of frustration.").bias=2;
 
     new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
-    .appendLine("Used alongside other programs to customize my VRChat avatar.")
+    .appendLine("Used alongside other programs to customize my VRChat avatar.");
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
-    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4
+    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4;
 
     for (let n = 3; n < AllNodes.length; n++) {
-        setTimeout(() => AllNodes[n].activate(),n*50)
+        setTimeout(() => AllNodes[n].activate(),n*50);
     }
   
 }
 
-const TEMPLATE_NODE = document.querySelector("#template-node")
+const TEMPLATE_NODE = document.querySelector("#template-node");
 const NODE_DISTANCE = 1.2;
 const NODE_PADDING = 1.4;
 
-const NodeContainer = document.querySelector(".node-container")
-const LineContainer = document.querySelector(".line-container")
-const ParallaxThing = document.querySelector(".grid")
+const NodeContainer = document.querySelector(".node-container");
+const LineContainer = document.querySelector(".line-container");
+const ParallaxThing = document.querySelector(".grid");
 
 
 let Distance = 120;
@@ -140,7 +140,7 @@ function getPos(el) {
          lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
     return {x: lx,y: ly};
 }
-let ContainerPos = {x:0, y:0}
+let ContainerPos = {x:0, y:0};
 
 function prepLines(){
     for( let line of Lines ){
@@ -156,20 +156,20 @@ function prepNodes(){
 
 function renderLines(){
     for( let line of Lines ){
-        line.render()
+        line.render();
     }
 }
 
 function distance2(x1,y1,x2,y2){
-    return (x1-x2)**2 + (y1-y2)**2
+    return (x1-x2)**2 + (y1-y2)**2;
 }
 
 function distance(x1,y1,x2,y2){
-    return Math.sqrt( (x1-x2)**2 + (y1-y2)**2 )
+    return Math.sqrt( (x1-x2)**2 + (y1-y2)**2 );
 }
 
 function clamp(n,min,max){
-    return (n > max ? max : (n < min ? min : n))
+    return (n > max ? max : (n < min ? min : n));
 }
 
 class TreeLine {
@@ -189,7 +189,7 @@ class TreeLine {
         this.startNode = null;
         this.endNode = null;
         this.waiting = false;
-        this.render = this.renderWaiting
+        this.render = this.renderWaiting;
 
         Lines.push(this);
     }
@@ -204,10 +204,10 @@ class TreeLine {
             if( distance(this.startNode.x,this.startNode.y,this.endNode.x,this.endNode.y) < Distance * 2.5 ){
                 this.inner.classList.add("treeline");
                 this.waiting = false;
-                this.render = this.renderNormal
+                this.render = this.renderNormal;
             }
         }
-        this.renderNormal()
+        this.renderNormal();
     }
 
     renderNormal(){
@@ -223,7 +223,7 @@ class TreeLine {
 
 }
 
-let alternator = 1
+let alternator = 1;
 
 class TreeNode {
     /**
@@ -241,7 +241,7 @@ class TreeNode {
 
         this.parentNames = parents;
         this.name = name;
-        this.group = group
+        this.group = group;
         this.desc = "";
 
         this.active = false;
@@ -250,7 +250,7 @@ class TreeNode {
         this.canMouse = true;
 
         if( !NodeGroups[group] ) NodeGroups[group] = [];
-        NodeGroups[group].push(this)
+        NodeGroups[group].push(this);
 
         this.html = TEMPLATE_NODE.cloneNode(true);
         this.html.hidden = false;
@@ -259,37 +259,35 @@ class TreeNode {
         this.html.style.opacity = 0;
 
         this.html.id = "";
-        this.html.classList.add(css)
+        this.html.classList.add(css);
 
         if(css == "static") this.html.querySelector(".back").remove();
 
-
-        this.style = this.html.style
+        this.style = this.html.style;
 
         if(parents){
             // make the lines
             for( let nodename of parents ){
-                this.lines.push( new TreeLine(name,nodename) )
+                this.lines.push( new TreeLine(name,nodename) );
             }
             ChildNodes.push(this);
             let self = this;
-            
             // register events
             this.html.addEventListener("mouseover",() => {
                 if( self.canMouse ){
-                    self.dy = self.dy - 6
+                    self.dy = self.dy - 6;
                     self.canMouse = false;
-                    setTimeout(() => {self.canMouse = true}, 100)
+                    setTimeout(() => {self.canMouse = true;}, 100);
                 }
             });
             this.html.addEventListener("mouseout",() => {
                 if( self.canMouse ){
                     self.canMouse = false;
-                    setTimeout(() => {self.canMouse = true}, 100)
+                    setTimeout(() => {self.canMouse = true;}, 100);
                 }
             });
-            this.html.addEventListener("mousedown",() => this.startDrag()) // closure because 'this' is horrible
-            this.html.addEventListener("touchstart",() => this.startDrag())
+            this.html.addEventListener("mousedown",() => this.startDrag()); // closure because 'this' is horrible
+            this.html.addEventListener("touchstart",() => this.startDrag());
             // setup position and starting vel
             this.x = NodeContainer.clientWidth/2;
             this.y = 30 - group * 100;
@@ -300,30 +298,30 @@ class TreeNode {
             RootNodes.push(this);
             this.xrel = x;
             this.x = NodeContainer.clientWidth * x;
-            this.y = 20
-            this.dx = 0
+            this.y = 20;
+            this.dx = 0;
             this.dy = 0;
         }
 
-        this.style.left = `${this.x}px`
-        this.style.top = `${this.y}px`
+        this.style.left = `${this.x}px`;
+        this.style.top = `${this.y}px`;
 
-        NodeContainer.appendChild(this.html)
+        NodeContainer.appendChild(this.html);
         Nodes[name] = this;
-        AllNodes.push(this)
+        AllNodes.push(this);
     }
 
     startDrag(){
-        this.listener = ((e)=>this.setPos(e))
-        this.html.classList.toggle("grabbed",true)
-        document.addEventListener("mousemove",this.listener) // mousemove on 
-        document.addEventListener("touchmove",this.listener) // mousemove on 
+        this.listener = ((e)=>this.setPos(e));
+        this.html.classList.toggle("grabbed",true);
+        document.addEventListener("mousemove",this.listener);
+        document.addEventListener("touchmove",this.listener);
     }
 
     stopDrag(){
-        document.removeEventListener("mousemove",this.listener)
-        document.removeEventListener("touchmove",this.listener)
-        this.html.classList.toggle("grabbed",false)
+        document.removeEventListener("mousemove",this.listener);
+        document.removeEventListener("touchmove",this.listener);
+        this.html.classList.toggle("grabbed",false);
         this.listener = null;
     }
 
@@ -337,6 +335,10 @@ class TreeNode {
             this.x = e.changedTouches[0].clientX - ContainerPos.x;
             this.y = e.changedTouches[0].clientY - ContainerPos.y + window.scrollY;
         }
+        
+        this.x = clamp(this.x,0,NodeContainer.clientWidth);
+        this.y = clamp(this.y,0,NodeContainer.clientHeight);
+
         this.dx = 0;
         this.dy = 0;
     }
@@ -355,8 +357,8 @@ class TreeNode {
     }
 
     appendLine(text){
-        let newline = this.desc == "" ? "" : "<br><br>"
-        this.desc = `${this.desc}${newline}${text}`
+        let newline = this.desc == "" ? "" : "<br><br>";
+        this.desc = `${this.desc}${newline}${text}`;
         this.html.querySelector(".back").innerHTML = this.desc;
         return this;
     }
@@ -374,8 +376,8 @@ class TreeNode {
         const nx = (that.x-this.x)/dist;
         const ny = (that.y-this.y)/dist;
         const fac = clamp((dist - Distance)*0.05,-4,10);
-        let fac2 = this.group
-        if(this.listener){fac2 = 1}
+        let fac2 = this.group;
+        if(this.listener){fac2 = 1;}
         this.applyForce(nx*fac,ny*fac);
         that.applyForce(-nx*fac,-ny*fac/fac2);
     }
@@ -389,11 +391,11 @@ class TreeNode {
         that.applyForce(-nx*fac,-ny*fac);
     }
 
-    compute1(){
+    doForces(){
 
         if(!this.active) return;
 
-        this.applyForce(this.bias,this.mass)
+        this.applyForce(this.bias,this.mass);
 
         for( let that of this.parents ){ // elastic constraints
             if(!that.active) continue;
@@ -406,23 +408,20 @@ class TreeNode {
         }
 
         if( this.x < Padding ){
-            this.applyForce( ((Padding - this.x)**2)*0.00005, 0 )
+            this.applyForce( ((Padding - this.x)**2)*0.00005, 0 );
         }
-
         if( this.x > NodeContainer.clientWidth - Padding ){
-            this.applyForce( -((NodeContainer.clientWidth - Padding - this.x)**2)*0.00005, 0 )
+            this.applyForce( -((NodeContainer.clientWidth - Padding - this.x)**2)*0.00005, 0 );
         }
-
         if( this.y < Padding ){
-            this.applyForce( 0, ((Padding - this.y)**2)*0.00005 )
+            this.applyForce( 0, ((Padding - this.y)**2)*0.00005 );
         }
-
         if( this.y > NodeContainer.clientHeight - Padding ){
-            this.applyForce( 0, -((NodeContainer.clientHeight - Padding - this.y)**2)*0.00005 )
+            this.applyForce( 0, -((NodeContainer.clientHeight - Padding - this.y)**2)*0.00005 );
         }
 
-        this.x = clamp(this.x,0,NodeContainer.clientWidth)
-        this.y = clamp(this.y,0,NodeContainer.clientHeight)
+        this.x = clamp(this.x,0,NodeContainer.clientWidth);
+        this.y = clamp(this.y,0,NodeContainer.clientHeight);
 
         // NaN protection in case I missed any
         if( this.x != this.x ) this.x = 0;
@@ -432,22 +431,22 @@ class TreeNode {
 
     }
 
-    compute2(){
+    doPositioning(){
         if(!this.active) return;
-        this.dx *= 0.9
-        this.dy *= 0.9
+        this.dx *= 0.9;
+        this.dy *= 0.9;
         if(this.listener) return;
-        this.x = this.x + this.dx
-        this.y = this.y + this.dy
+        this.x = this.x + this.dx;
+        this.y = this.y + this.dy;
     }
 
     render(){
-        this.style.left = `${Math.round(this.x)}px`
-        this.style.top = `${Math.round(this.y)}px`
+        this.style.left = `${Math.round(this.x)}px`;
+        this.style.top = `${Math.round(this.y)}px`;
     }
 }
 
-createNodes();
+createNodes(); 
 prepLines();
 prepNodes();
 
@@ -461,61 +460,56 @@ function frame(){
 
 setInterval( () => {
     for( let node of ChildNodes ){
-        node.compute1();
+        node.doForces();
     }
     for( let node of ChildNodes ){
-        node.compute2();
+        node.doPositioning();
     }
     requestAnimationFrame(frame);
-} , 16)
+} , 16);
 
 let nolag = false;
 function handleResize(){
-    console.log("resize")
-    ContainerPos = getPos(NodeContainer)
-    if(nolag){ return }
+    console.log("resize");
+    ContainerPos = getPos(NodeContainer);
+    if(nolag){ return; }
     nolag = true;
-    setTimeout(()=>{nolag=false},16)
-    Distance = NODE_DISTANCE * RootNodes[0].html.clientWidth
-    Padding = NODE_PADDING * RootNodes[0].html.clientWidth
+    setTimeout(()=>{nolag=false;},16);
+    Distance = NODE_DISTANCE * RootNodes[0].html.clientWidth;
+    Padding = NODE_PADDING * RootNodes[0].html.clientWidth;
     for( let node of ChildNodes ){
         node.x = (node.x/oldW)*NodeContainer.clientWidth;
         node.y = (node.y/oldH)*NodeContainer.clientHeight;
         node.render();
     }  
     for( let node of RootNodes ){
-        node.x = node.xrel * NodeContainer.clientWidth
+        node.x = node.xrel * NodeContainer.clientWidth;
         node.render();
     }  
-    oldW = NodeContainer.clientWidth
-    oldH = NodeContainer.clientHeight
+    oldW = NodeContainer.clientWidth;
+    oldH = NodeContainer.clientHeight;
     renderLines();
 }
 
-let oldW = NodeContainer.clientWidth
-let oldH = NodeContainer.clientHeight
+let oldW = NodeContainer.clientWidth;
+let oldH = NodeContainer.clientHeight;
 
 window.addEventListener("load",() => { // the fact I have to put this in here is really stupid
     window.addEventListener('resize', () => {
         handleResize();
-    })
+    });
     handleResize();
-})
+});
 
 
 document.addEventListener("mouseup",()=>{
     for( let node of ChildNodes ){
         node.stopDrag();
     } 
-})
+});
 
 document.addEventListener("touchend",()=>{
     for( let node of ChildNodes ){
         node.stopDrag();
     } 
-})
-
-window.addEventListener("load",()=>{
-
-})
-
+});
