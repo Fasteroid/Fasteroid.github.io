@@ -84,9 +84,9 @@ function createNodes(){
     .appendLine("I designed a Discord relay for my Garry's Mod server with it.")
     .dx = -100;
 
-    new TreeNode(4,"Vanilla JavaScript","js",["NodeJS"])
+    new TreeNode(4,"Vanilla JavaScript","js",["NodeJS","Code.org JavaScript"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
-    .appendLine("I have yet to witness where frameworks would be helpful.");
+    .appendLine("I have yet to experience the power of a good framework.");
 
     new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
@@ -95,19 +95,25 @@ function createNodes(){
 
     new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
     .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm getting better at avoiding div soup.").bias=-2;
+    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias=-2;
 
     new TreeNode(4,"CSS 3","css",["Vanilla JavaScript"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration.").bias=2;
+    .appendLine("A constant source of frustration, but always worth the struggle.").bias=2;
 
-    new TreeNode(1,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
+    new TreeNode(3,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
     .appendLine("Used alongside other programs to customize my VRChat avatar.");
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
-    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4;
+    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=1;
+
+    new TreeNode(6,"Bootstrap","bootstrap",["CSS 3",'HTML 5'])
+    .appendLine("CSS for lazy people.")
+    .appendLine("Learned during my third year of college.")
+    .appendLine("So far, I've only found it good for prototyping.").mass = 4;
+
 
     for (let n = 3; n < AllNodes.length; n++) {
         setTimeout(() => AllNodes[n].activate(),n*50);

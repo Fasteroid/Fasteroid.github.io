@@ -157,7 +157,7 @@
     background-image: url('/assets/skilltree/mindstorms.svg');
 }
 .mindstorms > div {
-    background-color: #5f5f5f;
+    background-color: #4b4b4b;
 }
 
 .expression2 > .front {
@@ -192,21 +192,21 @@
     background-image: url('/assets/skilltree/nodejs.svg');
 }
 .nodejs > div {
-    background-color: #2b532c;
+    background-color: #244225;
 }
 
 .html > .front {
     background-image: url('/assets/skilltree/html.svg');
 }
 .html > div {
-    background-color: #64372a;
+    background-color: #543026;
 }
 
 .css > .front {
     background-image: url('/assets/skilltree/css.svg');
 }
 .css > div {
-    background-color: #2e3b61;
+    background-color: #27314d;
 }
 
 .electron > .front {
@@ -249,7 +249,7 @@
     background-image: url('/assets/skilltree/photoshop.svg');
 }
 .photoshop > div {
-    background-color: #1b3963;
+    background-color: #20395d;
 }
 
 .gimp > .front {
@@ -313,7 +313,7 @@
     background-image: url('/assets/skilltree/woodworking.svg');
 }
 .woodworking > div {
-    background-color: #866a39;
+    background-color: #695431;
 }
 
 .printing > .front {
@@ -337,4 +337,6 @@
     background-color: #684040;
 }
 
-
+.bootstrap > div {
+    background-color: #4f2e8e;
+}
