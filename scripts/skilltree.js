@@ -79,10 +79,10 @@ function createNodes(){
     .appendLine("Learned during second and third years of college.")
     .appendLine("Haven't mastered it, but I know the core concepts.");
 
-    new TreeNode(5,"NodeJS","nodejs",["Code.org JavaScript"])
+    new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript"])
     .appendLine("ES6 JavaScript as a backend.")
     .appendLine("I designed a Discord relay for my Garry's Mod server with it.")
-    .dx = -100;
+    .bias=-1;
 
     new TreeNode(4,"Vanilla JavaScript","js",["NodeJS","Code.org JavaScript"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
@@ -97,9 +97,14 @@ function createNodes(){
     .appendLine("The skeleton and structure of websites.")
     .appendLine("I'm actually getting worse at avoiding div soup 💀").bias=-2;
 
+    new TreeNode(3,"Regex","regex",["Vanilla JavaScript","NodeJS"])
+    .appendLine("CSS for lazy people.")
+    .appendLine("Learned during my third year of college.")
+    .appendLine("So far, I've only found it good for prototyping.").dx = -100;
+
     new TreeNode(4,"CSS 3","css",["Vanilla JavaScript"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration, but always worth the struggle.").bias=2;
+    .appendLine("A constant source of frustration, but always worth the struggle.").bias=3;
 
     new TreeNode(3,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
@@ -107,13 +112,12 @@ function createNodes(){
 
     new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
-    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=1;
+    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4;
 
-    new TreeNode(6,"Bootstrap","bootstrap",["CSS 3",'HTML 5'])
+    new TreeNode(6,"Bootstrap","bootstrap",["CSS 3"])
     .appendLine("CSS for lazy people.")
     .appendLine("Learned during my third year of college.")
-    .appendLine("So far, I've only found it good for prototyping.").mass = 4;
-
+    .appendLine("So far, I've only found it good for prototyping.");
 
     for (let n = 3; n < AllNodes.length; n++) {
         setTimeout(() => AllNodes[n].activate(),n*50);

@@ -53,6 +53,12 @@ section {
     width: auto;
 }
 
+.footer {
+    margin: 15px 15px 0 15px;
+    line-height: 140%;
+    width: auto;
+}
+
 img {
     background-color: var(--transparent-gray);
     padding: 15px 15px;
