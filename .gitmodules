@@ -1,0 +1,3 @@
+[submodule "gmod-web-stuff"]
+	path = gmod-web-stuff
+	url = https://github.com/Fasteroid/gmod-web-stuff
