@@ -98,9 +98,8 @@ function createNodes(){
     .appendLine("I'm actually getting worse at avoiding div soup 💀").bias=-2;
 
     new TreeNode(3,"Regex","regex",["Vanilla JavaScript","NodeJS"])
-    .appendLine("CSS for lazy people.")
-    .appendLine("Learned during my third year of college.")
-    .appendLine("So far, I've only found it good for prototyping.").dx = -100;
+    .appendLine('Forbidden pattern-matching runes with immense power.')
+    .appendLine('I know the EMCAScript variant best.').dx = -100;
 
     new TreeNode(4,"CSS 3","css",["Vanilla JavaScript"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
