@@ -3,6 +3,7 @@ import MathUtils from "./mathutils.js"
 const NODE_DISTANCE = 1.2;
 const NODE_PADDING = 1.4;
 const NODE_MAX_VEL = 80;
+const NODE_BOB_FORCE = 2
 
 let Relative_Node_Distance = 120;
 let Relative_Node_Padding  = 120;
@@ -117,6 +118,7 @@ class TreeNode {
         this.mass = 1;
         this.bias = 0;
         this.canMouse = true;
+        this.bob = 0;
 
         this.lines = [];
         this.parentNodes = [];
@@ -143,7 +145,7 @@ class TreeNode {
         let self = this;
         this.html.addEventListener("mouseover",() => {
             if( self.canMouse ){
-                self.dy = self.dy - 9;
+                this.bob = NODE_BOB_FORCE;
                 self.canMouse = false;
                 setTimeout(() => {self.canMouse = true;}, 100);
             }
@@ -284,6 +286,9 @@ class TreeNode {
         if(!this.active) return;
 
         this.applyForce(this.bias,this.mass + this.group*0.1); // gravity
+
+        this.bob = MathUtils.clamp(this.bob-0.1,0,Infinity)
+        this.applyForce(0, -this.bob);
 
         for( let line of this.lines ){ // elastic constraints
             line.doElasticConstraint();
