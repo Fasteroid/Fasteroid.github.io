@@ -132,7 +132,7 @@ class TreeNode {
         else{
             TreeNode.Static_Nodes.push(this);
             this.xrel = x;
-            this.setPos(TreeNode.NODE_CONTAINER.clientWidth * x, 20 * group)
+            this.setPos(TreeNode.NODE_CONTAINER.clientWidth * x, 30)
             this.dx = 0;
             this.dy = 0;
         }

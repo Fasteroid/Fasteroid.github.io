@@ -201,3 +201,17 @@
 .regex > div {
     background-color: #333333;
 }
+
+.ubuntu > .front {
+    background-image: url('/assets/skilltree/ubuntu.svg');
+}
+.ubuntu > div {
+    background-color: #2e1425;
+}
+
+.bash > .front {
+    background-image: url('/assets/skilltree/bash.svg');
+}
+.bash > div {
+    background-color: #214220;
+}
