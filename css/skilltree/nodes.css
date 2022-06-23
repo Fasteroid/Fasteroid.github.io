@@ -1,151 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:bold|Roboto:400|Roboto:300');
-
-:root {
-    --node-size: min(1.35in, 12vw)
-}
-
-.node-container, .line-container {
-    height: 100%;
-    width: 100%;
-    grid-area: inner-div;
-    position: relative;
-}
-  
-.grid {
-    height: calc( var(--node-size) * 12 + 0.7in );
-    display: grid;
-    place-items: left;
-    grid-template-areas: "inner-div";
-    padding: 0.7in;
-    background-image: url("/assets/grid.png");
-}
-  
-.node::before {
-    content: '';
-    display: block;
-    padding-top: 100%;
-}
-  
-.node > * {
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-    top: 0; left: 0;
-    padding: 5px;
-    box-sizing: border-box;
-
-    display: flex;
-    text-align: center;
-    justify-content: center;   
-    align-items: center;         
-    
-    perspective-origin: center;
-    border-radius: 25%;
-    margin: 0;
-}
-
-.node {
-    user-select: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;
-
-    height: calc( var(--node-size) );
-    width: calc( var(--node-size) );
-    font-family: Roboto;
-    backface-visibility: hidden;
-    perspective: 20rem;
-    -webkit-perspective: 20rem;
-    perspective-origin: 50% 50%;
-    -webkit-perspective-origin: 50% 50%;
-
-    position: absolute;
-    filter: drop-shadow(0 20px 6px #0000009f);
-    box-sizing: border-box;
-    transform: translate(calc(-50% - .5px),calc(-50% - .5px));
-
-    transition: opacity 0.1s;
-}
-
-.node:not(.static){
-    cursor: grab;
-    touch-action: none;
-}
-
-.node.grabbed {
-    cursor: grabbing;
-}
-
-/* Front and back shading */
-.node > div {
-
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-    transition: transform 0.4s;
-    -webkit-transition: transform 0.4s;
-
-    background-size: 70%;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-
-}
-
-.static:hover > div {
-    transform: scale(1.05) !important;
-    -webkit-transform: scale(1.05) !important;
-}
-
-
-/* Specific properties */
-.node > .front {
-    text-shadow: 0px 0px 25px #000000, 0px 0px 12px #00000055;
-    transform: rotateY(0) translateZ(-1px);
-    -webkit-transform: rotateY(0) translateZ(-1px);
-    font-size: calc( var(--node-size) * 0.13 )
-}
-
-.node:hover > .front {
-    transform: rotateY(180deg) translateZ(-1px);
-    -webkit-transform: rotateY(180deg) translateZ(-1px);
-}
-
-.node > .back {
-    transform: rotateY(-180deg) translateZ(-1px);
-    -webkit-transform: rotateY(-180deg) translateZ(-1px);
-    font-size: calc( var(--node-size) * 0.09 );
-    font-weight: 300;
-}
-
-.node:hover > .back {
-    transform: rotateY(0deg) translateZ(-1px);
-    -webkit-transform: rotateY(0deg) translateZ(-1px);
-}
-
-.treeline {
-    stroke: #fff;
-    stroke-width: calc( var(--node-size) * 0.03 );
-    animation: fadeIn 0.1s;
-}
-
-@keyframes fadeIn {
-    from{opacity:0;}
-}
-@keyframes stroke {
-    from{stroke-dashoffset: calc( var(--node-size) * -0.04 + -16px);}
-}
-
-.treesvg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-} 
-
-.static > div {
-    background-color: #000;
-}
-
 .redstone > .front {
     background-image: url('/assets/skilltree/redstone.svg');
 }
@@ -237,7 +89,6 @@
     background-color: #34696d;
 }
 
-
 .illustrator > .front {
     background-image: url('/assets/skilltree/illustrator.svg');
 }
@@ -286,7 +137,6 @@
 .drums > div {
     background-color: #55462f;
 }
-
 
 .lego > .front {
     background-image: url('/assets/skilltree/technic.svg');
@@ -351,4 +201,3 @@
 .regex > div {
     background-color: #333333;
 }
-
