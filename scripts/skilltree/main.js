@@ -106,7 +106,7 @@ function createNodes(){
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
     .appendLine("A constant source of frustration, but usually worth the struggle.").bias=3;
 
-    new TreeNode(3,"Blender Novice","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
+    new TreeNode(3,"Blender Modeling","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
     .appendLine("Used alongside other programs to customize my VRChat avatar.");
 
