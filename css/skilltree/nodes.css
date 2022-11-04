@@ -215,3 +215,14 @@
 .bash > div {
     background-color: #214220;
 }
+
+.calculus > .front {
+    background-image: url('/assets/skilltree/calculus.svg');
+}
+.calculus > div {
+    background-color: #2b3c42;
+}
+
+.invisible {
+    display: none
+}

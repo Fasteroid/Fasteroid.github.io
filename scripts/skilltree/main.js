@@ -6,6 +6,7 @@ import {TreeLine, TreeNode} from "./objects.js"
 
 
 // TODO: move into external json file
+// TODO: add a "compile" step to bake node positions so they find equilibrium faster
 function createNodes(){
     new TreeNode(0,"COMPUTER SCIENCE","static",false,0.15).activate();
     new TreeNode(0,"ENGINEERING","static",false,0.5).activate();
@@ -39,7 +40,7 @@ function createNodes(){
     .appendLine("Edits images in almost any way imaginable.")
     .appendLine("Can create from scratch too, but illustrator is usually better for that.");
 
-    new TreeNode(2,"Expression 2","expression2",["Redstone"])
+    new TreeNode(2,"Expression 2","expression2",["Redstone","Calculus"])
     .appendLine("My first true coding language.")
     .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2;
 
@@ -66,6 +67,10 @@ function createNodes(){
     new TreeNode(3,"Adobe After Effects","aftereffects",["Adobe Illustrator"])
     .appendLine("Photoshop for video; puts the FX in VFX.")
     .appendLine("Used for many disgraceful memes and edits.");
+
+    new TreeNode(4,"Calculus","calculus",["ENGINEERING"])
+    .appendLine("Learned during<br>AP Calc AB.")
+    .appendLine("I'm self-taught on vectors from Calc C!");   
 
     new TreeNode(4,"Adobe Premiere","premiere",["Adobe After Effects"])
     .appendLine("For compiling audio and video clips.")
