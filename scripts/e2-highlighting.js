@@ -85,7 +85,8 @@ const E2SyntaxHighlighter = {
         "return",
         "try",
         "throw",
-        "catch"
+        "catch",
+        "event"
     ],
 
     highlightTypes(txt) {
