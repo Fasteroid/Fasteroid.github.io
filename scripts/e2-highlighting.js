@@ -106,8 +106,8 @@ const E2SyntaxHighlighter = {
     highlightDirectives(txt) {
         for (const dir in this.directives){
             if(this.directives[dir]){
-                let matcher = new RegExp(`(${dir}.*?)(\n)`,"gm")
-                txt = txt.replace(matcher,"<e2dir>$1</e2dir>$2")
+                let matcher = new RegExp(`(^|\n)(${dir}.*?)(\n)`,"gm")
+                txt = replaceIgnoreTags(txt,matcher,(a,b,c) => `${a}<e2dir>${b}</e2dir>${c}`)
             }
             else{
                 txt = txt.replaceAll(dir,`<e2dir>${dir}</e2dir>`);
@@ -116,29 +116,34 @@ const E2SyntaxHighlighter = {
         return txt;
     },
 
-    highlightComments(txt) {
-
-        // Damn it apple, fix your regex libraries.  I spent 5 hours on this crap!
-        // txt = txt.replace(/(?<!#\[.*?)#include(?!\]#.*?)/g,"<e2key>#include</e2key>")
-    
-        txt = txt.replaceAll("#[","<e2comment>#[");
-        txt = txt.replaceAll("]#","]#</e2comment>");
-    
-        txt = replaceIgnoreTags(txt, /(#include)/, () => "<e2key>#include</e2key>")
-    
-        txt = replaceIgnoreTags(txt, /(#.*?)(\n)/g, (a,b) => `<e2comment>${a}</e2comment>${b}`)
-    
-        return txt;
-    },
-
-    highlightStrings(txt){
+    highlightStringsAndComments(txt){
         const explodedtext = txt.split("");
         var len = explodedtext.length;
-        var inside = false;
         var comment = false;
+        var inside = false;
+        var escape = false;
+
         for (var t = 0; t < len; t++) {
             var entry = explodedtext[t];
-            if ( entry == '"' ) {
+
+            if ( !inside && !comment && entry == '#' && txt.substr(t,8)!="#include" ) {
+                comment = true;
+                explodedtext[t] = `<e2comment>${entry}`;
+            }
+            if( comment && entry == "\n" ){
+                comment = false;
+                explodedtext[t] = `</e2comment>${entry}`;
+            }
+
+            if ( escape ){ 
+                escape = false;
+                continue
+            }
+            if ( entry == '\\' ) {
+                escape = true;
+                continue;
+            }
+            if ( entry == '"' && !comment ) {
                 inside = !inside;
                 if (inside) {
                     entry = `<e2string>${entry}`
@@ -149,7 +154,13 @@ const E2SyntaxHighlighter = {
                 explodedtext[t] = entry;
             }
         }
-        return explodedtext.join("")
+
+        txt = explodedtext.join("");
+        txt = replaceIgnoreTags(txt, /(#include)/, () => "<e2key>#include</e2key>")
+        txt = txt.replaceAll("#[","<e2comment>#[");
+        txt = txt.replaceAll("]#","]#</e2comment>");
+
+        return txt;
     },
 
     highlightMulti(txt) {
@@ -288,7 +299,7 @@ const E2SyntaxHighlighter = {
     highlightKeywords(txt){
         txt = replaceIgnoreTags(txt, /foreach/, () => "___FOREACH"); // for and foreach overlap
         for (const keyword of this.keywords) {
-            txt = replaceIgnoreTags(txt, new RegExp(keyword), () => `<e2key>${keyword}</e2key>`); // for and foreach overlap
+            txt = replaceIgnoreTags(txt, new RegExp(keyword), () => `<e2key>${keyword}</e2key>`);
         }
         txt = txt.replaceAll("___FOREACH", "<e2key>foreach</e2key>");
         return txt
@@ -305,9 +316,8 @@ function e2_syntax_highlight(elem) {
     let txt = elem.innerText; // innerhtml will break some characters
     txt = txt.replaceAll("<","\u1000") // use weird bullshit sentinels we can replace at the end
     txt = txt.replaceAll(">","\u1001")
-    txt = E2SyntaxHighlighter.highlightComments(txt);
-    txt = E2SyntaxHighlighter.highlightStrings(txt);
     txt = E2SyntaxHighlighter.highlightDirectives(txt);
+    txt = E2SyntaxHighlighter.highlightStringsAndComments(txt);
     txt = E2SyntaxHighlighter.highlightTypes(txt);
     txt = E2SyntaxHighlighter.highlightVariables(txt);
     txt = E2SyntaxHighlighter.highlightKeywords(txt);

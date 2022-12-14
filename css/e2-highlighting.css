@@ -23,10 +23,7 @@ e2num {
 /* I'm too lazy to fix my syntax highlighter, so we're doing this for now. */
 e2comment { 
     color: #6b6b6b
-}    
-e2comment > * { 
-    color: #6b6b6b !important
-}    
-e2comment > * > * { 
+}      
+e2comment * { 
     color: #6b6b6b !important
 }    
