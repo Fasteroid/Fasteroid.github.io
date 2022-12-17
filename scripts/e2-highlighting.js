@@ -126,7 +126,7 @@ const E2SyntaxHighlighter = {
         for (var t = 0; t < len; t++) {
             var entry = explodedtext[t];
 
-            if ( !inside && !comment && entry == '#' && txt.substr(t,8)!="#include" ) {
+            if ( !inside && !comment && entry == '#' && txt.substr(t,8)!="#include" && explodedtext[t+1]!="[" && explodedtext[t-1]!="]" ) {
                 comment = true;
                 explodedtext[t] = `<e2comment>${entry}`;
             }
