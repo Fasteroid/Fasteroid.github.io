@@ -223,6 +223,10 @@
 .desmos > div {
     background-color: #164229;
 }
+.desmos > .back {
+    /* Bernard. */
+    background-image: url('/assets/skilltree/desmos-easteregg.svg');
+}
 
 .calculus > .front {
     background-image: url('/assets/skilltree/calculus.svg');
