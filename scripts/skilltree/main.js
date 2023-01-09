@@ -89,11 +89,21 @@ function createNodes(){
 
     new TreeNode(7,"Calculus","calculus",["MATHEMATICS"])
     .appendLine("Learned During<br>AP Calc AB.")
-    .appendLine("I'm self taught on some concepts from Calc C!");   
-
+    .appendLine("I'm self taught on some concepts from Calc C!");  
+    
     new TreeNode(5,"Desmos","desmos",["Calculus"])
     .appendLine("An inspiring, free, and turing-complete online graphing calculator.")
     .appendLine("Anything is possible if you're determined enough!");   
+
+    new TreeNode(8,"TypeScript","ts",["NodeJS","Desmos"])
+    .appendLine("It's JavaScript, but BETTER!")
+    .appendLine("It has types and helps you write better code!")
+    .bias=-1;
+
+    new TreeNode(9,"WebGL","webgl",["TypeScript"])
+    .appendLine("A terrifying low-level GPU API for the web.")
+    .appendLine("Do NOT approach outside of Shadertoy.")
+    .bias=-1;
     
     new TreeNode(4,"NodeJS","nodejs",["Code.org /<br>ES1 JavaScript","Lua"])
     .appendLine("ES6 JavaScript as a backend.")
@@ -113,9 +123,9 @@ function createNodes(){
 
     new TreeNode(4,"HTML 5","html",["JS Extender"])
     .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias = 2;
+    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias = 3;
 
-    new TreeNode(4,"CSS 3","css",["JS Extender"])
+    new TreeNode(4,"CSS 3","css",["JS Extender","WebGL"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
     .appendLine("A constant source of frustration, but usually worth the struggle.").bias = -2;
 
@@ -131,12 +141,7 @@ function createNodes(){
     .appendLine('Forbidden pattern-matching runes with immense power.')
     .appendLine('Most familiar with the EMCAScript variant.');
     RegexNode.bias = -2;
-    RegexNode.dx = -200;
-
-    new TreeNode(9,"Bootstrap","bootstrap",["CSS 3"])
-    .appendLine("CSS for lazy people.")
-    .appendLine("Learned during my third year of college.")
-    .appendLine("So far, I've only found it good for prototyping.");
+    RegexNode.dx = 5000;
 
     new TreeNode(8,"Ubuntu/Linux","ubuntu",["C"])
     .appendLine("𝚜𝚞𝚍𝚘 𝚌𝚑𝚘𝚠𝚗 -𝚁<br>𝚏𝚊𝚜𝚝𝚎𝚛𝚘𝚒𝚍 / ")
@@ -147,17 +152,23 @@ function createNodes(){
     .appendLine('The beloved Bourne Again Shell.')
     .appendLine('After the above incident, I wrote a bash script for automated backups.');
 
-    new TreeNode(8,"TypeScript","ts",["NodeJS","Desmos"])
-    .appendLine("It's JavaScript, but BETTER!")
-    .appendLine("It has types and helps you write better code!")
-    .bias=-1;
+    new TreeNode(14,"Bootstrap","bootstrap",["CSS 3"])
+    .appendLine("CSS for lazy people.")
+    .appendLine("Learned during my third year of college.")
+    .appendLine("So far, I've only found it good for prototyping.");
 
-    TreeLine.Dynamic_Lines_Refs["JavaScript"]["JS Extender"].lengthModifier = -100;
 
-    TreeLine.Dynamic_Lines_Refs["MATHEMATICS"]["Calculus"].lengthModifier = 200;
-    TreeLine.Dynamic_Lines_Refs["Calculus"]["Desmos"].lengthModifier = 200;
-    TreeLine.Dynamic_Lines_Refs["Desmos"]["TypeScript"].lengthModifier = 200;
+    TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
+
+    TreeLine.Dynamic_Lines_Refs["JavaScript"]["JS Extender"].lengthModifier = -50;
+
+    TreeLine.Dynamic_Lines_Refs["MATHEMATICS"]["Calculus"].lengthModifier = 150;
+    TreeLine.Dynamic_Lines_Refs["Calculus"]["Desmos"].lengthModifier = 150;
+    TreeLine.Dynamic_Lines_Refs["Desmos"]["TypeScript"].lengthModifier = 150;
     TreeLine.Dynamic_Lines_Refs["NodeJS"]["TypeScript"].lengthModifier = 100;
+
+    TreeLine.Dynamic_Lines_Refs["TypeScript"]["WebGL"].lengthModifier = 75;
+    TreeLine.Dynamic_Lines_Refs["WebGL"]["CSS 3"].lengthModifier = 75;
 
 
     for (let n = 3; n < TreeNode.All_Nodes.length; n++) {

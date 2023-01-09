@@ -238,6 +238,14 @@
     background-color: #1f5579;
 }
 
+.webgl > .front {
+    background-image: url('/assets/skilltree/webgl.svg');
+    background-size: 77%;
+}
+.webgl > div {
+    background-color: #640000;
+}
+
 .invisible {
     display: none
 }
