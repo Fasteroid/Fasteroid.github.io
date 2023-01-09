@@ -60,8 +60,8 @@ function createNodes(){
     .appendLine("Abused so badly in Odyssey of the Mind that a new policy was implemented to nerf my 3D printing!") // true story, this did happen, see page 45 of https://www.odysseyofthemind.com/p/wp-content/uploads/2018/08/2021-Program-Guide.pdf
     .appendLine("The nerf was a feeble attempt to stop me.");
 
-    new TreeNode(4,"Code.org JavaScript","code",["Expression 2"])
-    .appendLine("Old ES1 JavaScript for AP Computer Science Principles.")
+    new TreeNode(4,"Code.org /<br>ES1 JavaScript","code",["Expression 2"])
+    .appendLine("Old ES1 JavaScript from Code.org's App Lab.")
     .appendLine("These nodes use physics code from a project I made there.");
 
     new TreeNode(3,"Adobe After Effects","aftereffects",["Adobe Illustrator"])
@@ -76,7 +76,7 @@ function createNodes(){
     .appendLine("For compiling audio and video clips.")
     .appendLine("I used this my senior year of high school for editing the school's news show.");
 
-    new TreeNode(3,"Java","java",["Code.org JavaScript","C"])
+    new TreeNode(3,"Java","java",["Code.org /<br>ES1 JavaScript","C"])
     .appendLine("Learned during AP Computer Science A.")
     .appendLine("I used it to extend my Discord relay to a Minecraft server, but it sucked.")
     .bias = 1;
@@ -87,46 +87,50 @@ function createNodes(){
 
     new TreeNode(4,"C","c",["Arduino"])
     .appendLine("Learned during second and third years of college.")
-    .appendLine("Haven't mastered it, but I know the core concepts.");
+    .appendLine("Haven't mastered it, but I know the core concepts.")
+    .bias = 3;
 
-    new TreeNode(4,"NodeJS","nodejs",["Code.org JavaScript","Lua"])
+    new TreeNode(4,"NodeJS","nodejs",["Code.org /<br>ES1 JavaScript","Lua"])
     .appendLine("ES6 JavaScript as a backend.")
     .appendLine("Runs the peripherals of my Garry's Mod server and auto-restarts it when it crashes.")
     .bias=-1;
 
-    new TreeNode(4,"Vanilla JavaScript","js",["NodeJS","Code.org JavaScript"])
+    // this node is unusually cluttered, so it needs extra constraint length
+    new TreeNode(4,"JavaScript","js",["NodeJS","Code.org /<br>ES1 JavaScript"])
     .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
     .appendLine("I have yet to experience the power of a good framework.");
+
+    new TreeNode(4,"JS Extender","invisible",["JavaScript"])
 
     new TreeNode(4,"Lua","lua",["Expression 2"])
     .appendLine("A common language of game scripting.")
     .appendLine("I know the variant used in Garry's Mod.")
     .dx = -70;
 
-    new TreeNode(4,"HTML 5","html",["Vanilla JavaScript"])
+    new TreeNode(4,"HTML 5","html",["JS Extender"])
     .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias=-2;
+    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias=2;
 
-    new TreeNode(4,"CSS 3","css",["Vanilla JavaScript"])
+    new TreeNode(4,"CSS 3","css",["JS Extender"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration, but usually worth the struggle.").bias=3;
+    .appendLine("A constant source of frustration, but usually worth the struggle.").bias=-3;
 
     new TreeNode(3,"Blender Modeling","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
     .appendLine("Used alongside other programs to customize my VRChat avatar.");
 
-    new TreeNode(6,"Electron","electron",["CSS 3","Vanilla JavaScript",'HTML 5'])
+    new TreeNode(6,"Electron","electron",["CSS 3","JS Extender",'HTML 5'])
     .appendLine("Desktop apps made by web developers!")
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4;
+
+    new TreeNode(3,"Regex","regex",["JavaScript","NodeJS"])
+    .appendLine('Forbidden pattern-matching runes with immense power.')
+    .appendLine('Most familiar with the EMCAScript variant.').bias = -2;
 
     new TreeNode(9,"Bootstrap","bootstrap",["CSS 3"])
     .appendLine("CSS for lazy people.")
     .appendLine("Learned during my third year of college.")
     .appendLine("So far, I've only found it good for prototyping.");
-
-    new TreeNode(3,"Regex","regex",["Vanilla JavaScript","NodeJS"])
-    .appendLine('Forbidden pattern-matching runes with immense power.')
-    .appendLine('I know the variant JavaScript uses.').bias = -1;
 
     new TreeNode(8,"Ubuntu/Linux","ubuntu",["C"])
     .appendLine("𝚜𝚞𝚍𝚘 𝚌𝚑𝚘𝚠𝚗 -𝚁<br>𝚏𝚊𝚜𝚝𝚎𝚛𝚘𝚒𝚍 / ")
@@ -136,6 +140,16 @@ function createNodes(){
     new TreeNode(10,"Bash","bash",["Ubuntu/Linux"])
     .appendLine('The beloved Bourne Again Shell.')
     .appendLine('After the above incident, I wrote a bash script for automated backups.')
+
+    new TreeNode(8,"TypeScript","ts",["JavaScript"])
+    .appendLine("It's JavaScript, but BETTER!")
+    .appendLine("It has types and helps you write better code!");
+
+    TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
+
+    TreeLine.Dynamic_Lines_Refs["Expression 2"]["Lua"].lengthModifier = 75;
+
+    TreeLine.Dynamic_Lines_Refs["JavaScript"]["JS Extender"].lengthModifier = -100;
 
     for (let n = 3; n < TreeNode.All_Nodes.length; n++) {
         setTimeout(() => TreeNode.All_Nodes[n].activate(),n*80);

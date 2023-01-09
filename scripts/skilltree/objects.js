@@ -13,6 +13,7 @@ let Relative_Node_Padding  = 120;
 class TreeLine {
     
     static Dynamic_Lines  = [];
+    static Dynamic_Lines_Refs = {}; // for global reference
     static LINE_CONTAINER = document.querySelector(".line-container");
 
     /**
@@ -31,9 +32,14 @@ class TreeLine {
         this.parentNode = null;
         this.childNode = null;
         this.waiting = false;
+        this.lengthModifier = 0;
         this.render = this.renderWaiting;
 
         TreeLine.Dynamic_Lines.push(this);
+
+        TreeLine.Dynamic_Lines_Refs[parent] = TreeLine.Dynamic_Lines_Refs[parent] || {};
+        TreeLine.Dynamic_Lines_Refs[parent][child] = this;
+        
     }
 
     forceFalloff(n){
@@ -51,7 +57,7 @@ class TreeLine {
         const dist = MathUtils.distance(childNode.x,childNode.y,parentNode.x,parentNode.y) + 0.1;
         const nx = (parentNode.x-childNode.x)/dist;
         const ny = (parentNode.y-childNode.y)/dist;
-        const fac = MathUtils.clamp(this.forceFalloff(dist - Relative_Node_Distance),-4,200);
+        const fac = MathUtils.clamp(this.forceFalloff(dist - Relative_Node_Distance - this.lengthModifier),-4,200);
         childNode.applyForce(nx*fac,ny*fac);
         parentNode.applyForce(-nx*fac,-ny*fac);
     }

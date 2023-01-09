@@ -35,6 +35,7 @@
 
 .js > .front {
     background-color: #706425;
+    background-image: url('/assets/skilltree/js.svg');
 }
 .js > .back {
     background-color: #776b35;
@@ -221,6 +222,14 @@
 }
 .calculus > div {
     background-color: #2b3c42;
+}
+
+.ts > .front {
+    background-color: #1f5579;
+    background-image: url('/assets/skilltree/ts.svg');
+}
+.ts > .back {
+    background-color: #386685;
 }
 
 .invisible {
