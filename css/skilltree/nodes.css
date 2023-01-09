@@ -34,11 +34,10 @@
 }
 
 .js > .front {
-    background-color: #706425;
     background-image: url('/assets/skilltree/js.svg');
 }
-.js > .back {
-    background-color: #776b35;
+.js > div {
+    background-color: #706425;
 }
 
 .nodejs > .front {
@@ -217,6 +216,14 @@
     background-color: #214220;
 }
 
+.desmos > .front {
+    background-image: url('/assets/skilltree/desmos.svg');
+    background-size: 77%;
+}
+.desmos > div {
+    background-color: #164229;
+}
+
 .calculus > .front {
     background-image: url('/assets/skilltree/calculus.svg');
 }
@@ -225,11 +232,10 @@
 }
 
 .ts > .front {
-    background-color: #1f5579;
     background-image: url('/assets/skilltree/ts.svg');
 }
-.ts > .back {
-    background-color: #386685;
+.ts > div {
+    background-color: #1f5579;
 }
 
 .invisible {

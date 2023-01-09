@@ -64,7 +64,7 @@ class TreeLine {
 
     renderWaiting(){
         if( this.waiting ){
-            if( MathUtils.distance(this.parentNode.x,this.parentNode.y,this.childNode.x,this.childNode.y) < Relative_Node_Distance * 2.5 ){ // link up!
+            if( MathUtils.distance(this.parentNode.x,this.parentNode.y,this.childNode.x,this.childNode.y) < (Relative_Node_Distance + this.lengthModifier) * 2.5 ){ // link up!
                 this.inner.classList.add("treeline");
                 this.waiting = false;
                 this.render = this.renderNormal;
@@ -263,7 +263,7 @@ class TreeNode {
         const dist = MathUtils.distance(this.x,this.y,that.x,that.y)+0.1; // todo: don't compute this twice since we may find it in the above func
         const nx = (that.x-this.x)/dist;
         const ny = (that.y-this.y)/dist;
-        const fac = MathUtils.clamp((dist - Relative_Node_Distance*1.2)*0.05,-2,0);
+        const fac = MathUtils.clamp((dist - Relative_Node_Distance*1.2)*0.03,-2,0);
         this.applyForce(nx*fac,ny*fac);
         that.applyForce(-nx*fac,-ny*fac);
     }
