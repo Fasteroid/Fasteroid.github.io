@@ -8,10 +8,10 @@ import {TreeLine, TreeNode} from "./objects.js"
 // TODO: move into external json file
 // TODO: add a "compile" step to bake node positions so they find equilibrium faster
 function createNodes(){
-    new TreeNode(0,"MATHEMATICS","static",false,0.1).activate();
-    new TreeNode(0,"COMPUTER SCIENCE","static",false,0.3666).activate();
-    new TreeNode(0,"ENGINEERING","static",false,0.6333).activate();
-    new TreeNode(0,"AUDIO & VISUALS","static",false,0.9).activate();
+
+    new TreeNode(0,"COMPUTER SCIENCE","static",false,0.3666);
+    new TreeNode(0,"ENGINEERING","static",false,0.6333);
+    new TreeNode(0,"AUDIO & VISUALS","static",false,0.9);
 
     new TreeNode(1,"LEGO Technic","lego",["ENGINEERING"])
     .appendLine("The bricks with holes that put functionality over beauty.")
@@ -62,8 +62,8 @@ function createNodes(){
     .appendLine("The nerf was a feeble attempt to stop me.");
 
     new TreeNode(4,"Code.org /<br>ES1 JavaScript","code",["Expression 2"])
-    .appendLine("Old ES1 JavaScript from Code.org's App Lab.")
-    .appendLine("These nodes use physics code from a project I made there.");
+    .appendLine("ES1 JavaScript from Code.org's App Lab.")
+    .appendLine("These nodes use modified physics code from an App Lab project.");
 
     new TreeNode(3,"Adobe After Effects","aftereffects",["Adobe Illustrator"])
     .appendLine("Photoshop for video; puts the FX in VFX.")
@@ -87,7 +87,10 @@ function createNodes(){
     .appendLine("Haven't mastered it, but I know the core concepts.")
     .bias = 3;
 
-    new TreeNode(7,"Calculus","calculus",["MATHEMATICS"])
+    const MathRoot = new TreeNode(0,"ADVANCED MATHEMATICS","static",false,0.1);
+    MathRoot.y = 700;
+
+    new TreeNode(7,"Calculus","calculus",["ADVANCED MATHEMATICS"])
     .appendLine("Learned During<br>AP Calc AB.")
     .appendLine("I'm self taught on some concepts from Calc C!");  
     
@@ -100,7 +103,7 @@ function createNodes(){
     .appendLine("It has types and helps you write better code!")
     .bias=-1;
 
-    new TreeNode(9,"WebGL","webgl",["TypeScript"])
+    new TreeNode(9,"WebGL","webgl",["TypeScript","Desmos"])
     .appendLine("A terrifying low-level GPU API for the web.")
     .appendLine("Do NOT approach outside of Shadertoy.")
     .bias=-1;
@@ -125,7 +128,7 @@ function createNodes(){
     .appendLine("The skeleton and structure of websites.")
     .appendLine("I'm actually getting worse at avoiding div soup 💀").bias = 3;
 
-    new TreeNode(4,"CSS 3","css",["JS Extender","WebGL"])
+    new TreeNode(4,"CSS 3","css",["JS Extender"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
     .appendLine("A constant source of frustration, but usually worth the struggle.").bias = -2;
 
@@ -162,19 +165,16 @@ function createNodes(){
 
     TreeLine.Dynamic_Lines_Refs["JavaScript"]["JS Extender"].lengthModifier = -50;
 
-    TreeLine.Dynamic_Lines_Refs["MATHEMATICS"]["Calculus"].lengthModifier = 150;
-    TreeLine.Dynamic_Lines_Refs["Calculus"]["Desmos"].lengthModifier = 150;
-    TreeLine.Dynamic_Lines_Refs["Desmos"]["TypeScript"].lengthModifier = 150;
     TreeLine.Dynamic_Lines_Refs["NodeJS"]["TypeScript"].lengthModifier = 100;
 
-    TreeLine.Dynamic_Lines_Refs["TypeScript"]["WebGL"].lengthModifier = 75;
-    TreeLine.Dynamic_Lines_Refs["WebGL"]["CSS 3"].lengthModifier = 75;
+    TreeLine.Dynamic_Lines_Refs["Desmos"]["WebGL"].lengthModifier = 120;
+  
+}
 
-
-    for (let n = 3; n < TreeNode.All_Nodes.length; n++) {
+function initNodes(){
+    for (let n = 0; n < TreeNode.All_Nodes.length; n++) {
         setTimeout(() => TreeNode.All_Nodes[n].activate(),n*80);
     }
-  
 }
 
 createNodes(); 
@@ -189,7 +189,6 @@ function frame(){
         line.render();
     }
 }
-
 
 setInterval( () => {
 
@@ -215,3 +214,5 @@ document.addEventListener("touchend",()=>{
         node.stopDrag();
     } 
 });
+
+addEventListener("load",initNodes)
