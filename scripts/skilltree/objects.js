@@ -92,7 +92,7 @@ class TreeLine {
 
 }
 
-let alternator = 1;
+let launchDir = 1;
 
 class TreeNode {
 
@@ -104,15 +104,35 @@ class TreeNode {
     static Named_Nodes    = {};
     static All_Nodes      = [];
 
+    static getGroup(parents, self){
+        if(!parents) return 0;
+        let group = 0;
+        for(let parentName of parents){
+            let parent = TreeNode.Named_Nodes[parentName]
+            if(!parent){
+                console.warn(`${self}: Attempt to access node ${parentName} before instantiation!`)
+                continue
+            };
+            group = Math.max(group, parent.group);
+        }
+        return group + 1;
+    }
+
+    static flipLaunchDirection(){
+        launchDir = -launchDir;
+    }
+
     /**
      * @param {String} name - node name; front
      * @param {String} desc - node description; back
      * @param {String} css - css class
      * @param {Array<String>} parentNames - parent node names
      */
-    constructor(group,name,css,parentNames,x){
+    constructor(name,css,parentNames,x){
 
-        alternator = -alternator;
+        TreeNode.flipLaunchDirection();
+
+        const group = TreeNode.getGroup(parentNames, name);
 
         this.parentNames = parentNames;
         this.name        = name;
@@ -174,7 +194,7 @@ class TreeNode {
         }
         
         this.setPos( TreeNode.NODE_CONTAINER.clientWidth/2, 10 * group);
-        this.applyForce(5 * alternator, 10 * group);
+        this.applyForce(5 * launchDir, 10 * group);
     }
 
     /** Sets up this node's internal HTML */
@@ -263,9 +283,15 @@ class TreeNode {
         const dist = MathUtils.distance(this.x,this.y,that.x,that.y)+0.1; // todo: don't compute this twice since we may find it in the above func
         const nx = (that.x-this.x)/dist;
         const ny = (that.y-this.y)/dist;
-        const fac = MathUtils.clamp((dist - Relative_Node_Distance*1.2)*0.03,-2,0);
+        const fac = MathUtils.clamp((dist - Relative_Node_Distance*NODE_DISTANCE)*0.03,-2,0);
         this.applyForce(nx*fac,ny*fac);
         that.applyForce(-nx*fac,-ny*fac);
+
+        if(dist < Relative_Node_Distance*0.5){ // if two nodes intersect, nudge them in the right directions
+            const diff = (this.group - that.group) * 0.5;
+            this.applyForce(0, diff);
+            that.applyForce(0, -diff);            
+        }
     }
 
     doWallConstraints(){

@@ -13,7 +13,7 @@
 }
   
 .grid {
-    height: calc( var(--node-size) * 14 + 0.7in );
+    height: calc( var(--node-size) * 15 + 0.7in );
     display: grid;
     place-items: left;
     grid-template-areas: "inner-div";
