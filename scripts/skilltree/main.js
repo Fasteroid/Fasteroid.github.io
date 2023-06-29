@@ -15,7 +15,8 @@ function createNodes(){
 
     new TreeNode("LEGO Technic","lego",["ENGINEERING"])
     .appendLine("The bricks with holes that put functionality over beauty.")
-    .appendLine("Used and abused hard during childhood.").mass = 0;
+    .appendLine("Used and abused hard during childhood.")
+    .mass = 0;
 
     new TreeNode("LEGO Mindstorms","mindstorms",["COMPUTER SCIENCE", "LEGO Technic"])
     .appendLine("Simple block-style programming for LEGO robots.")
@@ -43,19 +44,26 @@ function createNodes(){
 
     new TreeNode("Expression 2","expression2",["Redstone"])
     .appendLine("My first true coding language.")
-    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.").bias = 2;
+    .appendLine("Part of an addon for the popular sandbox game, Garry's Mod.")
+    .bias = 2;
 
     new TreeNode("Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
-    .appendLine("Most of these nodes use vector graphics.").bias = 2;
+    .appendLine("Most of these nodes use vector graphics.")
+    .bias = 2;
 
     new TreeNode("GIMP","gimp",["Adobe Photoshop"])
     .appendLine("The GNU Image Manipulation Program.")
-    .appendLine("Open-source, free, and 9 times out of 10 better than photoshop.").bias = -2;
+    .appendLine("Open-source, free, and 9 times out of 10 better than photoshop.")
+    .bias = -2;
 
     new TreeNode("Autodesk<br>123D Design","autodesk",["Woodworking"])
     .appendLine("The deprecated predecessor to<br>Fusion 360.")
     .appendLine("Immensely powerful, easy to use, and free.");
+
+    new TreeNode("Adobe After Effects","aftereffects",["Adobe Illustrator"])
+    .appendLine("Photoshop for video; puts the FX in VFX.")
+    .appendLine("Used for many disgraceful memes and edits.");
 
     new TreeNode("Blender","blender",["Autodesk<br>123D Design","Adobe Illustrator","GIMP"])
     .appendLine("The 3D multipurpose program with a brutal learning curve")
@@ -68,14 +76,6 @@ function createNodes(){
     new TreeNode("Code.org /<br>ES1 JavaScript","code",["Expression 2"])
     .appendLine("ES1 JavaScript from Code.org's App Lab.")
     .appendLine("These nodes use modified physics code from an App Lab project.");
-
-    new TreeNode("Adobe After Effects","aftereffects",["Adobe Illustrator"])
-    .appendLine("Photoshop for video; puts the FX in VFX.")
-    .appendLine("Used for many disgraceful memes and edits.");
-
-    new TreeNode("Adobe Premiere","premiere",["Adobe After Effects"])
-    .appendLine("For compiling audio and video clips.")
-    .appendLine("I used this my senior year of high school for editing the school's news show.");
 
     new TreeNode("Arduino","arduino",["Expression 2","3D Printing"])
     .appendLine("A C-style language simplified enough for an amateur to pick up.")
@@ -91,8 +91,13 @@ function createNodes(){
     .appendLine("I used it to extend my Discord relay to a Minecraft server, but it sucked.")
     .bias = 1;
 
+    new TreeNode("Adobe Premiere","premiere",["Adobe After Effects"])
+    .appendLine("For compiling audio and video clips.")
+    .appendLine("I used this my senior year of high school for editing the school's news show.");
+
     const MathRoot = new TreeNode("ADVANCED MATHEMATICS","static",false,0.1);
     MathRoot.y = 750;
+    MathRoot.group = 3;
 
     new TreeNode("Calculus","calculus",["ADVANCED MATHEMATICS"])
     .appendLine("Learned During<br>AP Calc AB.")
@@ -112,6 +117,47 @@ function createNodes(){
     .appendLine("ES6 JavaScript as a backend.")
     .appendLine("Runs the peripherals of my Garry's Mod server and auto-restarts it when it crashes.");
 
+    new TreeNode("JavaScript","js",["NodeJS","Code.org /<br>ES1 JavaScript"])
+    .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
+    .appendLine("I have yet to experience the power of a good framework.");
+    
+    new TreeNode("jsext","invisible",["JavaScript"])
+
+    new TreeNode("HTML 5","html",["jsext"])
+    .appendLine("The skeleton and structure of websites.")
+    .appendLine("I'm actually getting worse at avoiding div soup 💀")
+    .bias=-2;
+
+    new TreeNode("CSS 3","css",["jsext"])
+    .appendLine("Formatting the web with extravagant &lt;style&gt;")
+    .appendLine("A constant source of frustration, but usually worth the struggle.")
+    .bias=1;
+
+    const RegexNode = new TreeNode("Regex","regex",["JavaScript","NodeJS"])
+    .appendLine('Forbidden pattern-matching runes with immense power.')
+    .appendLine('Most familiar with the EMCAScript variant.');
+    RegexNode.bias = -2;
+    RegexNode.dx = 5000;
+
+    new TreeNode("Ubuntu/Linux","ubuntu",["C"])
+    .appendLine("𝚜𝚞𝚍𝚘 𝚌𝚑𝚘𝚠𝚗 -𝚁<br>𝚏𝚊𝚜𝚝𝚎𝚛𝚘𝚒𝚍 / ")
+    .appendLine('wait frick 💀') 
+    .appendLine("I recovered in 4 hours with no real backups!");
+
+    new TreeNode("Bash","bash",["Ubuntu/Linux"])
+    .appendLine('The beloved Bourne Again Shell.')
+    .appendLine('After the above incident, I wrote a bash script for automated backups.');
+
+    new TreeNode("Electron","electron",['HTML 5', 'CSS 3', 'jsext'])
+    .appendLine("Desktop apps made by web developers!")
+    .appendLine("Used to build an app for my dad that helps him automate patient data at work.")
+    .bias=1;
+
+    new TreeNode("Bootstrap","bootstrap",["CSS 3"])
+    .appendLine("CSS for lazy people.")
+    .appendLine("Learned during my third year of college.") 
+    .appendLine("So far, I've only found it good for prototyping.");
+
     new TreeNode("TypeScript","ts",["NodeJS","Desmos"])
     .appendLine("It's JavaScript, but BETTER!")
     .appendLine("It has types and helps you write better code!")
@@ -122,52 +168,21 @@ function createNodes(){
     .appendLine("Do NOT approach outside of Shadertoy.")
     .bias=-1;
 
-    new TreeNode("JavaScript","js",["NodeJS","Code.org /<br>ES1 JavaScript"])
-    .appendLine("ES6+ Specifications; modern JavaScript without frameworks.")
-    .appendLine("I have yet to experience the power of a good framework.");
-
-    new TreeNode("JS Extender","invisible",["JavaScript"])
-
-    new TreeNode("HTML 5","html",["JS Extender"])
-    .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm actually getting worse at avoiding div soup 💀").bias = -2;
-
-    new TreeNode("CSS 3","css",["JS Extender"])
-    .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration, but usually worth the struggle.").bias = 2;
-
-    new TreeNode("Electron","electron",["CSS 3","JS Extender",'HTML 5'])
-    .appendLine("Desktop apps made by web developers!")
-    .appendLine("Used to build an app for my dad that helps him automate patient data at work.").mass=4;
-
-    const RegexNode = new TreeNode("Regex","regex",["JavaScript","NodeJS"])
-    .appendLine('Forbidden pattern-matching runes with immense power.')
-    .appendLine('Most familiar with the EMCAScript variant.');
-    RegexNode.bias = -2;
-    RegexNode.dx = 5000;
-
-    new TreeNode("Ubuntu/Linux","ubuntu",["C"])
-    .appendLine("𝚜𝚞𝚍𝚘 𝚌𝚑𝚘𝚠𝚗 -𝚁<br>𝚏𝚊𝚜𝚝𝚎𝚛𝚘𝚒𝚍 / ")
-    .appendLine('wait frick 💀')
-    .appendLine("I recovered in 4 hours with no real backups!");
-
-    new TreeNode("Bash","bash",["Ubuntu/Linux"])
-    .appendLine('The beloved Bourne Again Shell.')
-    .appendLine('After the above incident, I wrote a bash script for automated backups.');
-
-    new TreeNode("Bootstrap","bootstrap",["CSS 3"])
-    .appendLine("CSS for lazy people.")
-    .appendLine("Learned during my third year of college.")
-    .appendLine("So far, I've only found it good for prototyping.");
-
 
     TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
-
-    TreeLine.Dynamic_Lines_Refs["JavaScript"]["JS Extender"].lengthModifier = -50;
 
     TreeLine.Dynamic_Lines_Refs["NodeJS"]["TypeScript"].lengthModifier = 50;
 
     TreeLine.Dynamic_Lines_Refs["Desmos"]["WebGL"].lengthModifier = 70;
+
+    TreeLine.Dynamic_Lines_Refs["JavaScript"]["jsext"].lengthModifier = -75;
+
+    TreeLine.Dynamic_Lines_Refs["jsext"]["Electron"].lengthModifier = -50;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["HTML 5"].lengthModifier = -50;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["CSS 3"].lengthModifier = -50;
+
+    TreeLine.Dynamic_Lines_Refs["HTML 5"]["Electron"].lengthModifier = 75;
+    TreeLine.Dynamic_Lines_Refs["CSS 3"]["Electron"].lengthModifier = 75;
   
 }
 
