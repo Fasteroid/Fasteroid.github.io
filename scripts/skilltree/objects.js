@@ -287,7 +287,7 @@ class TreeNode {
         this.applyForce(nx*fac,ny*fac);
         that.applyForce(-nx*fac,-ny*fac);
 
-        if(dist < Relative_Node_Distance*0.5){ // if two nodes intersect, nudge them in the right directions
+        if(dist < Relative_Node_Distance*0.8){ // if two nodes intersect, nudge them in the right directions
             const diff = (this.group - that.group) * 0.5;
             this.applyForce(0, diff);
             that.applyForce(0, -diff);            

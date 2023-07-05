@@ -50,12 +50,12 @@ function createNodes(){
     new TreeNode("Adobe Illustrator","illustrator",["Adobe Photoshop"])
     .appendLine("Creates and edits vector graphics, which display crisply at all resolutions.")
     .appendLine("Most of these nodes use vector graphics.")
-    .bias = 2;
+    .bias = 3;
 
     new TreeNode("GIMP","gimp",["Adobe Photoshop"])
     .appendLine("The GNU Image Manipulation Program.")
     .appendLine("Open-source, free, and 9 times out of 10 better than photoshop.")
-    .bias = -2;
+    .bias = -3;
 
     new TreeNode("Autodesk<br>123D Design","autodesk",["Woodworking"])
     .appendLine("The deprecated predecessor to<br>Fusion 360.")
@@ -91,7 +91,7 @@ function createNodes(){
     .appendLine("I used it to extend my Discord relay to a Minecraft server, but it sucked.")
     .bias = 1;
 
-    new TreeNode("Adobe Premiere","premiere",["Adobe After Effects"])
+    new TreeNode("Adobe<br>Premiere","premiere",["Adobe After Effects"])
     .appendLine("For compiling audio and video clips.")
     .appendLine("I used this my senior year of high school for editing the school's news show.");
 
@@ -123,15 +123,14 @@ function createNodes(){
     
     new TreeNode("jsext","invisible",["JavaScript"])
 
-    new TreeNode("HTML 5","html",["jsext"])
-    .appendLine("The skeleton and structure of websites.")
-    .appendLine("I'm actually getting worse at avoiding div soup 💀")
-    .bias=-2;
-
-    new TreeNode("CSS 3","css",["jsext"])
+    new TreeNode("CSS","css",["jsext"])
     .appendLine("Formatting the web with extravagant &lt;style&gt;")
-    .appendLine("A constant source of frustration, but usually worth the struggle.")
-    .bias=1;
+    .appendLine("A constant source of frustration, but usually worth the struggle.").bias = 3;
+
+    new TreeNode("HTML","html",["jsext"])
+    .appendLine("The skeleton and structure of websites,")
+    .appendLine("and a subset of the wider XML family.")
+    .bias=-2;
 
     const RegexNode = new TreeNode("Regex","regex",["JavaScript","NodeJS"])
     .appendLine('Forbidden pattern-matching runes with immense power.')
@@ -148,15 +147,16 @@ function createNodes(){
     .appendLine('The beloved Bourne Again Shell.')
     .appendLine('After the above incident, I wrote a bash script for automated backups.');
 
-    new TreeNode("Electron","electron",['HTML 5', 'CSS 3', 'jsext'])
+    new TreeNode("Electron","electron",['HTML', 'CSS', 'jsext'])
     .appendLine("Desktop apps made by web developers!")
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.")
-    .bias=1;
+    .mass=3;
 
-    new TreeNode("Bootstrap","bootstrap",["CSS 3"])
+    new TreeNode("Bootstrap","bootstrap",["CSS"])
     .appendLine("CSS for lazy people.")
     .appendLine("Learned during my third year of college.") 
-    .appendLine("So far, I've only found it good for prototyping.");
+    .appendLine("So far, I've only found it good for prototyping.")
+    .group+=2;
 
     new TreeNode("TypeScript","ts",["NodeJS","Desmos"])
     .appendLine("It's JavaScript, but BETTER!")
@@ -168,21 +168,22 @@ function createNodes(){
     .appendLine("Do NOT approach outside of Shadertoy.")
     .bias=-1;
 
+    new TreeNode("ColdFusion","coldfusion",["HTML"])
+    .appendLine("What if XML was<br>turing-complete?")
+    .appendLine("Yeah, me either, who's idea was this?")
+    .appendLine("Currently in-use at my first internship!")
+    .group+=2;
+
 
     TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
 
-    TreeLine.Dynamic_Lines_Refs["NodeJS"]["TypeScript"].lengthModifier = 50;
-
     TreeLine.Dynamic_Lines_Refs["Desmos"]["WebGL"].lengthModifier = 70;
 
-    TreeLine.Dynamic_Lines_Refs["JavaScript"]["jsext"].lengthModifier = -75;
+    TreeLine.Dynamic_Lines_Refs["JavaScript"]["jsext"].lengthModifier = -100;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["Electron"].lengthModifier = 50;
 
-    TreeLine.Dynamic_Lines_Refs["jsext"]["Electron"].lengthModifier = -50;
-    TreeLine.Dynamic_Lines_Refs["jsext"]["HTML 5"].lengthModifier = -50;
-    TreeLine.Dynamic_Lines_Refs["jsext"]["CSS 3"].lengthModifier = -50;
-
-    TreeLine.Dynamic_Lines_Refs["HTML 5"]["Electron"].lengthModifier = 75;
-    TreeLine.Dynamic_Lines_Refs["CSS 3"]["Electron"].lengthModifier = 75;
+    TreeLine.Dynamic_Lines_Refs["HTML"]["Electron"].lengthModifier = 50;
+    TreeLine.Dynamic_Lines_Refs["CSS"]["Electron"].lengthModifier = 50;
   
 }
 
