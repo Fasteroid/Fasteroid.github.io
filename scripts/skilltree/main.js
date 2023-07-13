@@ -9,8 +9,8 @@ import {TreeLine, TreeNode} from "./objects.js"
 // TODO: add a "compile" step to bake node positions so they find equilibrium faster
 function createNodes(){
 
-    new TreeNode("COMPUTER SCIENCE","static",false,0.3666);
     new TreeNode("ENGINEERING","static",false,0.6333);
+    new TreeNode("COMPUTER SCIENCE","static",false,0.3666);
     new TreeNode("AUDIO & VISUALS","static",false,0.9);
 
     new TreeNode("LEGO Technic","lego",["ENGINEERING"])
@@ -95,8 +95,7 @@ function createNodes(){
     .appendLine("For compiling audio and video clips.")
     .appendLine("I used this my senior year of high school for editing the school's news show.");
 
-    const MathRoot = new TreeNode("ADVANCED MATHEMATICS","static",false,0.1);
-    MathRoot.y = 750;
+    const MathRoot = new TreeNode("ADVANCED MATHEMATICS","static",false,0.1,800);
     MathRoot.group = 3;
 
     new TreeNode("Calculus","calculus",["ADVANCED MATHEMATICS"])
@@ -150,7 +149,7 @@ function createNodes(){
     new TreeNode("Electron","electron",['HTML', 'CSS', 'jsext'])
     .appendLine("Desktop apps made by web developers!")
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.")
-    .mass=3;
+    .group+=1;
 
     new TreeNode("Bootstrap","bootstrap",["CSS"])
     .appendLine("CSS for lazy people.")
@@ -158,7 +157,7 @@ function createNodes(){
     .appendLine("So far, I've only found it good for prototyping.")
     .group+=2;
 
-    new TreeNode("TypeScript","ts",["NodeJS","Desmos"])
+    new TreeNode("TypeScript","ts",["JavaScript","Desmos"])
     .appendLine("It's JavaScript, but BETTER!")
     .appendLine("It has types and helps you write better code!")
     .bias=-1;
@@ -168,22 +167,45 @@ function createNodes(){
     .appendLine("Do NOT approach outside of Shadertoy.")
     .bias=-1;
 
-    new TreeNode("ColdFusion","coldfusion",["HTML"])
-    .appendLine("What if XML was<br>turing-complete?")
-    .appendLine("Yeah, me either, who's idea was this?")
+    const CfNode = new TreeNode("ColdFusion","coldfusion",["HTML"])
+    .appendLine("A cursed serverside scripting language written with XML tags.")
+    .appendLine("Currently in-use at my first internship!");
+    CfNode.bias = -0.75;
+    CfNode.group += 2;
+
+    new TreeNode("Angular","angular",["HTML","TypeScript"])
+    .appendLine("A powerful framework for reusable web components.")
     .appendLine("Currently in-use at my first internship!")
-    .group+=2;
+    .group+=1;
+
+    new TreeNode("Angular Material","angular-mat",["Angular","CSS"])
+    .appendLine("Angular's default components.")
+    .appendLine("Many are variants of classic HTML elements.")
 
 
     TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
 
-    TreeLine.Dynamic_Lines_Refs["Desmos"]["WebGL"].lengthModifier = 70;
+    TreeLine.Dynamic_Lines_Refs["ADVANCED MATHEMATICS"]["Calculus"].lengthModifier = 100;
+    TreeLine.Dynamic_Lines_Refs["Calculus"]["Desmos"].lengthModifier = 100;
+
+    TreeLine.Dynamic_Lines_Refs["TypeScript"]["WebGL"].lengthModifier = 70;
 
     TreeLine.Dynamic_Lines_Refs["JavaScript"]["jsext"].lengthModifier = -100;
-    TreeLine.Dynamic_Lines_Refs["jsext"]["Electron"].lengthModifier = 50;
 
-    TreeLine.Dynamic_Lines_Refs["HTML"]["Electron"].lengthModifier = 50;
-    TreeLine.Dynamic_Lines_Refs["CSS"]["Electron"].lengthModifier = 50;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["Electron"].lengthModifier = 30;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["HTML"].lengthModifier = -25;
+    TreeLine.Dynamic_Lines_Refs["jsext"]["CSS"].lengthModifier = -25;
+
+    TreeLine.Dynamic_Lines_Refs["HTML"]["Electron"].lengthModifier = 25;
+    TreeLine.Dynamic_Lines_Refs["CSS"]["Electron"].lengthModifier = 25;
+
+    TreeLine.Dynamic_Lines_Refs["TypeScript"]["Angular"].lengthModifier = 50;
+    TreeLine.Dynamic_Lines_Refs["HTML"]["Angular"].lengthModifier = 50;
+
+    TreeLine.Dynamic_Lines_Refs["CSS"]["Angular Material"].lengthModifier = 150;
+
+    TreeLine.Dynamic_Lines_Refs["HTML"]["ColdFusion"].lengthModifier = 100;
+    TreeLine.Dynamic_Lines_Refs["Angular"]["Angular Material"].lengthModifier = 150;
   
 }
 

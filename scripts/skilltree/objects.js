@@ -128,7 +128,7 @@ class TreeNode {
      * @param {String} css - css class
      * @param {Array<String>} parentNames - parent node names
      */
-    constructor(name,css,parentNames,x){
+    constructor(name,css,parentNames,x, y){
 
         TreeNode.flipLaunchDirection();
 
@@ -141,7 +141,7 @@ class TreeNode {
         this.desc        = "";
 
         this.active = false;
-        this.mass = 1;
+        this.mass = 1.5;
         this.bias = 0;
         this.canMouse = true;
         this.bob = 0;
@@ -158,7 +158,7 @@ class TreeNode {
         else{
             TreeNode.Static_Nodes.push(this);
             this.xrel = x;
-            this.setPos(TreeNode.NODE_CONTAINER.clientWidth * x, 30)
+            this.setPos(TreeNode.NODE_CONTAINER.clientWidth * x, y || 30)
             this.dx = 0;
             this.dy = 0;
         }
@@ -317,7 +317,7 @@ class TreeNode {
     doForces(){
         if(!this.active) return;
 
-        this.applyForce(this.bias,this.mass + this.group*0.1); // gravity
+        this.applyForce(this.bias,this.mass); // gravity
 
         this.bob = MathUtils.clamp(this.bob-0.1,0,Infinity)
         this.applyForce(0, -this.bob);

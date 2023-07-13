@@ -257,6 +257,19 @@
     box-shadow: inset 0px 0px 0px 5px #7cafff77;
 }
 
+.angular > .front {
+    background-image: url('/assets/skilltree/angular.svg');
+}
+.angular > div {
+    background-color: #490e1b;
+}
+
+.angular-mat > .front {
+    background-image: url('/assets/skilltree/angular-mat.svg');
+}
+.angular-mat > div {
+    background-color: #53340d;
+}
 
 .invisible {
     display: none
