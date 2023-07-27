@@ -271,6 +271,13 @@
     background-color: #53340d;
 }
 
+.sass > .front {
+    background-image: url('/assets/skilltree/sass.svg');
+}
+.sass > div {
+    background-color: #611c44;
+}
+
 .invisible {
     display: none
 }

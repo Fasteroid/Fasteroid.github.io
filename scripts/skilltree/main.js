@@ -151,10 +151,9 @@ function createNodes(){
     .appendLine("Used to build an app for my dad that helps him automate patient data at work.")
     .group+=1;
 
-    new TreeNode("Bootstrap","bootstrap",["CSS"])
-    .appendLine("CSS for lazy people.")
+    new TreeNode("Bootstrap CSS","bootstrap",["CSS"])
     .appendLine("Learned during my third year of college.") 
-    .appendLine("So far, I've only found it good for prototyping.")
+    .appendLine("I'm beginning to see the appeal.")
     .group+=2;
 
     new TreeNode("TypeScript","ts",["JavaScript","Desmos"])
@@ -168,19 +167,23 @@ function createNodes(){
     .bias=-1;
 
     const CfNode = new TreeNode("ColdFusion","coldfusion",["HTML"])
-    .appendLine("A cursed serverside scripting language written with XML tags.")
-    .appendLine("Currently in-use at my first internship!");
+    .appendLine("A serverside scripting language written with XML tags.")
+    .appendLine("It breaks most normal scripting language conventions.");
     CfNode.bias = -0.75;
     CfNode.group += 2;
 
-    new TreeNode("Angular","angular",["HTML","TypeScript"])
+    new TreeNode("AngularJS","angular",["HTML","TypeScript"])
     .appendLine("A powerful framework for reusable web components.")
-    .appendLine("Currently in-use at my first internship!")
+    .appendLine("Why can't I inherit decorators though?")
     .group+=1;
 
-    new TreeNode("Angular Material","angular-mat",["Angular","CSS"])
-    .appendLine("Angular's default components.")
-    .appendLine("Many are variants of classic HTML elements.")
+    new TreeNode("Angular Material","angular-mat",["AngularJS","CSS","Bootstrap CSS"])
+    .appendLine("A set of default-ish components for Angular.")
+    .appendLine("They honestly just look better than their HTML counterparts.")
+
+    new TreeNode("Sass","sass",["CSS"])
+    .appendLine("What if you could nest CSS class definitions?")
+    .appendLine("Finally, compact and sensible CSS!").bias = 1
 
 
     TreeLine.Dynamic_Lines_Refs["Lua"]["NodeJS"].lengthModifier = 75;
@@ -199,19 +202,19 @@ function createNodes(){
     TreeLine.Dynamic_Lines_Refs["HTML"]["Electron"].lengthModifier = 25;
     TreeLine.Dynamic_Lines_Refs["CSS"]["Electron"].lengthModifier = 25;
 
-    TreeLine.Dynamic_Lines_Refs["TypeScript"]["Angular"].lengthModifier = 50;
-    TreeLine.Dynamic_Lines_Refs["HTML"]["Angular"].lengthModifier = 50;
+    TreeLine.Dynamic_Lines_Refs["TypeScript"]["AngularJS"].lengthModifier = 50;
+    TreeLine.Dynamic_Lines_Refs["HTML"]["AngularJS"].lengthModifier = 50;
 
-    TreeLine.Dynamic_Lines_Refs["CSS"]["Angular Material"].lengthModifier = 150;
+    TreeLine.Dynamic_Lines_Refs["CSS"]["Angular Material"].lengthModifier = 100;
 
     TreeLine.Dynamic_Lines_Refs["HTML"]["ColdFusion"].lengthModifier = 100;
-    TreeLine.Dynamic_Lines_Refs["Angular"]["Angular Material"].lengthModifier = 150;
+    TreeLine.Dynamic_Lines_Refs["AngularJS"]["Angular Material"].lengthModifier = 150;
   
 }
 
 function initNodes(){
     for (let n = 0; n < TreeNode.All_Nodes.length; n++) {
-        setTimeout(() => TreeNode.All_Nodes[n].activate(),n*80);
+        setTimeout(() => TreeNode.All_Nodes[n].activate(),n*50);
     }
 }
 
