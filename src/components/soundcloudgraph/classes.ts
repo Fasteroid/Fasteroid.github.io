@@ -72,12 +72,12 @@ export class SoundcloudEdge extends GraphEdge<SoundcloudNodeData, SoundcloudEdge
 
     private _fromForceScalar!: number;
     private get fromForceScalar() {
-        return this._fromForceScalar ??= (this.to.diameter / this.totalMass) * (this.sharedFollowing / this.to.neighbors.length);
+        return this._fromForceScalar ??= max( 0.1, (this.to.diameter / this.totalMass) * (this.sharedFollowing / this.to.neighbors.length) );
     }
 
     private _toForceScalar!: number;
     private get toForceScalar() {
-        return this._toForceScalar ??= (this.from.diameter / this.totalMass) * (this.sharedFollowing / this.from.neighbors.length);
+        return this._toForceScalar ??= max( 0.1, (this.from.diameter / this.totalMass) * (this.sharedFollowing / this.from.neighbors.length) );
     }
 
     public override get verts(): [Vec2, Color][] {
@@ -156,7 +156,7 @@ export class SoundcloudEdge extends GraphEdge<SoundcloudNodeData, SoundcloudEdge
         const toNode = this.to!;
 
         const dist = fromNode.pos.distance(toNode.pos);
-        let factor = clamp( (dist - toNode.diameter - fromNode.diameter) * 0.1, -0.5, 2) * 
+        let factor = clamp( (dist - toNode.diameter - fromNode.diameter) * 0.05, -0.5, 2) * 
                      (1 + this.width * 0.25) * 
                      ( (fromNode.diameter + toNode.diameter) * 0.5 / BASE_NODE_SIZE ) *
                      (this.bidirectional ? 2 : 0.5);
