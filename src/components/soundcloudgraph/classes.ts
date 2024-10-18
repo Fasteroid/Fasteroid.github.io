@@ -17,8 +17,8 @@ const max = Math.max
 const min = Math.min
 
 const REPEL_SOFTNESS              = 2;    // to avoid NaN if nodes are very close
-const AMBIENT_REPEL_STRENGTH      = 100; // inverse square multiplier
-const FAR_AWAY_FROM_CENTER_THRESH = 1700; // min "far" distance
+const AMBIENT_REPEL_STRENGTH      = 130; // inverse square multiplier
+const FAR_AWAY_FROM_CENTER_THRESH = 2000; // min "far" distance
 
 const THINNING_FACTOR             = 30;   // controls triangle overlap on bidirectional edges
 
@@ -54,6 +54,31 @@ export class SoundcloudEdge extends GraphEdge<SoundcloudNodeData, SoundcloudEdge
 
     private toColor: Color = Color.BLACK;
     private fromColor: Color = Color.BLACK;
+
+    private _sharedFollowing!: number;
+    public get sharedFollowing() {
+        if( this._sharedFollowing !== undefined ) return this._sharedFollowing;
+
+        const from = new Set(this.from.neighbors);
+        const to = new Set(this.to.neighbors);
+
+        return this._sharedFollowing = from.intersection(to).size;
+    }
+
+    private _totalMass!: number;
+    private get totalMass() {
+        return this._totalMass ??= this.from.diameter + this.to.diameter;
+    }
+
+    private _fromForceScalar!: number;
+    private get fromForceScalar() {
+        return this._fromForceScalar ??= (this.to.diameter / this.totalMass) * (this.sharedFollowing / this.to.neighbors.length);
+    }
+
+    private _toForceScalar!: number;
+    private get toForceScalar() {
+        return this._toForceScalar ??= (this.from.diameter / this.totalMass) * (this.sharedFollowing / this.from.neighbors.length);
+    }
 
     public override get verts(): [Vec2, Color][] {
 
@@ -131,16 +156,16 @@ export class SoundcloudEdge extends GraphEdge<SoundcloudNodeData, SoundcloudEdge
         const toNode = this.to!;
 
         const dist = fromNode.pos.distance(toNode.pos);
-        let factor = clamp( (dist - toNode.diameter - fromNode.diameter) * 0.05, -0.2, 1) * 
+        let factor = clamp( (dist - toNode.diameter - fromNode.diameter) * 0.1, -0.5, 2) * 
                      (1 + this.width * 0.25) * 
-                     (0.5 * fromNode.fewFollowingMul + 0.5 * toNode.fewFollowingMul) *
-                     ( (0.5 * fromNode.diameter + 0.5 * toNode.diameter) / BASE_NODE_SIZE ) *
+                     ( (fromNode.diameter + toNode.diameter) * 0.5 / BASE_NODE_SIZE ) *
                      (this.bidirectional ? 2 : 0.5);
 
-        const dir  = toNode.pos.copy.subV(fromNode.pos).scaleBy(factor / dist);
+        const dir     = toNode.pos.copy.subV(fromNode.pos).scaleBy(factor / dist);
+        const dircopy = dir.copy;
 
-        fromNode.vel.addV(dir);
-        toNode.vel.subV(dir);
+        fromNode.vel.addV(dir.scaleBy(this.fromForceScalar));
+        toNode.vel.subV(dircopy.scaleBy(this.toForceScalar));
 
     }
 
@@ -368,7 +393,7 @@ export class SoundcloudNode extends GraphNode<SoundcloudNodeData, SoundcloudEdge
 
     private doCenterSeekingForce(){
         const len = this.pos.length();
-        const scale = clamp(len - FAR_AWAY_FROM_CENTER_THRESH, 0, Infinity) / len;
+        const scale = clamp(len - FAR_AWAY_FROM_CENTER_THRESH, 0.01, Infinity) / len;
         this.vel.addV( this.pos.copy.scaleBy(scale * -0.001 * this.trueDiameter) );
     }
 
