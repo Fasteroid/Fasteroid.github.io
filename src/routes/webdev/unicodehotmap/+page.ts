@@ -3,5 +3,5 @@ import { defineData } from "$lib/pagedata"
 
 export const load = defineData( loadParent, {
 	title: "Unicode Hotmap",
-	thumbnail: "iframe.png"
+	thumbnail: "unicode.png"
 } )
